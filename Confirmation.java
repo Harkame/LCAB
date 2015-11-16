@@ -10,7 +10,7 @@ public class Confirmation {
 	public Confirmation(String nom) {
 		JDialog.setDefaultLookAndFeelDecorated(false);
 		this.reponse = JOptionPane.showConfirmDialog(null,
-				"Créer l'utilisateur : " + nom + " ?", "Confirmation",
+				"Creer l'utilisateur : " + nom + " ?", "Confirmation",
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		if (this.reponse == JOptionPane.NO_OPTION) {
 		} else if (this.reponse == JOptionPane.YES_OPTION) {
