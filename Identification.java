@@ -23,6 +23,7 @@ public class Identification extends JFrame {
 
 	JLabel myLabel;
 	private JButton bouton_seconnecter;
+	private JButton bouton_reset;
 	private static String a;
 	JPanel top;
 	private JPanel fenetre = new JPanel();
@@ -49,7 +50,7 @@ public class Identification extends JFrame {
 		this.champ_saisie.setText("");
 		this.champ_saisie.addKeyListener(new ComboKeyHandler(combo));
 
-		this.setTitle("La case à bulles"); // Donne un titre à la fenêtre
+		this.setTitle("La case a bulles"); // Donne un titre à la fenêtre
 		this.setExtendedState(Frame.MAXIMIZED_BOTH); // Met la fenêtre en plein
 														// écran
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Si on clic sur
@@ -66,6 +67,7 @@ public class Identification extends JFrame {
 		// champ_saisie.setFont(police); // On active la police dans le champ
 		// champ_saisie.setPreferredSize(new Dimension(150, 30));
 		this.bouton_seconnecter = new JButton("Se connecter");
+		this.bouton_reset = new JButton("Reinitialiser les utilisateurs");
 		this.bouton_seconnecter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				utilisateur = new Utilisateur(
@@ -80,9 +82,15 @@ public class Identification extends JFrame {
 				System.out.println(utilisateur.toString());
 			}
 		});
+		this.bouton_reset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Utilisateur.reinitialisation();
+			}
+		});
 		// champ_saisie.setForeground(Color.BLACK);
 		fenetre.add(p, BorderLayout.SOUTH);
 		fenetre.add(bouton_seconnecter, BorderLayout.SOUTH);
+		fenetre.add(bouton_reset, BorderLayout.SOUTH);
 		this.setContentPane(fenetre);
 		this.setVisible(true);
 	}
