@@ -1,27 +1,19 @@
-import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Frame;
-import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
-import java.io.IOException;
+
+
+
 
 
 public class PlateauBulle extends JFrame { // création de ma fenêtre 
 	private JPanel pan;	
-	private JLabel label;
-	 ImageIcon monIcon=new ImageIcon("bulle.png");
-	JButton bouton=new JButton(monIcon);
+	private JLabel label;	
 	
 	/**
 	 */
@@ -36,23 +28,17 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 		this.pan.setLayout(null); // aucune disposition par défault dans mon conteneur ce qui permet de déplacer comme on veut notre label
 		Icon image = new ImageIcon("bulle.png");
 		this.label =new JLabel(image); 
-	
-
-
-		  // label.setSize(20,20);
-		    this.label.addMouseListener(new MouseAdapter(){  public void mousePressed(MouseEvent me){
+								
+	    this.label.addMouseListener(new MouseAdapter(){  public void mousePressed(MouseEvent me){
 	          
 	               System.out.println("lol");
 	           		label.setVisible(false);
-	                    //Do action here
-	           
-	        
+	                    //Do action here    	
 	    }});	
 		  		    pan.add(this.label);
 		this.animer(); // annimer ma bulle
 	
-	
-									
+		  		
 	
 		
 	}
@@ -60,21 +46,20 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 	
 		public void animer(){
 			int x,y;
-			x=0;
+			x=500;
 			y=0;
 			int bi=0;
 			while(true){
 					
-					if(x==200){
+					if(x==800){
 						y++;
 					}
 					if(y==150){
 						x--;
-					}
-					if(x==2&&y==150){
 						bi=150;
 					}
-					if(x==5 && bi==150){
+					
+					if(x==500 && bi==150){
 						y--;
 					}
 					if(y==0){
@@ -88,7 +73,7 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 											
 					try {
 
-						Thread.sleep(3);
+						Thread.sleep(1,5);
 
 					} catch (InterruptedException e) {
 
