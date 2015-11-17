@@ -7,10 +7,22 @@ import javax.swing.JOptionPane;
 public class Confirmation {
 	private int reponse;
 
+	public Confirmation() {
+		JDialog.setDefaultLookAndFeelDecorated(false);
+		this.reponse = JOptionPane.showConfirmDialog(null,
+				"Voulez-vous vraiment reinitialiser les utilisateurs ?",
+				"Confirmation", JOptionPane.YES_NO_OPTION,
+				JOptionPane.QUESTION_MESSAGE);
+		if (this.reponse == JOptionPane.NO_OPTION) {
+		} else if (this.reponse == JOptionPane.YES_OPTION) {
+		} else if (this.reponse == JOptionPane.CLOSED_OPTION) {
+		}
+	}
+
 	public Confirmation(String nom) {
 		JDialog.setDefaultLookAndFeelDecorated(false);
 		this.reponse = JOptionPane.showConfirmDialog(null,
-				"Creer l'utilisateur : " + nom + " ?", "Confirmation",
+				"Creer l'utilisateur \"" + nom + "\" ?", "Confirmation",
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		if (this.reponse == JOptionPane.NO_OPTION) {
 		} else if (this.reponse == JOptionPane.YES_OPTION) {
