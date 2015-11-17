@@ -9,7 +9,17 @@ import java.io.IOException;
 
 public class Utilisateur {
 	private String identifiant;
-	private static File fichier = new File("D:\\utilisateurs.txt");
+	private static File fichier;
+	static {
+		fichier = new File("D:\\utilisateurs.txt");
+		if (!fichier.exists()) {
+		} else {
+			try {
+				fichier.createNewFile();
+			} catch (IOException e) {
+			}
+		}
+	}
 	private Score[] scores;
 	private static String[] utilisateurs;
 
@@ -55,9 +65,13 @@ public class Utilisateur {
 	private static StringBuilder recupIdentifiant(String ligne) {
 		StringBuilder identifiant = new StringBuilder();
 		int i = 0;
-		while (ligne.charAt(i) != '|') {
-			identifiant.append(ligne.charAt(i));
-			i++;
+		try {
+			while (ligne.charAt(i) != '|') {
+				identifiant.append(ligne.charAt(i));
+				i++;
+			}
+		} catch (StringIndexOutOfBoundsException e) {
+
 		}
 		return identifiant;
 	}
@@ -182,14 +196,17 @@ public class Utilisateur {
 	}
 
 	public static void reinitialisation() {
-		fichier.delete();
-		try {
-			FileWriter fw = new FileWriter(fichier, true);
-			fichier.createNewFile();
-			fw.write("ROOT|3-3|4-4|5-5|6-6|7-7|3-3|4-4|5-5|6-6|7-7|");
-			fw.write(System.getProperty("line.separator"));
-			fw.close();
-		} catch (IOException e) {
+		// fichier.delete();
+		Confirmation c1 = new Confirmation();
+		if (c1.getreponse() == 0) {
+			try {
+				FileWriter fw = new FileWriter(fichier, false);
+				fichier.createNewFile();
+				fw.close();
+			} catch (IOException e) {
+			}
+		} else {
+
 		}
 	}
 
@@ -204,14 +221,8 @@ public class Utilisateur {
 	}
 
 	public static void main(String[] Args) throws IOException {
-		Utilisateur u1 = new Utilisateur("Alain");
-		Utilisateur u2 = new Utilisateur("Robin");
-		Utilisateur u3 = new Utilisateur("Remi");
-		Utilisateur u4 = new Utilisateur("Meddy");
-		Utilisateur u5 = new Utilisateur("Meddy");
-		Utilisateur u6 = new Utilisateur("Harkame");
-		recupIdentifiants();
-		aff();
+		Utilisateur u = new Utilisateur("test");
+		System.out.println(u.UtilisateurExistant());
 		// u6.Identification();
 		// reinitialisation();
 		// System.out.println(u1.toString());
