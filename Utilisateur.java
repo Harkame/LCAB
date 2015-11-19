@@ -6,6 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 public class Utilisateur {
 	private String identifiant;
@@ -21,13 +24,23 @@ public class Utilisateur {
 		}
 	}
 	private Score[] scores;
+	private int numero_ligne;
 	private static String[] utilisateurs;
 
 	public Utilisateur(String p_identifiant) {
-		this.identifiant = p_identifiant.toLowerCase();
-		this.scores = new Score[10];
-		for (int i = 0; i < this.scores.length; i++) {
-			this.scores[i] = new Score();
+		if (p_identifiant.indexOf("|") != -1
+				|| p_identifiant.indexOf("-") != -1 || p_identifiant.equals("")
+				|| p_identifiant.equals(" ")) {
+			new JOptionPane().showMessageDialog(null, "Identifiant incorrect",
+					"Erreur", JOptionPane.ERROR_MESSAGE);
+			return;
+		} else {
+			this.identifiant = p_identifiant.toLowerCase();
+			this.scores = new Score[10];
+			for (int i = 0; i < this.scores.length; i++) {
+				this.scores[i] = new Score();
+			}
+			this.recupNumeroLigne();
 		}
 	}
 
@@ -60,6 +73,41 @@ public class Utilisateur {
 		}
 		lecteur.close();
 		return null;
+	}
+
+	private void recupNumeroLigne() {
+		BufferedReader lecteur = null;
+		try {
+			lecteur = new BufferedReader(new FileReader(fichier));
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		StringBuilder identifiant = new StringBuilder();
+		int cpt = 0;
+		String ligne;
+		try {
+			while ((ligne = lecteur.readLine()) != null) {
+				identifiant.append(recupIdentifiant(ligne));
+				cpt++;
+				if (identifiant.toString().equals(this.identifiant)) {
+					lecteur.close();
+					this.numero_ligne = cpt - 1;
+					return;
+				} else {
+					identifiant.setLength(0);
+				}
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			lecteur.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private static StringBuilder recupIdentifiant(String ligne) {
@@ -123,7 +171,7 @@ public class Utilisateur {
 			this.recupIdentifiant(informations.toString());
 			this.recupScores(informations);
 		} else {
-			Confirmation c1 = new Confirmation(this.identifiant);
+			Alerte c1 = new Alerte(this.identifiant);
 			if (c1.getreponse() == 0) {
 				this.sauvegarderUtilisateur();
 			} else {
@@ -195,19 +243,66 @@ public class Utilisateur {
 		return utilisateur.toString();
 	}
 
-	public static void reinitialisation() {
+	public static void reinitialisation(boolean confirmation) {
 		// fichier.delete();
-		Confirmation c1 = new Confirmation();
-		if (c1.getreponse() == 0) {
+		if (confirmation == true) {
+			Alerte c1 = new Alerte();
+			if (c1.getreponse() == 0) {
+				try {
+					FileWriter fw = new FileWriter(fichier, false);
+					fichier.createNewFile();
+					fw.close();
+				} catch (IOException e) {
+				}
+			}
+		} else {
 			try {
 				FileWriter fw = new FileWriter(fichier, false);
 				fichier.createNewFile();
 				fw.close();
 			} catch (IOException e) {
 			}
-		} else {
-
 		}
+	}
+
+	public void modifieScore(int pallier, int nouveau_score) throws IOException {
+		ArrayList<StringBuilder> tamporaire = new ArrayList<StringBuilder>();
+		String ligne = new String();
+		BufferedReader lecteur = new BufferedReader(new FileReader(fichier));
+		StringBuilder identifiant = new StringBuilder();
+		int toto = 0;
+		while ((ligne = lecteur.readLine()) != null) {
+			tamporaire.add(new StringBuilder(ligne));
+		}
+		StringBuilder modificateur = new StringBuilder();
+		modificateur.append(tamporaire.get(this.numero_ligne));
+		int i = 0;
+		int j = 0;
+		while (i < pallier) {
+			if (modificateur.charAt(j) == '|') {
+				i++;
+				j++;
+			} else {
+				j++;
+			}
+		}
+		j++;
+		String a = modificateur.substring(0, j - 1);
+		while (modificateur.toString().charAt(j) != '-') {
+			j++;
+		}
+		modificateur.delete(0, j);
+		String b = a + nouveau_score + modificateur.toString();
+		tamporaire.get(this.numero_ligne).setLength(0);
+		tamporaire.get(this.numero_ligne).append(b);
+		reinitialisation(false);
+		FileWriter fw = new FileWriter(fichier, true);
+		for (int z = 0; z < tamporaire.size(); z++) {
+			fw.write(tamporaire.get(z).toString()
+					+ System.getProperty("line.separator"));
+		}
+		fw.close();
+		lecteur.close();
 	}
 
 	public static void aff() {
@@ -221,8 +316,11 @@ public class Utilisateur {
 	}
 
 	public static void main(String[] Args) throws IOException {
-		Utilisateur u = new Utilisateur("test");
+		Utilisateur u = new Utilisateur("neon");
+		u.Identification();
 		System.out.println(u.UtilisateurExistant());
+		System.out.println(u.numero_ligne);
+		u.modifieScore(7, 5698);
 		// u6.Identification();
 		// reinitialisation();
 		// System.out.println(u1.toString());
