@@ -50,67 +50,43 @@ public class Bulle {
 		this.y=(int)(Math.random()*(height-215));
 		int signal=0;
 		int signaly=0;
-		int choix=(int)(Math.random()*(3-1)+1);
 		while(true){
 			
 				this.label.setBounds(this.x,this.y,151,151);
-			switch(choix){			
-			case 1 : 
-				if(this.x==(width-150)){
-					signal=1;
-					choix=(int)(Math.random()*(3-1)+1);
+				if(this.x==(width-150)&&signaly==0){
+					signal=1;	
 				}
-				if(signal==1){
-					this.x--;
+				if(this.y==(height-215)&&signal==0){
+					signaly=1;
+				}
+				if(signal==1&&signaly==1){
+					this.x=this.x-1;
+					this.y=this.y-1;
 					if(this.x==0){
 						signal=0;
-						choix=(int)(Math.random()*(3-1)+1);
 					}
-				}else{this.x++;}
-				if(this.y==(height-215)){
-					signaly=1;
-					choix=(int)(Math.random()*(3-1)+1);
-				}
-				if(signaly==1){
-					this.y--;
 					if(this.y==0){
 						signaly=0;
-						choix=(int)(Math.random()*(3-1)+1);
 					}
-				}else{
-					this.y++;
 				}
-				break;
-			case 2 :
-				if(this.x==(width-150)){
-					signal=1;
-					choix=(int)(Math.random()*(3-1)+1);
-				}
-				if(signal==1){
-					this.x--;
+				else if(signal==1&&signaly==0){
+					this.x=this.x-1;
+					this.y=this.y+1;
 					if(this.x==0){
-						signal=0;	
-						choix=(int)(Math.random()*(3-1)+1);
+						signal=0;
 					}
-				}else{this.x++;}
-				
-				
-				
-			break;
-			case 3:
-				if(signaly==1){
-					this.y--;
-					if(this.y==0){
-						signaly=0;	
-						choix=(int)(Math.random()*(3-1)+1);
-					}
-				}else{
-					this.y++;
 				}
-			break;
-				
-			}	
-				
+				else if(signal==0&&signaly==1){
+					this.x=this.x+1;
+					this.y=this.y-1;
+					if(this.y==0){
+						signaly=0;
+					}
+				}
+				else if(signal==0&&signaly==0){
+					this.x=this.x+1;
+					this.y=this.y+1;
+				}
 				try {
 
 					Thread.sleep(3);
