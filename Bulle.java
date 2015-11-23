@@ -53,10 +53,10 @@ public class Bulle {
 		while(true){
 			
 				this.label.setBounds(this.x,this.y,151,151);
-				if(this.x==(width-150)&&signaly==0){
+				if(this.x==(width-150)){
 					signal=1;	
 				}
-				if(this.y==(height-215)&&signal==0){
+				if(this.y==(height-215)){
 					signaly=1;
 				}
 				if(signal==1&&signaly==1){
@@ -75,6 +75,7 @@ public class Bulle {
 					if(this.x==0){
 						signal=0;
 					}
+					
 				}
 				else if(signal==0&&signaly==1){
 					this.x=this.x+1;
