@@ -14,6 +14,7 @@ import java.awt.event.MouseEvent;
 public class PlateauBulle extends JFrame { // création de ma fenêtre 
 	private JPanel pan;	
 	private JLabel label;	
+	private int clickCount=0;
 	
 	/**
 	 */
@@ -30,12 +31,19 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 		this.label =new JLabel(image); 
 								
 	    this.label.addMouseListener(new MouseAdapter(){  public void mousePressed(MouseEvent me){
-	          
-	               System.out.println("lol");
+	        	 clickCount++;
+	                 System.out.println(clickCount);
 	           		label.setVisible(false);
-	                    //Do action here    	
+	                       	
 	    }});	
 		  		    pan.add(this.label);
+		  		    pan.addMouseListener(new MouseAdapter(){  public void mousePressed(MouseEvent me){
+	          
+	          	clickCount++;
+	               System.out.println(clickCount);
+	           		
+	                    //Do action here    	
+	    }});
 		this.animer(); // annimer ma bulle
 	
 		  		
