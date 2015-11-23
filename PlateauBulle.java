@@ -12,7 +12,7 @@ import java.awt.Dimension;
 
 
 public class PlateauBulle extends JFrame { // création de ma fenêtre 
-	public JPanel pan;	
+	public static JPanel pan;	
 
 	
 	/**
@@ -36,11 +36,26 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 	
 	public static void main(String[]args){
 	PlateauBulle plat=new PlateauBulle();
-		Bulle maBulle=new Bulle(5,9,151,151,plat.pan);
+		/*Bulle maBulle=new Bulle(5,9,151,151,plat.pan);
 		
 		Bulle maBulle2=new Bulle(500,500,151,151,plat.pan);
 		
-		maBulle.animer();// après cette instruction rien ne peut s'excuter car j'utilise un true dans la condition d'un tant que 
+		maBulle.animer();*/
+		
+		
+		Annimation a= new Annimation("anim1",pan);
+		Annimation b= new Annimation("anim1",pan);
+		Annimation c= new Annimation("anim1",pan);
+		Annimation d= new Annimation("anim1",pan);
+		a.start();
+		b.start();
+		c.start();
+		d.start();
+		
+		
+		
+		
+		// après cette instruction rien ne peut s'excuter car j'utilise un true dans la condition d'un tant que 
 		
 		
 				
