@@ -38,7 +38,7 @@ public class Identification extends JFrame {
 		Utilisateur.recupIdentifiants();
 		this.utilisateurs = Utilisateur.getutilisateurs();
 		this.setContentPane(new ImagePanel(new ImageIcon(
-				"D:\\users\\louis\\desktop\\bulle1.jpg").getImage()));
+				"/home/ann2/daviaudl/Bureau/bulle1.jpg").getImage()));
 		this.setTitle("La case a bulles");
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,9 +76,9 @@ public class Identification extends JFrame {
 			}
 		});
 		this.bouton_reset = new JButton("Reinitialiser les utilisateurs");
-		this.bouton_reset.setBackground(Color.RED);
+		this.bouton_reset.setBackground(Color.WHITE);
 		this.bouton_reset.setFont(police);
-		this.bouton_reset.setBounds(1450, 900, 400, 75);
+		this.bouton_reset.setBounds(1480, 900, 400, 75);
 		this.getContentPane().add(this.bouton_reset, BorderLayout.SOUTH);
 		this.bouton_reset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
