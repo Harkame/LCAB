@@ -16,6 +16,7 @@ public class Bulle {
 	private int x;
 	private int y;
 	private static Icon image = new ImageIcon("bulle.png");
+	private static int compteBulle = 0;
 	
 							
 	public Bulle(int x, int y, int larg, int haut,JPanel pan){
@@ -28,7 +29,7 @@ public class Bulle {
 		this.pan=pan;
 		  this.label.addMouseListener(new MouseAdapter(){  public void mousePressed(MouseEvent me){
 	          
-              System.out.println("lol");
+              	compteBulle++;
           	  label.setVisible(false);
                    //Do action here    	
    }});	
@@ -101,5 +102,7 @@ public class Bulle {
 		}
 
 
-
+		public int getCompte(){
+			return this.compteBulle;
+		}
 }
