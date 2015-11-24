@@ -14,7 +14,16 @@ public class Utilisateur {
 	private String identifiant;
 	private static File fichier;
 	static {
-		fichier = new File("D:\\utilisateurs.txt");
+		switch (System.getProperty("os.name")) {
+		case "Windows 7":
+		case "Windows 8":
+		case "Windows 10":
+			fichier = new File("C:\\utilisateurs.txt");
+			break;
+		case "Linux":
+			fichier = new File("/utilisateurs.txt");
+			break;
+		}
 		if (!fichier.exists()) {
 		} else {
 			try {
@@ -28,20 +37,12 @@ public class Utilisateur {
 	private static String[] utilisateurs;
 
 	public Utilisateur(String p_identifiant) {
-		if (p_identifiant.indexOf("|") != -1
-				|| p_identifiant.indexOf("-") != -1 || p_identifiant.equals("")
-				|| p_identifiant.equals(" ")) {
-			new JOptionPane().showMessageDialog(null, "Identifiant incorrect",
-					"Erreur", JOptionPane.ERROR_MESSAGE);
-			return;
-		} else {
-			this.identifiant = p_identifiant.toLowerCase();
-			this.scores = new Score[10];
-			for (int i = 0; i < this.scores.length; i++) {
-				this.scores[i] = new Score();
-			}
-			this.recupNumeroLigne();
+		this.identifiant = p_identifiant.toLowerCase();
+		this.scores = new Score[10];
+		for (int i = 0; i < this.scores.length; i++) {
+			this.scores[i] = new Score();
 		}
+		this.recupNumeroLigne();
 	}
 
 	/**
@@ -73,6 +74,22 @@ public class Utilisateur {
 		}
 		lecteur.close();
 		return null;
+	}
+
+	private static int identifiantValide(String identifiant) {
+		if (identifiant == null || identifiant == ""
+				|| identifiant.length() <= 1) {
+			return 1;
+		}
+		for (int i = 0; i < identifiant.length(); i++) {
+			if ((int) identifiant.charAt(i) < 97
+					|| (int) identifiant.charAt(i) > 123) {
+				return i;
+			} else {
+
+			}
+		}
+		return -1;
 	}
 
 	private void recupNumeroLigne() {
@@ -166,17 +183,23 @@ public class Utilisateur {
 	}
 
 	public void Identification() throws IOException {
-		if (this.UtilisateurExistant()) {
-			StringBuilder informations = this.recupLigne();
-			this.recupIdentifiant(informations.toString());
-			this.recupScores(informations);
-		} else {
-			Alerte c1 = new Alerte(this.identifiant);
-			if (c1.getreponse() == 0) {
-				this.sauvegarderUtilisateur();
+		if (identifiantValide(this.identifiant) == -1) {
+			if (this.UtilisateurExistant()) {
+				StringBuilder informations = this.recupLigne();
+				this.recupIdentifiant(informations.toString());
+				this.recupScores(informations);
 			} else {
+				Confirmation c1 = new Confirmation(this.identifiant);
+				if (c1.getreponse() == 0) {
+					this.sauvegarderUtilisateur();
+				} else {
 
+				}
 			}
+		} else {
+			new JOptionPane().showMessageDialog(null, "Caractere interdit : \""
+					+ identifiant.charAt(identifiantValide(this.identifiant))
+					+ "\"", "Erreur", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -246,7 +269,7 @@ public class Utilisateur {
 	public static void reinitialisation(boolean confirmation) {
 		// fichier.delete();
 		if (confirmation == true) {
-			Alerte c1 = new Alerte();
+			Confirmation c1 = new Confirmation();
 			if (c1.getreponse() == 0) {
 				try {
 					FileWriter fw = new FileWriter(fichier, false);
@@ -316,8 +339,8 @@ public class Utilisateur {
 	}
 
 	public static void main(String[] Args) throws IOException {
-		Utilisateur u = new Utilisateur("neon");
-		u.Identification();
+		Utilisateur u = new Utilisateur("nazefe-fhezfe");
+		// u.Identification();
 		System.out.println(u.UtilisateurExistant());
 		System.out.println(u.numero_ligne);
 		u.modifieScore(7, 5698);
