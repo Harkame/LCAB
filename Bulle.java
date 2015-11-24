@@ -102,7 +102,7 @@ public class Bulle {
 		}
 
 
-		public int getCompte(){
+		public static int getCompte(){
 			return this.compteBulle;
 		}
 }
