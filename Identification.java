@@ -5,10 +5,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -25,48 +30,38 @@ public class Identification extends JFrame {
 	private JButton bouton_reset;
 	private static String a;
 	JPanel top;
-	private JPanel fenetre = new JPanel();
 	private JTextField champ_saisie;
-	private JLabel label = new JLabel("Identifiant");
 	private static Utilisateur utilisateur;
 	private String[] utilisateurs;
 
-	public Identification() {
-		try {
-			Utilisateur.recupIdentifiants();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public Identification() throws IOException {
+		Utilisateur.recupIdentifiants();
 		this.utilisateurs = Utilisateur.getutilisateurs();
-
+		this.setContentPane(new ImagePanel(new ImageIcon(
+				"D:\\users\\louis\\desktop\\bulle1.jpg").getImage()));
+		this.setTitle("La case a bulles");
+		this.setExtendedState(Frame.MAXIMIZED_BOTH);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
+		Font police = new Font("Verdana", Font.BOLD, 20);
+		this.setLayout(null);
 		JComboBox<String> combo = MainPanel.makeComboBox(this.utilisateurs);
 		combo.setEditable(true);
 		combo.setSelectedIndex(-1);
-		JPanel p = new JPanel(new BorderLayout());
-		p.add(combo, BorderLayout.CENTER);
-		this.add(p);
 		this.champ_saisie = (JTextField) combo.getEditor().getEditorComponent();
 		this.champ_saisie.setText("");
 		this.champ_saisie.addKeyListener(new ComboKeyHandler(combo));
-
-		this.setTitle("La case a bulles"); // Donne un titre à la fenêtre
-		this.setExtendedState(Frame.MAXIMIZED_BOTH); // Met la fenêtre en plein
-														// écran
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Si on clic sur
-																// la croix
-																// rouge, le
-																// process se
-																// termine
-		this.setLocationRelativeTo(null); // La fenêtre est "independante"
-		fenetre.setBackground(Color.white); // Le fond est bleu
-		// fenetre.setLayout(new BorderLayout());
-		Font police = new Font("Arial", Font.BOLD, 20); // Définition de la
-														// police d'écriture et
-														// de sa taille
-		// champ_saisie.setFont(police); // On active la police dans le champ
-		// champ_saisie.setPreferredSize(new Dimension(150, 30));
+		champ_saisie.setFont(police);
+		JPanel p = new JPanel(new BorderLayout());
+		p.setBounds(750, 425, 200, 50);
+		p.add(combo, BorderLayout.CENTER);
+		this.getContentPane().add(p, BorderLayout.CENTER);
+		Insets insets = this.getInsets();
 		this.bouton_seconnecter = new JButton("Se connecter");
-		this.bouton_reset = new JButton("Reinitialiser les utilisateurs");
+		this.bouton_seconnecter.setBackground(Color.ORANGE);
+		this.bouton_seconnecter.setFont(police);
+		this.bouton_seconnecter.setBounds(1000, 400, 200, 75);
+		this.getContentPane().add(this.bouton_seconnecter, BorderLayout.CENTER);
 		this.bouton_seconnecter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				utilisateur = new Utilisateur(
@@ -74,24 +69,28 @@ public class Identification extends JFrame {
 								.getText());
 				try {
 					utilisateur.Identification();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
+				} catch (IOException e1) { // TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				System.out.println(utilisateur.toString());
 			}
 		});
+		this.bouton_reset = new JButton("Reinitialiser les utilisateurs");
+		this.bouton_reset.setBackground(Color.RED);
+		this.bouton_reset.setFont(police);
+		this.bouton_reset.setBounds(1450, 900, 400, 75);
+		this.getContentPane().add(this.bouton_reset, BorderLayout.SOUTH);
 		this.bouton_reset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Utilisateur.reinitialisation();
+				Utilisateur.reinitialisation(true);
 			}
 		});
-		// champ_saisie.setForeground(Color.BLACK);
-		fenetre.add(p, BorderLayout.SOUTH);
-		fenetre.add(bouton_seconnecter, BorderLayout.SOUTH);
-		fenetre.add(bouton_reset, BorderLayout.SOUTH);
-		this.setContentPane(fenetre);
 		this.setVisible(true);
+
+	}
+
+	public Utilisateur getutilisateur() {
+		return this.utilisateur;
 	}
 
 	public String execute() {
@@ -111,8 +110,9 @@ public class Identification extends JFrame {
 
 	/**
 	 * @param args
+	 * @throws IOException
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Identification id1 = new Identification();
 		// id1.execute();
 	}
