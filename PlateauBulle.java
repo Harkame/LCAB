@@ -7,12 +7,12 @@ import java.awt.Frame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Dimension;
-import java.util.ArrayList;
+
+
 
 public class PlateauBulle extends JFrame { // création de ma fenêtre 
 	public static JPanel pan;	
-	public ArrayList<Annimation> animations = new ArrayList<Annimation>();
-	
+	public static Annimation[] anim;
 	/**
 	 */
 	public PlateauBulle(int nb){
@@ -24,17 +24,18 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 		this.setContentPane(pan); // je choisi mon contenneur 
 		this.setVisible(true); // rentdre ma fenêtre visible
 		this.pan.setLayout(null); // aucune disposition par défault dans mon conteneur ce qui permet de déplacer comme on veut notre label
+		anim = new Annimation[nb];
 		for (int i = 0; i<nb; i++){
-			animations.add(new Annimation("anim", pan));
+			anim[i] = new Annimation("anim", pan);
 		}
 		for (int i = 0; i<nb; i++){
-			animations.get(i).start();
+			anim[i].start();
 		}
 									
 	}
 	
 	public static void main(String[]args){
-	PlateauBulle plat=new PlateauBulle(1);
+	new PlateauBulle(15);
 		// après cette instruction rien ne peut s'excuter car j'utilise un true dans la condition d'un tant que 
 
 	}
