@@ -184,22 +184,28 @@ public class Utilisateur {
 
 	public void Identification() throws IOException {
 		if (identifiantValide(this.identifiant) == -1) {
+			
 			if (this.UtilisateurExistant()) {
 				StringBuilder informations = this.recupLigne();
 				this.recupIdentifiant(informations.toString());
 				this.recupScores(informations);
+				
 			} else {
 				Confirmation c1 = new Confirmation(this.identifiant);
 				if (c1.getreponse() == 0) {
 					this.sauvegarderUtilisateur();
+					
 				} else {
 
 				}
 			}
+			
 		} else {
+			Identification.connecte = false;
 			new JOptionPane().showMessageDialog(null, "Caractere interdit : \""
 					+ identifiant.charAt(identifiantValide(this.identifiant))
 					+ "\"", "Erreur", JOptionPane.ERROR_MESSAGE);
+			
 		}
 	}
 
@@ -350,3 +356,4 @@ public class Utilisateur {
 		// generer_utilisateur(25);
 	}
 }
+
