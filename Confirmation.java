@@ -25,8 +25,10 @@ public class Confirmation {
 				"Creer l'utilisateur \"" + nom + "\" ?", "Confirmation",
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		if (this.reponse == JOptionPane.NO_OPTION) {
+			Identification.connecte = false;
 		} else if (this.reponse == JOptionPane.YES_OPTION) {
 		} else if (this.reponse == JOptionPane.CLOSED_OPTION) {
+			Identification.connecte = false;
 		}
 	}
 
