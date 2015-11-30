@@ -1,8 +1,9 @@
-import javax.swing.Icon;
+mport javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 import java.awt.Frame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -11,8 +12,10 @@ import java.awt.Dimension;
 
 
 public class PlateauBulle extends JFrame { // création de ma fenêtre 
-	public static JPanel pan;	
-	public static Annimation[] anim;
+	private static JPanel pan;	
+	private static Annimation[] anim;
+	private int nb;
+	
 	/**
 	 */
 	public PlateauBulle(int nb){
@@ -24,19 +27,42 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 		this.setContentPane(pan); // je choisi mon contenneur 
 		this.setVisible(true); // rentdre ma fenêtre visible
 		this.pan.setLayout(null); // aucune disposition par défault dans mon conteneur ce qui permet de déplacer comme on veut notre label
-		anim = new Annimation[nb];
-		for (int i = 0; i<nb; i++){
-			anim[i] = new Annimation("anim", pan);
+		this.nb=nb;
+	
+											
+	}
+	public void afficherBulleMobile(int tailleB,long vitesseBulles){
+		
+		 anim = new Annimation[this.nb];
+		for (int i = 0; i<this.nb; i++){
+			  anim[i] = new Annimation("anim", pan);
+			 anim[i].getBulle().setTailleBulle(tailleB);
+			 anim[i].getBulle().setVitesseBulle(vitesseBulles); 
 		}
-		for (int i = 0; i<nb; i++){
+		for (int i = 0; i<this.nb; i++){
 			anim[i].start();
 		}
-									
+	}
+	
+	
+	
+	public void afficherBulleStatic(int tailleB){
+		Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		int height = (int)dimension.getHeight();
+		int width  = (int)dimension.getWidth();
+		int x,y;
+		for(int i=0;i<this.nb;i++){
+			x=(int)(Math.random()*(width-215));
+			y=(int)(Math.random()*(height-215));
+			new Bulle(x,y,0,tailleB,pan);
+		}
 	}
 	
 	public static void main(String[]args){
-	new PlateauBulle(15);
-		// après cette instruction rien ne peut s'excuter car j'utilise un true dans la condition d'un tant que 
-
+	NiveauBulle N1= new NiveauBulleStatic(9,4);
+	//NiveauBulle N2= new NiveauBulleMobile(3,5,3);
+		
 	}
 }
+
+
