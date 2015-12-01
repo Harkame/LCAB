@@ -21,7 +21,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -47,7 +49,9 @@ public class PlateauBulle extends JFrame implements KeyListener { // crÃ©ation
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // stopper le programme en au click sur la croix
 		this.pan =new JPanel(); // instanciation de mon conteneur
 		this.setContentPane(pan); // je choisi mon contenneur 
-		this.pan.setLayout(null); // aucune disposition par défault dans mon conteneur ce qui permet de déplacer comme on veut notre label
+		this.pan.setLayout(null);// aucune disposition par défault dans mon conteneur ce qui permet de déplacer comme on veut notre label
+		this.setUndecorated(true);
+		
 		this.setVisible(true);// rentdre ma fenÃªtre visible
 		//this.getContentPane().setBackground(Color.BLACK);
 		this.getContentPane().setBackground(Color.WHITE);
@@ -56,14 +60,124 @@ public class PlateauBulle extends JFrame implements KeyListener { // crÃ©ation
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				Jeu.State = STATE.MENU;
+				/*Jeu.State = STATE.MENU;
 				dispose();
 				try {
 					Jeu.controller();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+				}*/
+				
+				
+				JFrame MenuBox = new JFrame();
+				MenuBox.setSize(600, 600);
+				MenuBox.getContentPane().setBackground(Color.BLACK);
+				Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+				MenuBox.setLocation(dim.width/2-MenuBox.getSize().width/2, dim.height/2-MenuBox.getSize().height/2);
+				MenuBox.setUndecorated(true);
+				MenuBox.setContentPane(new ImagePanel(new ImageIcon("MenuBox_Wallpaper.jpg").getImage()));
+				MenuBox.setVisible(true);
+				
+				JButton RevenirJeu;
+				JButton MenuPrincipal;
+				JButton ChoisirNiveau;
+				JButton QuitterJeu;
+				
+			
+			MenuBox.setLayout(null);
+			Font police = new Font("Verdana", Font.BOLD, 20);
+				
+			RevenirJeu = new JButton("Reprendre le jeu");
+			RevenirJeu.setBackground(Color.CYAN);
+			RevenirJeu.setFont(police);
+			RevenirJeu.setBounds(215-25, 50, 250, 75);	//-25 pour le mettre au milieu
+			
+			RevenirJeu.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					MenuBox.dispose();
+				
+					
+					
 				}
+				
+			});
+			
+			
+			MenuPrincipal = new JButton("Menu principal");
+			MenuPrincipal.setBackground(Color.CYAN);
+			MenuPrincipal.setFont(police);
+			MenuPrincipal.setBounds(215, 175, 200, 75);
+
+			MenuPrincipal.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					MenuBox.dispose();
+					try {
+						RevenirMenuPrincipal();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					
+				}
+				
+			});
+			
+			
+			ChoisirNiveau = new JButton("Niveaux");
+			ChoisirNiveau.setBackground(Color.CYAN);
+			ChoisirNiveau.setFont(police);
+			ChoisirNiveau.setBounds(215, 300, 200, 75);
+			
+			
+			ChoisirNiveau.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					MenuBox.dispose();
+					try {
+						RevenirEcranSelectionNiveau();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					
+				}
+				
+			});
+
+			QuitterJeu = new JButton("Quitter le jeu");
+			QuitterJeu .setBackground(Color.CYAN);
+			QuitterJeu .setFont(police);
+			QuitterJeu .setBounds(215, 425,200, 75);
+			
+			QuitterJeu.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					System.exit(0);
+					
+					
+				}
+				
+			});
+
+			MenuBox.getContentPane().add(MenuPrincipal, BorderLayout.CENTER);
+			MenuBox.getContentPane().add(ChoisirNiveau, BorderLayout.CENTER);
+			MenuBox.getContentPane().add(QuitterJeu, BorderLayout.CENTER);
+			MenuBox.getContentPane().add(RevenirJeu, BorderLayout.CENTER);
+			
+			RevenirJeu.setVisible(true);
+			QuitterJeu.setVisible(true);
+			ChoisirNiveau.setVisible(true);
+			MenuPrincipal.setVisible(true);
+				
 			/*	à faire pour plus tard Pop up menu en plein jeu plus propre que revenir au menu et pause le jeu en cours plutot
 			que de le quitter
 			 *
@@ -76,6 +190,8 @@ public class PlateauBulle extends JFrame implements KeyListener { // crÃ©ation
 				
 				
 			}
+
+	
 
 			 };
 		KeyStroke key = KeyStroke.getKeyStroke((char) KeyEvent.VK_ESCAPE);
@@ -132,6 +248,20 @@ public class PlateauBulle extends JFrame implements KeyListener { // crÃ©ation
 	
 */
 	
+	public void RevenirMenuPrincipal() throws IOException {
+		Jeu.State = STATE.MENU;
+		this.dispose();
+		Jeu.controller();
+	}
+	
+	public void RevenirEcranSelectionNiveau() throws IOException {
+		Jeu.State = STATE.SELECTION_NIVEAU;
+		this.dispose();
+		Jeu.controller();
+	}
+	
+	
+
 	
 	public void afficherBulleMobile(int tailleB,long vitesseBulles){
 		
@@ -188,3 +318,5 @@ public class PlateauBulle extends JFrame implements KeyListener { // crÃ©ation
 			
 		}
 }
+
+
