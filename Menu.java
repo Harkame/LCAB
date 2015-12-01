@@ -83,6 +83,24 @@ public class Menu extends JFrame {
 			this.BoutonChoisirNiveau.setBounds(width /2 -110, 500, 200, 75);
 		this.getContentPane().add(this.BoutonChoisirNiveau, BorderLayout.CENTER);
 		
+		
+		this.BoutonChoisirNiveau.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Jeu.State = STATE.SELECTION_NIVEAU;
+				dispose();
+				try {
+					Jeu.controller();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+			
+		});
+		
 
 		this.BoutonOptions = new JButton("Options");
 		this.BoutonOptions.setBackground(Color.WHITE);
