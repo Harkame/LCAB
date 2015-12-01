@@ -1,4 +1,4 @@
-package projet_bulles;
+ package projet_bulles;
 
 import java.awt.Canvas;
 
@@ -24,7 +24,8 @@ public class Jeu extends Canvas implements Runnable {
 		MENU,
 		GAME,
 		IDENTIFICATIONS,
-		OPTIONS;
+		OPTIONS,
+		SELECTION_NIVEAU;
 	}
 	public final String Title = "Jeu de Bulles";
 	public static STATE	State = STATE.IDENTIFICATIONS;
@@ -42,7 +43,7 @@ public class Jeu extends Canvas implements Runnable {
 	}
 	
 
-// Gére l'état du jeu : Fait les transitions avec les états enum
+// Gére l'état du jeu : Fait les transitions
 	public static void controller() throws IOException {
 		if (State == STATE.IDENTIFICATIONS) {
 			try {
@@ -61,6 +62,9 @@ public class Jeu extends Canvas implements Runnable {
 		else if (State == STATE.GAME) {
 			// !!!!!!! IMPORTANT, il faudra faire le bouton jouer pour revenir au niveau joué à la dernière fois par le joueur
 			NiveauBulle N1= new NiveauBulleStatic(9,4);
+		}
+		else if (State == STATE.SELECTION_NIVEAU) {
+			ChoisirNiveau ch1 = new ChoisirNiveau();
 		}
 
 	}
@@ -87,3 +91,4 @@ public class Jeu extends Canvas implements Runnable {
 	}
 
 }
+
