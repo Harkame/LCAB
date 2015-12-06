@@ -21,7 +21,7 @@ public class Utilisateur {
 			fichier = new File("C:\\utilisateurs.txt");
 			break;
 		case "Linux":
-			fichier = new File("/utilisateurs.txt");
+			fichier = new File("/home/ann2/daviaudl/Bureau/utilisateurs.txt");
 			break;
 		}
 		if (!fichier.exists()) {
@@ -90,6 +90,10 @@ public class Utilisateur {
 			}
 		}
 		return -1;
+	}
+
+	public String getScore(int pallier) {
+		return this.scores[pallier].toString();
 	}
 
 	private void recupNumeroLigne() {
@@ -184,28 +188,22 @@ public class Utilisateur {
 
 	public void Identification() throws IOException {
 		if (identifiantValide(this.identifiant) == -1) {
-			
 			if (this.UtilisateurExistant()) {
 				StringBuilder informations = this.recupLigne();
 				this.recupIdentifiant(informations.toString());
 				this.recupScores(informations);
-				
 			} else {
 				Confirmation c1 = new Confirmation(this.identifiant);
 				if (c1.getreponse() == 0) {
 					this.sauvegarderUtilisateur();
-					
 				} else {
 
 				}
 			}
-			
 		} else {
-			Identification.connecte = false;
 			new JOptionPane().showMessageDialog(null, "Caractere interdit : \""
 					+ identifiant.charAt(identifiantValide(this.identifiant))
 					+ "\"", "Erreur", JOptionPane.ERROR_MESSAGE);
-			
 		}
 	}
 
@@ -344,16 +342,43 @@ public class Utilisateur {
 		return utilisateurs;
 	}
 
+	public Score[] getscores() {
+		return this.scores;
+	}
+
+	public String[][] toMatrice1() {
+		String[][] matrice = new String[5][2];
+		for (int i = 0; i < 5; i++) {
+			matrice[i][0] = "" + this.scores[i].getnombre_clic();
+		}
+		for (int i = 0; i < 5; i++) {
+			matrice[i][1] = "" + this.scores[i].getnombre_bulle();
+		}
+		return matrice;
+	}
+
+	public String[][] toMatrice2() {
+		String[][] matrice = new String[5][2];
+		for (int i = 0; i < 5; i++) {
+			matrice[i][0] = "" + this.scores[i + 5].getnombre_clic();
+		}
+		for (int i = 0; i < 5; i++) {
+			matrice[i][1] = "" + this.scores[i + 5].getnombre_bulle();
+		}
+		return matrice;
+	}
+
 	public static void main(String[] Args) throws IOException {
-		Utilisateur u = new Utilisateur("nazefe-fhezfe");
-		// u.Identification();
+		Utilisateur u = new Utilisateur("saeko");
+		u.Identification();
+		System.out.println(u.toString());
 		System.out.println(u.UtilisateurExistant());
 		System.out.println(u.numero_ligne);
-		u.modifieScore(7, 5698);
+		System.out.println(u.scores[5]);
+		String[][] b = u.toMatrice1();
 		// u6.Identification();
 		// reinitialisation();
 		// System.out.println(u1.toString());
 		// generer_utilisateur(25);
 	}
 }
-
