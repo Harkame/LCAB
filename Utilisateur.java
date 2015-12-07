@@ -13,6 +13,11 @@ import javax.swing.JOptionPane;
 public class Utilisateur {
 	private String identifiant;
 	private static File fichier;
+
+	/*
+	 * Bout de code nono définitif, si windows créer dans tel répertoire, sinon
+	 * si sur linux, créer ailleur
+	 */
 	static {
 		switch (System.getProperty("os.name")) {
 		case "Windows 7":
@@ -36,6 +41,9 @@ public class Utilisateur {
 	private int numero_ligne;
 	private static String[] utilisateurs;
 
+	/*
+	 * Constructeur de base
+	 */
 	public Utilisateur(String p_identifiant) {
 		this.identifiant = p_identifiant.toLowerCase();
 		this.scores = new Score[10];
@@ -45,18 +53,11 @@ public class Utilisateur {
 		this.recupNumeroLigne();
 	}
 
-	/**
-	 * public Utilisateur trouverUtilisateur() throws IOException { try { int i
-	 * = 0; StringBuilder ligne = new StringBuilder(); BufferedReader lecteur =
-	 * new BufferedReader(new FileReader(fichier)); lecteur = new
-	 * BufferedReader(new FileReader(fichier)); while (true) {
-	 * ligne.setLength(0); try { ligne.append(lecteur.readLine()); i++; } catch
-	 * (IOException e) { } } return ligne.toString(); } catch
-	 * (FileNotFoundException e) { } return null; } }
-	 * 
-	 * @throws IOException
-	 **/
-
+	/*
+	 * Récupère toute la ligne concercernant l'utilisateur dans la base de
+	 * donnée sous forme de String, content l'identifiant, les 10 scores pour
+	 * chacun des palliers
+	 */
 	private StringBuilder recupLigne() throws IOException {
 		String ligne = new String();
 		BufferedReader lecteur = new BufferedReader(new FileReader(fichier));
@@ -76,6 +77,11 @@ public class Utilisateur {
 		return null;
 	}
 
+	/*
+	 * Dit si l'identifiant est valide, sa retourne un int car je me base sur le
+	 * code ASCII, sa permet de récupéré le code ASCII du caractère interdit et
+	 * d'afficher se dernier en message d'érreure
+	 */
 	private static int identifiantValide(String identifiant) {
 		if (identifiant == null || identifiant == ""
 				|| identifiant.length() <= 1) {
@@ -92,10 +98,19 @@ public class Utilisateur {
 		return -1;
 	}
 
+	/*
+	 * Getter du score correspondant à l'attribut scores[pallier] de
+	 * l'utilisateur (this)
+	 */
 	public String getScore(int pallier) {
 		return this.scores[pallier].toString();
 	}
 
+	/*
+	 * Retourne le numéro de ligne de l'utilisateur dans la base de donnée,
+	 * utiliser pour pouvoirs accelerer l'accès a la base de donnée au lieu de
+	 * faire un parcour partiel ligne par ligne
+	 */
 	private void recupNumeroLigne() {
 		BufferedReader lecteur = null;
 		try {
@@ -131,6 +146,11 @@ public class Utilisateur {
 		}
 	}
 
+	/*
+	 * Renvoit l'identifiant de la ligne passé en paramètre, utiliser pour
+	 * savoir si la ligne de la base de donnée est bien celle de l'utilisateur
+	 * (this)
+	 */
 	private static StringBuilder recupIdentifiant(String ligne) {
 		StringBuilder identifiant = new StringBuilder();
 		int i = 0;
@@ -145,6 +165,10 @@ public class Utilisateur {
 		return identifiant;
 	}
 
+	/*
+	 * Récupère tous les identifiants dans la base de donnée, utilisé pour faire
+	 * les suggestion des utilisateur sur la page d'identification
+	 */
 	static void recupIdentifiants() throws IOException {
 		BufferedReader lecteur = new BufferedReader(new FileReader(fichier));
 		StringBuilder identifiant = new StringBuilder();
@@ -162,6 +186,10 @@ public class Utilisateur {
 		}
 	}
 
+	/*
+	 * Recupère le scores de l'utilisateur pour chacun des pallier depûis la
+	 * base de donnée, et assoscié à l'utilisateur (this)
+	 */
 	private void recupScores(StringBuilder ligne) {
 		StringBuilder scores = new StringBuilder();
 		StringBuilder strb_ligne = new StringBuilder();
@@ -176,6 +204,9 @@ public class Utilisateur {
 		}
 	}
 
+	/*
+	 * Enregistre un nouvel utilisateur avec un score initial de 0 partout
+	 */
 	private void sauvegarderUtilisateur() throws IOException {
 		FileWriter fw = new FileWriter(fichier, true);
 		fw.write(this.identifiant.toString() + '|');
@@ -186,6 +217,12 @@ public class Utilisateur {
 		fw.close();
 	}
 
+	/*
+	 * Methode principal, elle fait 2 choses : Si l'utilisateur this n'existe
+	 * pas dans la base de donnée, il est rajouté avec des scores initiaux de 0
+	 * partout, sinon ses scores sont recupérés et attribué à l'utilisateur
+	 * (this)
+	 */
 	public void Identification() throws IOException {
 		if (identifiantValide(this.identifiant) == -1) {
 			if (this.UtilisateurExistant()) {
@@ -207,10 +244,9 @@ public class Utilisateur {
 		}
 	}
 
-	/**
-	 * 
-	 * @return
-	 * @throws IOException
+	/*
+	 * Indique si l'utilisateur (this) est présent dans la base de donnée, on
+	 * compare les identifiant
 	 */
 	public boolean UtilisateurExistant() throws IOException {
 		String ligne = new String();
@@ -249,6 +285,11 @@ public class Utilisateur {
 		return null;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString() toString() classic
+	 */
 	public String toString() {
 		StringBuilder utilisateur = new StringBuilder();
 		utilisateur.append(this.identifiant
@@ -270,6 +311,11 @@ public class Utilisateur {
 		return utilisateur.toString();
 	}
 
+	/*
+	 * Reinitialise la base de donnée en éffacant son contenu intégralement Un
+	 * demande de confirmation apprais, si oui alors reset, sinon rien n'est
+	 * fait
+	 */
 	public static void reinitialisation(boolean confirmation) {
 		// fichier.delete();
 		if (confirmation == true) {
@@ -292,6 +338,12 @@ public class Utilisateur {
 		}
 	}
 
+	/*
+	 * Modifie le score d'un utilisateur (this), en passant en parametre le
+	 * pallier à modifier, et le nouveau nombre de clics Stratégie : On récupère
+	 * toute la base de donnée en mémoire, on modifie la ligne souhaité, puis on
+	 * recopie le tout dans un nouveau fichier
+	 */
 	public void modifieScore(int pallier, int nouveau_score) throws IOException {
 		ArrayList<StringBuilder> tamporaire = new ArrayList<StringBuilder>();
 		String ligne = new String();
@@ -332,12 +384,6 @@ public class Utilisateur {
 		lecteur.close();
 	}
 
-	public static void aff() {
-		for (String str : utilisateurs) {
-			System.out.println(str + ", ");
-		}
-	}
-
 	public static String[] getutilisateurs() {
 		return utilisateurs;
 	}
@@ -346,24 +392,32 @@ public class Utilisateur {
 		return this.scores;
 	}
 
-	public String[][] toMatrice1() {
+	/*
+	 * Transforme les scores du niveau 1 en matrice
+	 * [nombre_clics][nombre_bulles] Necessaire pour l'affichage des scores
+	 */
+	public String[][] niveau1toMatrice() {
 		String[][] matrice = new String[5][2];
 		for (int i = 0; i < 5; i++) {
-			matrice[i][0] = "" + this.scores[i].getnombre_clic();
+			matrice[i][0] = "" + this.scores[i].getnombre_clics();
 		}
 		for (int i = 0; i < 5; i++) {
-			matrice[i][1] = "" + this.scores[i].getnombre_bulle();
+			matrice[i][1] = "" + this.scores[i].getnombre_bulles();
 		}
 		return matrice;
 	}
 
-	public String[][] toMatrice2() {
+	/*
+	 * Transforme les scores du niveau 2 en matrice
+	 * [nombre_clics][nombre_bulles] Nécessaire pour l'affichage des scores
+	 */
+	public String[][] niveau2toMatrice() {
 		String[][] matrice = new String[5][2];
 		for (int i = 0; i < 5; i++) {
-			matrice[i][0] = "" + this.scores[i + 5].getnombre_clic();
+			matrice[i][0] = "" + this.scores[i + 5].getnombre_clics();
 		}
 		for (int i = 0; i < 5; i++) {
-			matrice[i][1] = "" + this.scores[i + 5].getnombre_bulle();
+			matrice[i][1] = "" + this.scores[i + 5].getnombre_bulles();
 		}
 		return matrice;
 	}
@@ -375,7 +429,7 @@ public class Utilisateur {
 		System.out.println(u.UtilisateurExistant());
 		System.out.println(u.numero_ligne);
 		System.out.println(u.scores[5]);
-		String[][] b = u.toMatrice1();
+		String[][] b = u.niveau1toMatrice();
 		// u6.Identification();
 		// reinitialisation();
 		// System.out.println(u1.toString());
