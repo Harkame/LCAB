@@ -79,9 +79,10 @@ public class Identification extends JFrame {
 								.getText());
 				try {
 					utilisateur.Identification();
+					dispose();
+					new Identification();
 				} catch (IOException e1) { // TODO Auto-generated catch block
 					e1.printStackTrace();
-					
 				}
 				System.out.println(utilisateur.toString());
 				if (connecte == true) {
@@ -112,6 +113,13 @@ public class Identification extends JFrame {
 				
 				
 				Utilisateur.reinitialisation(true);
+				dispose();
+				try {
+					new Identification();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});
