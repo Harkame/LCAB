@@ -77,19 +77,37 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 			
 		}
 	});
+	
+	this.NiveauStatique.addActionListener(new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			
+			dispose();
+			Jeu.State = STATE.GAME;
+			PlateauBulle N1= new PlateauBulle(9,1,0);
+
+			
+			
+		}
+	});
+	
+	this.NiveauMobile.addActionListener(new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			
+			dispose();
+			Jeu.State = STATE.GAME;
+			PlateauBulle N1= new PlateauBulle(9,1,1);
+
+			
+			
+		}
+	});
+	
+	
 	this.setVisible(true);
 
 }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
