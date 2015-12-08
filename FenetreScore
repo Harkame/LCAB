@@ -24,6 +24,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 public class FenetreScore extends JFrame {
 
@@ -40,29 +41,47 @@ public class FenetreScore extends JFrame {
 		}
 	}
 
+	public void initialization(Object[][] valeurs) {
+		Object[][] tableau_niveau1 = utilisateur.niveau1toMatrice();
+		Object[][] tableau_niveau2 = utilisateur.niveau2toMatrice();
+		for (int j = 0; j < 5; j++) {
+			System.out.println(j);
+			valeurs[j][2] = tableau_niveau1[j][0];
+			valeurs[j][3] = tableau_niveau1[j][1];
+			valeurs[j][5] = tableau_niveau2[j][0];
+			valeurs[j][6] = tableau_niveau2[j][1];
+		}
+	}
+
 	public FenetreScore() throws IOException {
-		this.setContentPane(new ImagePanel(new ImageIcon(
-				"/home/ann2/daviaudl/Bureau/bulle1.jpg").getImage()));
-		this.setTitle("La case a bulles");
+
+		// this.setContentPane(new ImagePanel(new ImageIcon(
+		// "/home/ann2/daviaudl/Bureau/bulle1.jpg").getImage()));
+		this.setTitle("La case a bulles"); //
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //
 		this.setLocationRelativeTo(null);
-		Object[][] titre = { { "Pallier 1" }, { "Pallier 2" }, { "Pallier 3" },
-				{ "Pallier 4" }, { "Pallier 5" } };
-		Object[][] niveau1 = utilisateur.toMatrice1();
-		Object[][] niveau2 = utilisateur.toMatrice2();
-		System.out.println(niveau2[0][0]);
-		String title[] = { "nombre de clic", "nombre de bulle" };
-		String title0[] = { "Pallier" };
-		JTable tableau0 = new JTable(titre, title0);
-		JTable tableau1 = new JTable(niveau1, title);
-		JTable tableau2 = new JTable(niveau2, title);
-		tableau1.setBounds(500, 100, 1000, 1000);
-		this.add(new JScrollPane(tableau0), BorderLayout.CENTER);
-		this.add(new JScrollPane(tableau1), BorderLayout.CENTER);
-		this.add(new JScrollPane(tableau2), BorderLayout.CENTER);
+		Object[][] valeurs = {
+				{ "Pallier 1", null, null, null, null, null, null },
+				{ "Pallier 2", null, null, null, null, null, null },
+				{ "Pallier 3", null, null, null, null, null, null },
+				{ "Pallier 4", null, null, null, null, null, null },
+				{ "Pallier 5", null, null, null, null, null, null } };
+		String[] titre = { "Pallier", "niveau 1", "nombre de clics",
+				"nombre de bulles", "niveau 2", "nombre de clics",
+				"nombre de bulles" };
+		JTable table = new JTable(valeurs, titre); // <<<<<<<<<<<<<<<<<<<<<
+		initialization(valeurs);
+		/*
+		 * Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		 * table.setPreferredScrollableViewportSize(screen);
+		 */
+		// scroller
+		JScrollPane scrollpane = new JScrollPane(table,
+				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		this.getContentPane().add(scrollpane);
 		this.setVisible(true);
-		this.setResizable(false);
 	}
 
 	public boolean isCellEditable(int row, int col) {
