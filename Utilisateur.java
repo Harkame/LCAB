@@ -382,6 +382,9 @@ public class Utilisateur {
 		}
 		fw.close();
 		lecteur.close();
+		StringBuilder informations = this.recupLigne();
+		this.recupIdentifiant(informations.toString());
+		this.recupScores(informations);
 	}
 
 	public static String[] getutilisateurs() {
