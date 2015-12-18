@@ -147,6 +147,10 @@ public class Identification extends JFrame {
 		return a;
 		
 	}
+	
+	public Utilisateur getutilisateur(){
+		return utilisateur;
+	}
 
 	/**
 	 * @param args
