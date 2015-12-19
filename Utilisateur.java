@@ -15,8 +15,8 @@ public class Utilisateur {
 	private static File fichier;
 
 	/*
-	 * Bout de code nono définitif, si windows créer dans tel répertoire, sinon
-	 * si sur linux, créer ailleur
+	 * Bout de code nono dÃ©finitif, si windows crÃ©er dans tel rÃ©pertoire,
+	 * sinon si sur linux, crÃ©er ailleur
 	 */
 	static {
 		switch (System.getProperty("os.name")) {
@@ -40,6 +40,7 @@ public class Utilisateur {
 	private Score[] scores;
 	private int numero_ligne;
 	private static String[] utilisateurs;
+	private int pallier_actuel;
 
 	/*
 	 * Constructeur de base
@@ -50,12 +51,13 @@ public class Utilisateur {
 		for (int i = 0; i < this.scores.length; i++) {
 			this.scores[i] = new Score();
 		}
+		this.recuppallier_actuel();
 		this.recupNumeroLigne();
 	}
 
 	/*
-	 * Récupère toute la ligne concercernant l'utilisateur dans la base de
-	 * donnée sous forme de String, content l'identifiant, les 10 scores pour
+	 * RÃ©cupÃ¨re toute la ligne concercernant l'utilisateur dans la base de
+	 * donnÃ©e sous forme de String, content l'identifiant, les 10 scores pour
 	 * chacun des palliers
 	 */
 	private StringBuilder recupLigne() throws IOException {
@@ -77,10 +79,20 @@ public class Utilisateur {
 		return null;
 	}
 
+	public void recuppallier_actuel() {
+		for (int i = 0; i < this.scores.length; i++) {
+			if (this.scores[i].getnombre_clics() == 0) {
+				this.pallier_actuel = i + 1;
+				return;
+			}
+		}
+		this.pallier_actuel = 10;
+	}
+
 	/*
 	 * Dit si l'identifiant est valide, sa retourne un int car je me base sur le
-	 * code ASCII, sa permet de récupéré le code ASCII du caractère interdit et
-	 * d'afficher se dernier en message d'érreure
+	 * code ASCII, sa permet de rÃ©cupÃ©rÃ© le code ASCII du caractÃ¨re interdit
+	 * et d'afficher se dernier en message d'Ã©rreure
 	 */
 	private static int identifiantValide(String identifiant) {
 		if (identifiant == null || identifiant == ""
@@ -99,7 +111,7 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Getter du score correspondant à l'attribut scores[pallier] de
+	 * Getter du score correspondant Ã  l'attribut scores[pallier] de
 	 * l'utilisateur (this)
 	 */
 	public String getScore(int pallier) {
@@ -107,8 +119,8 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Retourne le numéro de ligne de l'utilisateur dans la base de donnée,
-	 * utiliser pour pouvoirs accelerer l'accès a la base de donnée au lieu de
+	 * Retourne le numÃ©ro de ligne de l'utilisateur dans la base de donnÃ©e,
+	 * utiliser pour pouvoirs accelerer l'accÃ¨s a la base de donnÃ©e au lieu de
 	 * faire un parcour partiel ligne par ligne
 	 */
 	private void recupNumeroLigne() {
@@ -147,8 +159,8 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Renvoit l'identifiant de la ligne passé en paramètre, utiliser pour
-	 * savoir si la ligne de la base de donnée est bien celle de l'utilisateur
+	 * Renvoit l'identifiant de la ligne passÃ© en paramÃ¨tre, utiliser pour
+	 * savoir si la ligne de la base de donnÃ©e est bien celle de l'utilisateur
 	 * (this)
 	 */
 	private static StringBuilder recupIdentifiant(String ligne) {
@@ -166,8 +178,8 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Récupère tous les identifiants dans la base de donnée, utilisé pour faire
-	 * les suggestion des utilisateur sur la page d'identification
+	 * RÃ©cupÃ¨re tous les identifiants dans la base de donnÃ©e, utilisÃ© pour
+	 * faire les suggestion des utilisateur sur la page d'identification
 	 */
 	static void recupIdentifiants() throws IOException {
 		BufferedReader lecteur = new BufferedReader(new FileReader(fichier));
@@ -187,8 +199,8 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Recupère le scores de l'utilisateur pour chacun des pallier depûis la
-	 * base de donnée, et assoscié à l'utilisateur (this)
+	 * RecupÃ¨re le scores de l'utilisateur pour chacun des pallier depÃ»is la
+	 * base de donnÃ©e, et assosciÃ© Ã  l'utilisateur (this)
 	 */
 	private void recupScores(StringBuilder ligne) {
 		StringBuilder scores = new StringBuilder();
@@ -219,9 +231,9 @@ public class Utilisateur {
 
 	/*
 	 * Methode principal, elle fait 2 choses : Si l'utilisateur this n'existe
-	 * pas dans la base de donnée, il est rajouté avec des scores initiaux de 0
-	 * partout, sinon ses scores sont recupérés et attribué à l'utilisateur
-	 * (this)
+	 * pas dans la base de donnÃ©e, il est rajoutÃ© avec des scores initiaux de
+	 * 0 partout, sinon ses scores sont recupÃ©rÃ©s et attribuÃ© Ã 
+	 * l'utilisateur (this)
 	 */
 	public void Identification() throws IOException {
 		if (identifiantValide(this.identifiant) == -1) {
@@ -229,6 +241,7 @@ public class Utilisateur {
 				StringBuilder informations = this.recupLigne();
 				this.recupIdentifiant(informations.toString());
 				this.recupScores(informations);
+				this.recuppallier_actuel();
 			} else {
 				Confirmation c1 = new Confirmation(this.identifiant);
 				if (c1.getreponse() == 0) {
@@ -245,7 +258,7 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Indique si l'utilisateur (this) est présent dans la base de donnée, on
+	 * Indique si l'utilisateur (this) est prÃ©sent dans la base de donnÃ©e, on
 	 * compare les identifiant
 	 */
 	public boolean UtilisateurExistant() throws IOException {
@@ -312,8 +325,8 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Reinitialise la base de donnée en éffacant son contenu intégralement Un
-	 * demande de confirmation apprais, si oui alors reset, sinon rien n'est
+	 * Reinitialise la base de donnÃ©e en Ã©ffacant son contenu intÃ©gralement
+	 * Un demande de confirmation apprais, si oui alors reset, sinon rien n'est
 	 * fait
 	 */
 	public static void reinitialisation(boolean confirmation) {
@@ -340,9 +353,9 @@ public class Utilisateur {
 
 	/*
 	 * Modifie le score d'un utilisateur (this), en passant en parametre le
-	 * pallier à modifier, et le nouveau nombre de clics Stratégie : On récupère
-	 * toute la base de donnée en mémoire, on modifie la ligne souhaité, puis on
-	 * recopie le tout dans un nouveau fichier
+	 * pallier Ã  modifier, et le nouveau nombre de clics StratÃ©gie : On
+	 * rÃ©cupÃ¨re toute la base de donnÃ©e en mÃ©moire, on modifie la ligne
+	 * souhaitÃ©, puis on recopie le tout dans un nouveau fichier
 	 */
 	public void modifieScore(int pallier, int nouveau_score) throws IOException {
 		ArrayList<StringBuilder> tamporaire = new ArrayList<StringBuilder>();
@@ -412,7 +425,7 @@ public class Utilisateur {
 
 	/*
 	 * Transforme les scores du niveau 2 en matrice
-	 * [nombre_clics][nombre_bulles] Nécessaire pour l'affichage des scores
+	 * [nombre_clics][nombre_bulles] NÃ©cessaire pour l'affichage des scores
 	 */
 	public String[][] niveau2toMatrice() {
 		String[][] matrice = new String[5][2];
@@ -426,16 +439,17 @@ public class Utilisateur {
 	}
 
 	public static void main(String[] Args) throws IOException {
-		Utilisateur u = new Utilisateur("saeko");
+		Utilisateur u = new Utilisateur("lee");
 		u.Identification();
 		System.out.println(u.toString());
-		System.out.println(u.UtilisateurExistant());
-		System.out.println(u.numero_ligne);
-		System.out.println(u.scores[5]);
-		String[][] b = u.niveau1toMatrice();
+		// System.out.println(u.UtilisateurExistant());
+		// System.out.println(u.numero_ligne);
+		// System.out.println(u.scores[5]);
+		// String[][] b = u.niveau1toMatrice();
 		// u6.Identification();
 		// reinitialisation();
 		// System.out.println(u1.toString());
 		// generer_utilisateur(25);
+		System.out.println("Pallier actuel : " + u.pallier_actuel);
 	}
 }
