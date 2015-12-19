@@ -408,6 +408,14 @@ public class Utilisateur {
 		return this.scores;
 	}
 
+	public int getpallier_actuel() {
+		return this.pallier_actuel;
+	}
+
+	public void niveausupp() {
+		this.pallier_actuel++;
+	}
+
 	/*
 	 * Transforme les scores du niveau 1 en matrice
 	 * [nombre_clics][nombre_bulles] Necessaire pour l'affichage des scores
