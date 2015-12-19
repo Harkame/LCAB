@@ -446,6 +446,10 @@ public class Utilisateur {
 		return matrice;
 	}
 
+	public boolean nouveau() {
+		return this.scores[0].getnombre_clics() == 0;
+	}
+
 	public static void main(String[] Args) throws IOException {
 		Utilisateur u = new Utilisateur("lee");
 		u.Identification();
