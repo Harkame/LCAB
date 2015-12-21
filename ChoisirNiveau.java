@@ -23,8 +23,12 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	int width = (int) screenSize.getWidth();
 	int height = (int) screenSize.getHeight();
-	private JButton NiveauStatique;
-	private JButton NiveauMobile;
+	private JButton NiveauStatique1;
+	private JButton NiveauStatique2;
+	private JButton NiveauStatique3;
+	private JButton NiveauMobile1;
+	private JButton NiveauMobile2;
+	private JButton NiveauMobile3;
 	private JButton MenuPrincipal;
 	
 	
@@ -33,26 +37,53 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 	super("Jeu De Bulles");
 	setSize(width,height);
 	
-	/* Redimensionner les images pour travailler sur tous les écrans */
+	/* Redimensionner les images pour travailler sur tous les Ã©crans */
 	// if(width == 1920 && height == 1080) {
-	this.setContentPane(new ImagePanel(new ImageIcon("wallpaper.jpg").getImage())); // à reprendre
+	this.setContentPane(new ImagePanel(new ImageIcon("wallpaper.jpg").getImage())); // Ã  reprendre
 	 //}
 	 this.setVisible(true);
 		this.setLayout(null); // permet le position correcte des boutons
 		
 		 Font police = new Font("Verdana", Font.BOLD, 20);
-			this.NiveauStatique = new JButton("Niveau Statique");
-			this.NiveauStatique.setBackground(Color.WHITE);
-			this.NiveauStatique.setFont(police);
-			this.NiveauStatique.setBounds(width /2 -210, 400, 300, 75);
-		this.getContentPane().add(this.NiveauStatique, BorderLayout.CENTER);
+		 
+		this.NiveauStatique1 = new JButton("Niveau Statique1");
+		this.NiveauStatique1.setBackground(Color.WHITE);
+		this.NiveauStatique1.setFont(police);
+		this.NiveauStatique1.setBounds(width /2 -550, 100, 300, 75);
+		this.getContentPane().add(this.NiveauStatique1);
+		
+		
+		this.NiveauStatique2 = new JButton("Niveau Statique2");
+		this.NiveauStatique2.setBackground(Color.WHITE);
+		this.NiveauStatique2.setFont(police);
+		this.NiveauStatique2.setBounds(width /2 -200, 100, 300, 75);
+		this.getContentPane().add(this.NiveauStatique2);
+		
+		this.NiveauStatique3 = new JButton("Niveau Statique3");
+		this.NiveauStatique3.setBackground(Color.WHITE);
+		this.NiveauStatique3.setFont(police);
+		this.NiveauStatique3.setBounds(width /2 +150, 100, 300, 75);
+		this.getContentPane().add(this.NiveauStatique3);
+
 		
 	
-			this.NiveauMobile = new JButton("Niveau mobile");
-			this.NiveauMobile.setBackground(Color.WHITE);
-			this.NiveauMobile.setFont(police);
-			this.NiveauMobile.setBounds(width /2 -210, 500, 300, 75);
-		this.getContentPane().add(this.NiveauMobile, BorderLayout.CENTER);
+		this.NiveauMobile1 = new JButton("Niveau mobile1");
+		this.NiveauMobile1.setBackground(Color.WHITE);
+		this.NiveauMobile1.setFont(police);
+		this.NiveauMobile1.setBounds(width /2 -550, 400, 300, 75);
+		this.getContentPane().add(this.NiveauMobile1);
+		
+		this.NiveauMobile2 = new JButton("Niveau mobile2");
+		this.NiveauMobile2.setBackground(Color.WHITE);
+		this.NiveauMobile2.setFont(police);
+		this.NiveauMobile2.setBounds(width /2 -200, 400, 300, 75);
+		this.getContentPane().add(this.NiveauMobile2);
+		
+		this.NiveauMobile3 = new JButton("Niveau mobile3");
+		this.NiveauMobile3.setBackground(Color.WHITE);
+		this.NiveauMobile3.setFont(police);
+		this.NiveauMobile3.setBounds(width /2 +150, 400, 300, 75);
+		this.getContentPane().add(this.NiveauMobile3);
 		
 		this.MenuPrincipal = new JButton("Menu Principal");
 		this.MenuPrincipal.setBackground(Color.WHITE);
@@ -78,26 +109,67 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		}
 	});
 	
-	this.NiveauStatique.addActionListener(new ActionListener() {
+	this.NiveauStatique1.addActionListener(new ActionListener() {
 		
 		public void actionPerformed(ActionEvent e) {
 			
 			dispose();
 			Jeu.State = STATE.GAME;
-			PlateauBulle N1= new PlateauBulle(9,1,0);
+			PlateauBulle N1= new PlateauBulle(5,1,0);
 
 			
 			
 		}
 	});
 	
-	this.NiveauMobile.addActionListener(new ActionListener() {
+this.NiveauStatique2.addActionListener(new ActionListener() {
 		
 		public void actionPerformed(ActionEvent e) {
 			
 			dispose();
 			Jeu.State = STATE.GAME;
-			PlateauBulle N1= new PlateauBulle(9,1,1);
+			PlateauBulle N1= new PlateauBulle(7,2,0);
+
+			
+			
+		}
+	});
+
+this.NiveauStatique3.addActionListener(new ActionListener() {
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		dispose();
+		Jeu.State = STATE.GAME;
+		PlateauBulle N1= new PlateauBulle(9,3,0);
+
+		
+		
+	}
+});
+	
+	
+	
+	this.NiveauMobile1.addActionListener(new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			
+			dispose();
+			Jeu.State = STATE.GAME;
+			PlateauBulle N1= new PlateauBulle(5,1,1);
+
+			
+			
+		}
+	});
+	
+	this.NiveauMobile2.addActionListener(new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			
+			dispose();
+			Jeu.State = STATE.GAME;
+			PlateauBulle N1= new PlateauBulle(7,1,2);
 
 			
 			
@@ -105,6 +177,18 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 	});
 	
 	
+	this.NiveauMobile3.addActionListener(new ActionListener() {
+		
+		public void actionPerformed(ActionEvent e) {
+			
+			dispose();
+			Jeu.State = STATE.GAME;
+			PlateauBulle N1= new PlateauBulle(9,1,3);
+
+			
+			
+		}
+	});
 	this.setVisible(true);
 
 }
