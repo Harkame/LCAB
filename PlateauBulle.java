@@ -38,6 +38,10 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 	public static JPanel pan;	
 	public static Annimation[] anim;
 	private int countClick = 0;
+	private int countBulleEclat=0;
+        private	Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+	private int height = (int)dimension.getHeight();
+	private int width  = (int)dimension.getWidth();
 
 	/**
 	 */
@@ -57,6 +61,37 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 		for (int i = 0; i<nb; i++){
 			anim[i].start();
 		}
+		for (int i = 0; i<nb; i++){ // Une action a chaque bulle
+			        anim[i].getBulle().getLabel().addMouseListener(new MouseAdapter() {
+				    public void mousePressed(MouseEvent me) {
+					     countBulleEclat++;
+					if(nb-countBulleEclat==0){
+						 Icon imageFelicitation = new ImageIcon("feuDartifice.gif");
+						 JLabel labelFelicit = new JLabel(imageFelicitation);
+						 pan.add(labelFelicit); 
+						 labelFelicit.setBounds(width/3,height/8,500,500);
+						 JLabel instruction = new JLabel("Appuyez sur ECHAP");
+						 pan.add(instruction); 
+						 instruction.setBounds(width/2,height-500,500,500);						 
+						
+						/*		try { // Le sleep est enclanché avant l'apparition de l'image 
+							
+							Thread.sleep();
+						
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}*/
+						
+						
+					}
+						
+					
+
+				}
+					
+			}); 
+		}
 		this.pan.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent me) {
 				countClick++;
@@ -66,6 +101,7 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 
 			}
 		}); 
+		
 
 		this.setVisible(true);// rentdre ma fenÃªtre visible
 		//this.getContentPane().setBackground(Color.BLACK);
