@@ -14,5 +14,8 @@ public class Annimation extends Thread {
 	public void run() {
 		this.bulle.animer();
 	   	Thread.yield();	  
-	}	
+	}
+		public Bulle getBulle(){
+		return this.bulle;
+	}
 }
