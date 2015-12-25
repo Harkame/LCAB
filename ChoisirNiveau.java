@@ -26,16 +26,18 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 	private JButton NiveauStatique1;
 	private JButton NiveauStatique2;
 	private JButton NiveauStatique3;
+	private JButton NiveauStatique4;
 	private JButton NiveauMobile1;
 	private JButton NiveauMobile2;
 	private JButton NiveauMobile3;
 	private JButton MenuPrincipal;
-	
+	double w = width/1.75;
 	
 	public ChoisirNiveau () {
 	
 	super("Jeu De Bulles");
 	setSize(width,height);
+	
 	
 	/* Redimensionner les images pour travailler sur tous les Ã©crans */
 	// if(width == 1920 && height == 1080) {
@@ -49,20 +51,20 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.NiveauStatique1 = new JButton("Niveau Statique1");
 		this.NiveauStatique1.setBackground(Color.WHITE);
 		this.NiveauStatique1.setFont(police);
-		this.NiveauStatique1.setBounds(width /2 -550, 100, 300, 75);
+		this.NiveauStatique1.setBounds(width /2 -550, height/6, 300, 75);
 		this.getContentPane().add(this.NiveauStatique1);
 		
 		
 		this.NiveauStatique2 = new JButton("Niveau Statique2");
 		this.NiveauStatique2.setBackground(Color.WHITE);
 		this.NiveauStatique2.setFont(police);
-		this.NiveauStatique2.setBounds(width /2 -200, 100, 300, 75);
+		this.NiveauStatique2.setBounds(width /3, height/6, 300, 75);
 		this.getContentPane().add(this.NiveauStatique2);
 		
 		this.NiveauStatique3 = new JButton("Niveau Statique3");
 		this.NiveauStatique3.setBackground(Color.WHITE);
 		this.NiveauStatique3.setFont(police);
-		this.NiveauStatique3.setBounds(width /2 +150, 100, 300, 75);
+		this.NiveauStatique3.setBounds((int) w,  height/6, 300, 75);
 		this.getContentPane().add(this.NiveauStatique3);
 
 		
@@ -70,19 +72,19 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.NiveauMobile1 = new JButton("Niveau mobile1");
 		this.NiveauMobile1.setBackground(Color.WHITE);
 		this.NiveauMobile1.setFont(police);
-		this.NiveauMobile1.setBounds(width /2 -550, 400, 300, 75);
+		this.NiveauMobile1.setBounds(width /10,  height/2, 300, 75);
 		this.getContentPane().add(this.NiveauMobile1);
 		
 		this.NiveauMobile2 = new JButton("Niveau mobile2");
 		this.NiveauMobile2.setBackground(Color.WHITE);
 		this.NiveauMobile2.setFont(police);
-		this.NiveauMobile2.setBounds(width /2 -200, 400, 300, 75);
+		this.NiveauMobile2.setBounds(width /3,  height/2, 300, 75);
 		this.getContentPane().add(this.NiveauMobile2);
 		
 		this.NiveauMobile3 = new JButton("Niveau mobile3");
 		this.NiveauMobile3.setBackground(Color.WHITE);
 		this.NiveauMobile3.setFont(police);
-		this.NiveauMobile3.setBounds(width /2 +150, 400, 300, 75);
+		this.NiveauMobile3.setBounds((int) w,  height/2, 300, 75);
 		this.getContentPane().add(this.NiveauMobile3);
 		
 		this.MenuPrincipal = new JButton("Menu Principal");
