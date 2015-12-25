@@ -7,6 +7,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 public class Bulle {
 	private JPanel pan;
 	private JLabel label;	
@@ -20,6 +27,17 @@ public class Bulle {
 	
 							
 	public Bulle(int x, int y, int taille, int vitesse, JPanel pan){
+		try{
+		File fichierSon=new File ("eclatBullebest.wav");
+		 AudioInputStream sound = AudioSystem.getAudioInputStream(fichierSon);
+		 DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
+		  son  = (Clip) AudioSystem.getLine(info);
+			son.open(sound);	
+			}
+		catch(UnsupportedAudioFileException|IOException|LineUnavailableException e){
+			
+			System.out.println("Méssage d'erreur "+e.getMessage());
+		}
 			switch(taille){
 			case 1:
 				this.margx=115;
@@ -85,7 +103,7 @@ public class Bulle {
 		int height = (int)dimension.getHeight();
 		int width  = (int)dimension.getWidth();
 		this.x=(int)(Math.random()*(width-this.margx));
-		this.y=(int)(Math.random()*(height-this.margx+65));
+		this.y=(int)(Math.random()*(height-(this.margy+65)));
 		int signal=0;
 		int signaly=0;
 		char coli='a';
@@ -139,5 +157,8 @@ public class Bulle {
 
 	public int getY(){
 		return this.y;
+	}
+	public JLabel getLabel(){
+		return this.label;
 	}
 }
