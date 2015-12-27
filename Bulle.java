@@ -2,11 +2,13 @@
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Dimension;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -22,22 +24,25 @@ public class Bulle {
 	private int x;
 	private int y;
 	private int vitesse;
+    private Clip son;
+	
 	private static Icon image = new ImageIcon("giphy.gif");	private static Icon image2 = new ImageIcon("giphy2.gif");
         private static int cpt=0;
 	
 							
 	public Bulle(int x, int y, int taille, int vitesse, JPanel pan){
 		try{
-		File fichierSon=new File ("eclatBullebest.wav");
-		 AudioInputStream sound = AudioSystem.getAudioInputStream(fichierSon);
-		 DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
-		  son  = (Clip) AudioSystem.getLine(info);
-			son.open(sound);	
-			}
-		catch(UnsupportedAudioFileException|IOException|LineUnavailableException e){
-			
-			System.out.println("Méssage d'erreur "+e.getMessage());
-		}
+			File fichierSon=new File ("eclatBullebest.wav");
+			AudioInputStream sound;
+			sound = AudioSystem.getAudioInputStream(fichierSon);
+			DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
+			son  = (Clip) AudioSystem.getLine(info);
+			son.open(sound);
+			} catch (UnsupportedAudioFileException|LineUnavailableException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+		
 			switch(taille){
 			case 1:
 				this.margx=115;
