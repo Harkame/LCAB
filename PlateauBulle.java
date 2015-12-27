@@ -99,6 +99,7 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 						 JLabel instruction = new JLabel("Appuyez sur ECHAP");
 						 pan.add(instruction); 
 						 instruction.setBounds(width/2,height-500,500,500);
+						 // mettre ici le changement des scores
 						 palierSuivant.setVisible(true);  // le bouton "palier suivant" apparait quand il n'y a plus de bulle
 						
 						/*		try { // Le sleep est enclenché avant l'apparition de l'image 
