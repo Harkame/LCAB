@@ -59,7 +59,7 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 		
 		this.palierSuivant = new JButton("Palier Suivant");  // création du bouton palier suivant
 		this.palierSuivant.setBackground(Color.WHITE);
-		this.palierSuivant.setBounds(width /2 -550, height/6, 300, 75); // à replacer
+		this.palierSuivant.setBounds((width/2)-150,height-200, 300, 75); // Ã  replacer
 		this.palierSuivant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -96,14 +96,12 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 						 JLabel labelFelicit = new JLabel(imageFelicitation);
 						 pan.add(labelFelicit); 
 						 labelFelicit.setBounds(width/3,height/8,500,500);
-						 JLabel instruction = new JLabel("Appuyez sur ECHAP");
-						 pan.add(instruction); 
-						 instruction.setBounds(width/2,height-500,500,500);
+						 palierSuivant.setVisible(true);  // le bouton "palier suivant" apparait quand il n'y a plus de bulle
 						 //A modifier
 						 int pallier = 0; //Mettre vrai pallier 
 						 int nombre_clics = 0; //Mettre vrai nombre de clics
 						 Identification.getutilisateur().modifieScore(pallier, nombre_clics);
-						 palierSuivant.setVisible(true);  // le bouton "palier suivant" apparait quand il n'y a plus de bulle
+						
 						
 						/*		try { // Le sleep est enclenché avant l'apparition de l'image 
 							
