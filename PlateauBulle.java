@@ -42,6 +42,7 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
         private	Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	private int height = (int)dimension.getHeight();
 	private int width  = (int)dimension.getWidth();
+	private JButton palierSuivant;
 
 	/**
 	 */
@@ -55,6 +56,31 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 		this.setVisible(true); // rentdre ma fenêtre visible
 		this.pan.setLayout(null); // aucune disposition par défault dans mon conteneur ce qui permet de déplacer comme on veut notre label
 		anim = new Annimation[nb];
+		
+		this.palierSuivant = new JButton("Palier Suivant");  // création du bouton palier suivant
+		this.palierSuivant.setBackground(Color.WHITE);
+		this.palierSuivant.setBounds(width /2 -550, height/6, 300, 75); // à replacer
+		this.palierSuivant.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				if (nb+2 <=9 ){ // si on est pas déjà au dernier palier (donc à 9 bulles présentes)
+					if(vitesse==0){  // envoie au palier "statique" ou "mobile" suivant l'actuel
+						PlateauBulle N1= new PlateauBulle(nb+2,taille+1,0);
+					}
+					else{PlateauBulle N1= new PlateauBulle(nb+2,1,vitesse+1);}
+				}
+				
+
+				
+				
+			}
+		});
+		
+		this.getContentPane().add(this.palierSuivant);
+		this.palierSuivant.setVisible(false);
+		
+		
 		for (int i = 0; i<nb; i++){
 			anim[i] = new Annimation("anim", pan, taille, vitesse);
 		}
@@ -65,16 +91,17 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 			        anim[i].getBulle().getLabel().addMouseListener(new MouseAdapter() {
 				    public void mousePressed(MouseEvent me) {
 					     countBulleEclat++;
-					if(nb-countBulleEclat==0){
-						 Icon imageFelicitation = new ImageIcon("feuDartifice.gif");
+					if(nb-countBulleEclat==0){  // quand il n'y a plus de bulle
+						 Icon imageFelicitation = new ImageIcon("bulle1.png"); // mettre ici le gif à la place
 						 JLabel labelFelicit = new JLabel(imageFelicitation);
 						 pan.add(labelFelicit); 
 						 labelFelicit.setBounds(width/3,height/8,500,500);
 						 JLabel instruction = new JLabel("Appuyez sur ECHAP");
 						 pan.add(instruction); 
-						 instruction.setBounds(width/2,height-500,500,500);						 
+						 instruction.setBounds(width/2,height-500,500,500);
+						 palierSuivant.setVisible(true);  // le bouton "palier suivant" apparait quand il n'y a plus de bulle
 						
-						/*		try { // Le sleep est enclanché avant l'apparition de l'image 
+						/*		try { // Le sleep est enclenché avant l'apparition de l'image 
 							
 							Thread.sleep();
 						
@@ -269,7 +296,7 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 	}
 	
 	public static void main(String[]args){
-	new PlateauBulle(15, 1, 2);
+	new PlateauBulle(5, 1, 1);
 		// après cette instruction rien ne peut s'excuter car j'utilise un true dans la condition d'un tant que 
 
 	}
