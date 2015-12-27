@@ -61,7 +61,9 @@ public class Jeu extends Canvas implements Runnable {
 		}
 		else if (State == STATE.GAME) {
 			// !!!!!!! IMPORTANT, il faudra faire le bouton jouer pour revenir au niveau joué à la dernière fois par le joueur
-			NiveauBulle N1= new NiveauBulleStatic(9,4);
+			//NiveauBulle N1= new NiveauBulleStatic(9,4);
+			PlateauBulle N1= new PlateauBulle(9,4,0); // niveau bulle static 
+			
 		}
 		else if (State == STATE.SELECTION_NIVEAU) {
 			ChoisirNiveau ch1 = new ChoisirNiveau();
