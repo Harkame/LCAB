@@ -43,10 +43,41 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 	private int height = (int)dimension.getHeight();
 	private int width  = (int)dimension.getWidth();
 	private JButton palierSuivant;
+	private JButton MenuPrincipal;
+	Font police = new Font("Verdana", Font.BOLD, 15);
+	
+	
+	
+	
 
 	/**
 	 */
 	public PlateauBulle(int nb, int taille, int vitesse){
+		
+		this.MenuPrincipal = new JButton("Menu Principal");
+		this.MenuPrincipal.setBackground(Color.WHITE);
+		this.MenuPrincipal.setFont(police);
+		this.MenuPrincipal.setBounds((int) (width / 3 * 1.05), height / 3, width / 6, height / 10);
+		//this.getContentPane().add(this.MenuPrincipal);
+		//this.MenuPrincipal.setVisible(false);
+		
+		
+		this.MenuPrincipal.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				Jeu.State = STATE.MENU;
+				dispose(); // efface l'écran de connexion
+				try {
+					Jeu.controller();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+			}
+		});
+		
+		
 		this.setTitle("La case à bulles");
 		this.setSize(1000, 1000);
 		this.setExtendedState(Frame.MAXIMIZED_BOTH); // fenetre plein écrant
@@ -59,23 +90,35 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 		
 		this.palierSuivant = new JButton("Palier Suivant");  // création du bouton palier suivant
 		this.palierSuivant.setBackground(Color.WHITE);
-		this.palierSuivant.setBounds((width/2)-150,height-200, 300, 75); // Ã  replacer
+		this.palierSuivant.setBounds(width /2 -550, height/6, 300, 75); // à replacer
 		this.palierSuivant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				dispose();
-				if (nb+2 <=9 ){ // si on est pas déjà au dernier palier (donc à 9 bulles présentes)
+				if (nb+2 <=11 ){ // si on est pas déjà au dernier palier (donc à 9 bulles présentes)
 					if(vitesse==0){  // envoie au palier "statique" ou "mobile" suivant l'actuel
+						if(taille+1<=3){
+						
 						PlateauBulle N1= new PlateauBulle(nb+2,taille+1,0);
+						}
+						else{ PlateauBulle N1= new PlateauBulle(nb+2,taille,0);
 					}
-					else{PlateauBulle N1= new PlateauBulle(nb+2,1,vitesse+1);}
+					}
+					else if(taille+1<=3){
+						PlateauBulle N1= new PlateauBulle(nb+2,taille+1,1);
+					}
+				
+					else{PlateauBulle N1= new PlateauBulle(nb+2,taille,1);}
+					
+				}
+					
 				}
 				
 
 				
 				
 			}
-		});
+		);
 		
 		this.getContentPane().add(this.palierSuivant);
 		this.palierSuivant.setVisible(false);
@@ -96,12 +139,27 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 						 JLabel labelFelicit = new JLabel(imageFelicitation);
 						 pan.add(labelFelicit); 
 						 labelFelicit.setBounds(width/3,height/8,500,500);
-						 palierSuivant.setVisible(true);  // le bouton "palier suivant" apparait quand il n'y a plus de bulle
-						 //A modifier
-						 int pallier = 0; //Mettre vrai pallier 
-						 int nombre_clics = 0; //Mettre vrai nombre de clics
-						 Identification.getutilisateur().modifieScore(pallier, nombre_clics);
-						
+						 int palier;
+						 int nombre_clics = 0; 
+						 if(nb==11){palier=4;}
+						 else{palier=taille;}
+						 nombre_clics = countClick;
+						 try {
+							Identification.getutilisateur().modifieScore(palier, nombre_clics);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} 
+						 if(taille+1>3 && nb+2>11){
+								JLabel fin = new JLabel("Vous avez terminé ce mode de jeu, bravo !!!");
+								pan.add(fin);
+								fin.setBounds(width/2,height/3,500,500);
+								
+								pan.add(MenuPrincipal);
+								
+							}
+						 else{
+						 palierSuivant.setVisible(true);}  // le bouton "palier suivant" apparait quand il n'y a plus de bulle
 						
 						/*		try { // Le sleep est enclenché avant l'apparition de l'image 
 							
