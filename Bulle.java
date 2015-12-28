@@ -78,7 +78,8 @@ public class Bulle {
 	          cpt++;
               		System.out.println(cpt);
           	  	label.setVisible(false);
-                   	//Do action here    	
+                   	//Do action here    
+                   	son.start();
    		}});	
 	  	this.pan.add(this.label);
 	  	this.label.setBounds(this.x,this.y,this.margx,this.margy);
