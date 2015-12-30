@@ -140,9 +140,11 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 						 pan.add(labelFelicit); 
 						 labelFelicit.setBounds(width/3,height/8,500,500);
 						 int palier;
-						 int nombre_clics = 0; 
-						 if(nb==11){palier=4;}
-						 else{palier=taille;}
+						 int nombre_clics = 0;
+						
+						 if (vitesse>0){
+						 if(nb==11){palier=8;}
+						 else{palier=taille+4;}
 						 nombre_clics = countClick;
 						 try {
 							Identification.getutilisateur().modifieScore(palier, nombre_clics);
@@ -159,16 +161,29 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 								
 							}
 						 else{
-						 palierSuivant.setVisible(true);}  // le bouton "palier suivant" apparait quand il n'y a plus de bulle
-						
-						/*		try { // Le sleep est enclenché avant l'apparition de l'image 
-							
-							Thread.sleep();
-						
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}*/
+						 palierSuivant.setVisible(true);}
+						 } else{
+							 if(nb==11){palier=4;}
+							 else{palier=taille;}
+							 nombre_clics = countClick;
+							 try {
+								Identification.getutilisateur().modifieScore(palier, nombre_clics);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} 
+							 if(taille+1>3 && nb+2>11){
+									JLabel fin = new JLabel("Vous avez terminé ce mode de jeu, bravo !!!");
+									pan.add(fin);
+									fin.setBounds(width/2,height/3,500,500);
+									
+									pan.add(MenuPrincipal);
+									
+								}
+							 else{
+							 palierSuivant.setVisible(true);}
+							 
+						 }
 						
 						
 					}
