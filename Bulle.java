@@ -43,31 +43,103 @@ public class Bulle {
 				e.printStackTrace();
 			}	
 		
+			int rand = (int)(Math.random()*5)+1;
+		
 			switch(taille){
 			case 1:
 				this.margx=115;
 				this.margy=115;
-				this.label = new JLabel(new ImageIcon("bulle1.png"));
+				if (rand==1){
+					this.label = new JLabel(new ImageIcon("bulle1.png"));
+				}
+				else if (rand ==2){
+					this.label = new JLabel(new ImageIcon("bulle1b.png"));
+				}
+				else if (rand ==3){
+					this.label = new JLabel(new ImageIcon("bulle1r.png"));
+				}
+				else if (rand ==4){
+					this.label = new JLabel(new ImageIcon("bulle1v.png"));
+				}
+				else{
+					this.label = new JLabel(new ImageIcon("bulle1violet.png"));
+				}
 			break;
 			case 2:
 				this.margx=151;
 				this.margy=151;
-				this.label = new JLabel(new ImageIcon("bulle2.png"));
+				if (rand==1){
+					this.label = new JLabel(new ImageIcon("bulle2.png"));
+				}
+				else if (rand ==2){
+					this.label = new JLabel(new ImageIcon("bulle2b.png"));
+				}
+				else if (rand ==3){
+					this.label = new JLabel(new ImageIcon("bulle2r.png"));
+				}
+				else if (rand ==4){
+					this.label = new JLabel(new ImageIcon("bulle2v.png"));
+				}
+				else{
+					this.label = new JLabel(new ImageIcon("bulle2violet.png"));
+				}
 			break;
 			case 3:
 				this.margx=255;
 				this.margy=255;
-				this.label = new JLabel(new ImageIcon("bulle3.png"));
+				if (rand==1){
+					this.label = new JLabel(new ImageIcon("bulle3.png"));
+				}
+				else if (rand ==2){
+					this.label = new JLabel(new ImageIcon("bulle3b.png"));
+				}
+				else if (rand ==3){
+					this.label = new JLabel(new ImageIcon("bulle3r.png"));
+				}
+				else if (rand ==4){
+					this.label = new JLabel(new ImageIcon("bulle3v.png"));
+				}
+				else{
+					this.label = new JLabel(new ImageIcon("bulle3violet.png"));
+				}
 			break;
 			case 4:
 				this.margx=350;
 				this.margy=353;
-				this.label = new JLabel(new ImageIcon("bulle4.png"));
+				if (rand==1){
+					this.label = new JLabel(new ImageIcon("bulle4.png"));
+				}
+				else if (rand ==2){
+					this.label = new JLabel(new ImageIcon("bulle4b.png"));
+				}
+				else if (rand ==3){
+					this.label = new JLabel(new ImageIcon("bulle4r.png"));
+				}
+				else if (rand ==4){
+					this.label = new JLabel(new ImageIcon("bulle4v.png"));
+				}
+				else{
+					this.label = new JLabel(new ImageIcon("bulle4violet.png"));
+				}
 			break;
 			case 5:
 				this.margx=520;
 				this.margy=523;
-				this.label = new JLabel(new ImageIcon("bulle5.png"));
+				if (rand==1){
+					this.label = new JLabel(new ImageIcon("bulle5.png"));
+				}
+				else if (rand ==2){
+					this.label = new JLabel(new ImageIcon("bulle5b.png"));
+				}
+				else if (rand ==3){
+					this.label = new JLabel(new ImageIcon("bulle5r.png"));
+				}
+				else if (rand ==4){
+					this.label = new JLabel(new ImageIcon("bulle5v.png"));
+				}
+				else{
+					this.label = new JLabel(new ImageIcon("bulle5violet.png"));
+				}
 			break;
 		}
 		this.x=x;
