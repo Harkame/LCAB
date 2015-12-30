@@ -44,7 +44,7 @@ public class FenetreScore extends JFrame {
 	public void initialization(Object[][] valeurs) {
 		Object[][] tableau_niveau1 = utilisateur.niveau1toMatrice();
 		Object[][] tableau_niveau2 = utilisateur.niveau2toMatrice();
-		for (int j = 0; j < 5; j++) {
+		for (int j = 0; j < 4; j++) {
 			System.out.println(j);
 			valeurs[j][2] = tableau_niveau1[j][0];
 			valeurs[j][3] = tableau_niveau1[j][1];
@@ -65,8 +65,7 @@ public class FenetreScore extends JFrame {
 				{ "Pallier 1", null, null, null, null, null, null },
 				{ "Pallier 2", null, null, null, null, null, null },
 				{ "Pallier 3", null, null, null, null, null, null },
-				{ "Pallier 4", null, null, null, null, null, null },
-				{ "Pallier 5", null, null, null, null, null, null } };
+				{ "Pallier 4", null, null, null, null, null, null }, };
 		String[] titre = { "Pallier", "niveau 1", "nombre de clics",
 				"nombre de bulles", "niveau 2", "nombre de clics",
 				"nombre de bulles" };
