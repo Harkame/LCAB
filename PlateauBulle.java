@@ -90,7 +90,7 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 		
 		this.palierSuivant = new JButton("Palier Suivant");  // création du bouton palier suivant
 		this.palierSuivant.setBackground(Color.WHITE);
-		this.palierSuivant.setBounds(width /2 -550, height/6, 300, 75); // à replacer
+		this.palierSuivant.setBounds((width /2)-115, (height/2)+200, 300, 75); // à replacer
 		this.palierSuivant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
