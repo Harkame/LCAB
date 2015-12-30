@@ -15,8 +15,8 @@ public class Utilisateur {
 	private static File fichier;
 
 	/*
-	 * Bout de code nono dÃ©finitif, si windows crÃ©er dans tel rÃ©pertoire,
-	 * sinon si sur linux, crÃ©er ailleur
+	 * Bout de code nono dÃƒÂ©finitif, si windows crÃƒÂ©er dans tel
+	 * rÃƒÂ©pertoire, sinon si sur linux, crÃƒÂ©er ailleur
 	 */
 	static {
 		switch (System.getProperty("os.name")) {
@@ -26,7 +26,7 @@ public class Utilisateur {
 			fichier = new File("C:\\utilisateurs.txt");
 			break;
 		case "Linux":
-			fichier = new File("/home/ann2/daviaudl/Bureau/utilisateurs.txt");
+			fichier = new File("utilisateurs.txt");
 			break;
 		}
 		if (!fichier.exists()) {
@@ -47,7 +47,7 @@ public class Utilisateur {
 	 */
 	public Utilisateur(String p_identifiant) {
 		this.identifiant = p_identifiant.toLowerCase();
-		this.scores = new Score[10];
+		this.scores = new Score[8];
 		for (int i = 0; i < this.scores.length; i++) {
 			this.scores[i] = new Score();
 		}
@@ -56,8 +56,8 @@ public class Utilisateur {
 	}
 
 	/*
-	 * RÃ©cupÃ¨re toute la ligne concercernant l'utilisateur dans la base de
-	 * donnÃ©e sous forme de String, content l'identifiant, les 10 scores pour
+	 * RÃƒÂ©cupÃƒÂ¨re toute la ligne concercernant l'utilisateur dans la base de
+	 * donnÃƒÂ©e sous forme de String, content l'identifiant, les 10 scores pour
 	 * chacun des palliers
 	 */
 	private StringBuilder recupLigne() throws IOException {
@@ -91,8 +91,8 @@ public class Utilisateur {
 
 	/*
 	 * Dit si l'identifiant est valide, sa retourne un int car je me base sur le
-	 * code ASCII, sa permet de rÃ©cupÃ©rÃ© le code ASCII du caractÃ¨re interdit
-	 * et d'afficher se dernier en message d'Ã©rreure
+	 * code ASCII, sa permet de rÃƒÂ©cupÃƒÂ©rÃƒÂ© le code ASCII du caractÃƒÂ¨re
+	 * interdit et d'afficher se dernier en message d'ÃƒÂ©rreure
 	 */
 	private static int identifiantValide(String identifiant) {
 		if (identifiant == null || identifiant == ""
@@ -111,7 +111,7 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Getter du score correspondant Ã  l'attribut scores[pallier] de
+	 * Getter du score correspondant ÃƒÂ  l'attribut scores[pallier] de
 	 * l'utilisateur (this)
 	 */
 	public String getScore(int pallier) {
@@ -119,9 +119,9 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Retourne le numÃ©ro de ligne de l'utilisateur dans la base de donnÃ©e,
-	 * utiliser pour pouvoirs accelerer l'accÃ¨s a la base de donnÃ©e au lieu de
-	 * faire un parcour partiel ligne par ligne
+	 * Retourne le numÃƒÂ©ro de ligne de l'utilisateur dans la base de
+	 * donnÃƒÂ©e, utiliser pour pouvoirs accelerer l'accÃƒÂ¨s a la base de
+	 * donnÃƒÂ©e au lieu de faire un parcour partiel ligne par ligne
 	 */
 	private void recupNumeroLigne() {
 		BufferedReader lecteur = null;
@@ -159,9 +159,9 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Renvoit l'identifiant de la ligne passÃ© en paramÃ¨tre, utiliser pour
-	 * savoir si la ligne de la base de donnÃ©e est bien celle de l'utilisateur
-	 * (this)
+	 * Renvoit l'identifiant de la ligne passÃƒÂ© en paramÃƒÂ¨tre, utiliser pour
+	 * savoir si la ligne de la base de donnÃƒÂ©e est bien celle de
+	 * l'utilisateur (this)
 	 */
 	private static StringBuilder recupIdentifiant(String ligne) {
 		StringBuilder identifiant = new StringBuilder();
@@ -178,8 +178,9 @@ public class Utilisateur {
 	}
 
 	/*
-	 * RÃ©cupÃ¨re tous les identifiants dans la base de donnÃ©e, utilisÃ© pour
-	 * faire les suggestion des utilisateur sur la page d'identification
+	 * RÃƒÂ©cupÃƒÂ¨re tous les identifiants dans la base de donnÃƒÂ©e,
+	 * utilisÃƒÂ© pour faire les suggestion des utilisateur sur la page
+	 * d'identification
 	 */
 	static void recupIdentifiants() throws IOException {
 		BufferedReader lecteur = new BufferedReader(new FileReader(fichier));
@@ -199,8 +200,8 @@ public class Utilisateur {
 	}
 
 	/*
-	 * RecupÃ¨re le scores de l'utilisateur pour chacun des pallier depÃ»is la
-	 * base de donnÃ©e, et assosciÃ© Ã  l'utilisateur (this)
+	 * RecupÃƒÂ¨re le scores de l'utilisateur pour chacun des pallier depÃƒÂ»is
+	 * la base de donnÃƒÂ©e, et assosciÃƒÂ© ÃƒÂ  l'utilisateur (this)
 	 */
 	private void recupScores(StringBuilder ligne) {
 		StringBuilder scores = new StringBuilder();
@@ -222,8 +223,13 @@ public class Utilisateur {
 	private void sauvegarderUtilisateur() throws IOException {
 		FileWriter fw = new FileWriter(fichier, true);
 		fw.write(this.identifiant.toString() + '|');
-		for (int i = 0; i < 10; i++) {
-			fw.write("0-0|");
+		int nombre_bulles = 5;
+		for (int i = 0; i < 8; i++) {
+			fw.write("0-" + nombre_bulles + "|");
+			nombre_bulles += 2;
+			if (i == 3) {
+				nombre_bulles = 5;
+			}
 		}
 		fw.write(System.getProperty("line.separator"));
 		fw.close();
@@ -231,8 +237,8 @@ public class Utilisateur {
 
 	/*
 	 * Methode principal, elle fait 2 choses : Si l'utilisateur this n'existe
-	 * pas dans la base de donnÃ©e, il est rajoutÃ© avec des scores initiaux de
-	 * 0 partout, sinon ses scores sont recupÃ©rÃ©s et attribuÃ© Ã 
+	 * pas dans la base de donnÃƒÂ©e, il est rajoutÃƒÂ© avec des scores initiaux
+	 * de 0 partout, sinon ses scores sont recupÃƒÂ©rÃƒÂ©s et attribuÃƒÂ© ÃƒÂ 
 	 * l'utilisateur (this)
 	 */
 	public void Identification() throws IOException {
@@ -258,8 +264,8 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Indique si l'utilisateur (this) est prÃ©sent dans la base de donnÃ©e, on
-	 * compare les identifiant
+	 * Indique si l'utilisateur (this) est prÃƒÂ©sent dans la base de donnÃƒÂ©e,
+	 * on compare les identifiant
 	 */
 	public boolean UtilisateurExistant() throws IOException {
 		String ligne = new String();
@@ -325,9 +331,9 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Reinitialise la base de donnÃ©e en Ã©ffacant son contenu intÃ©gralement
-	 * Un demande de confirmation apprais, si oui alors reset, sinon rien n'est
-	 * fait
+	 * Reinitialise la base de donnÃƒÂ©e en ÃƒÂ©ffacant son contenu
+	 * intÃƒÂ©gralement Un demande de confirmation apprais, si oui alors reset,
+	 * sinon rien n'est fait
 	 */
 	public static void reinitialisation(boolean confirmation) {
 		// fichier.delete();
@@ -353,9 +359,9 @@ public class Utilisateur {
 
 	/*
 	 * Modifie le score d'un utilisateur (this), en passant en parametre le
-	 * pallier Ã  modifier, et le nouveau nombre de clics StratÃ©gie : On
-	 * rÃ©cupÃ¨re toute la base de donnÃ©e en mÃ©moire, on modifie la ligne
-	 * souhaitÃ©, puis on recopie le tout dans un nouveau fichier
+	 * pallier ÃƒÂ  modifier, et le nouveau nombre de clics StratÃƒÂ©gie : On
+	 * rÃƒÂ©cupÃƒÂ¨re toute la base de donnÃƒÂ©e en mÃƒÂ©moire, on modifie la
+	 * ligne souhaitÃƒÂ©, puis on recopie le tout dans un nouveau fichier
 	 */
 	public void modifieScore(int pallier, int nouveau_score) throws IOException {
 		ArrayList<StringBuilder> tamporaire = new ArrayList<StringBuilder>();
@@ -421,11 +427,11 @@ public class Utilisateur {
 	 * [nombre_clics][nombre_bulles] Necessaire pour l'affichage des scores
 	 */
 	public String[][] niveau1toMatrice() {
-		String[][] matrice = new String[5][2];
-		for (int i = 0; i < 5; i++) {
+		String[][] matrice = new String[4][2];
+		for (int i = 0; i < 4; i++) {
 			matrice[i][0] = "" + this.scores[i].getnombre_clics();
 		}
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 4; i++) {
 			matrice[i][1] = "" + this.scores[i].getnombre_bulles();
 		}
 		return matrice;
@@ -433,14 +439,14 @@ public class Utilisateur {
 
 	/*
 	 * Transforme les scores du niveau 2 en matrice
-	 * [nombre_clics][nombre_bulles] NÃ©cessaire pour l'affichage des scores
+	 * [nombre_clics][nombre_bulles] NÃƒÂ©cessaire pour l'affichage des scores
 	 */
 	public String[][] niveau2toMatrice() {
-		String[][] matrice = new String[5][2];
-		for (int i = 0; i < 5; i++) {
+		String[][] matrice = new String[4][2];
+		for (int i = 0; i < 4; i++) {
 			matrice[i][0] = "" + this.scores[i + 5].getnombre_clics();
 		}
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 4; i++) {
 			matrice[i][1] = "" + this.scores[i + 5].getnombre_bulles();
 		}
 		return matrice;
@@ -463,5 +469,6 @@ public class Utilisateur {
 		// System.out.println(u1.toString());
 		// generer_utilisateur(25);
 		System.out.println("Pallier actuel : " + u.pallier_actuel);
+		u.modifieScore(5, 9);
 	}
 }
