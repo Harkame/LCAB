@@ -32,9 +32,11 @@ public class FenetreScore extends JFrame {
 
 	JLabel myLabel;
 
-	private static Utilisateur recup = Identification.getutilisateur();
-	private static Utilisateur utilisateur = new Utilisateur(recup.getIdentifiant());
+//	private static Utilisateur recup = Identification.getutilisateur();
+//	private static Utilisateur utilisateur = new Utilisateur(recup.getIdentifiant());
 //	private static Utilisateur utilisateur = Jeu.getutilisateur();
+	// !!! A régler
+	private static Utilisateur utilisateur = new Utilisateur("marion"); // !!! Lance l'exception  java.lang.ArrayIndexOutOfBoundsException: 8
 	static {
 		try {
 			utilisateur.Identification();
