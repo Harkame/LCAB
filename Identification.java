@@ -113,7 +113,7 @@ public class Identification extends JFrame {
 		this.bouton_reset.setBackground(Color.WHITE);
 		this.bouton_reset.setFont(police);
 		this.bouton_reset.setBounds((int)w, height - height / 6,
-				width / 3, height / 15);
+				(int)(width / 3.5), height / 15);
 		this.getContentPane().add(this.bouton_reset, BorderLayout.SOUTH);
 		this.bouton_reset.addActionListener(new ActionListener() {
 
