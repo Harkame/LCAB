@@ -1,9 +1,15 @@
 package projet_bulles;
 
 import java.awt.Canvas;
-
+import java.io.File;
 import java.io.IOException;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 public class Jeu extends Canvas implements Runnable {
 
 	/**
@@ -13,7 +19,7 @@ public class Jeu extends Canvas implements Runnable {
 	// private static int SCALE = 2;
 	public static final int WIDTH = 1000;
 	public static final int HEIGHT = 750;
-
+	public Clip son; 
 	public static enum STATE {
 		MENU, GAME, IDENTIFICATIONS, OPTIONS, SELECTION_NIVEAU;
 	}
@@ -27,9 +33,20 @@ public class Jeu extends Canvas implements Runnable {
 	static {
 		utilisateur = Identification.getutilisateur();
 	}
-
+           
 	public Jeu() throws IOException {
-
+ 		try{
+			File fichierSon=new File ("JeuxDenfants.wav");
+			AudioInputStream sound;
+			sound = AudioSystem.getAudioInputStream(fichierSon);
+			DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
+			this.son  = (Clip) AudioSystem.getLine(info);
+			this.son.open(sound);
+			this.son.loop(300);
+			} catch (UnsupportedAudioFileException|LineUnavailableException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
 		controller();
 		this.addMouseListener(new MouseInput());
 	}
