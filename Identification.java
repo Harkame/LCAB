@@ -9,6 +9,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -37,9 +38,12 @@ public class Identification extends JFrame {
 	private static Utilisateur utilisateur;
 	private String[] utilisateurs;
 
-	static boolean connecte = true; // à changer
+	static boolean connecte = true; // Ã  changer
 
 	public Identification() throws IOException {
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int width = (int) screenSize.getWidth();
+		int height = (int) screenSize.getHeight();
 		Utilisateur.recupIdentifiants();
 		this.utilisateurs = Utilisateur.getutilisateurs();
 		this.setContentPane(new ImagePanel(new ImageIcon("bulle1.jpg")
@@ -59,7 +63,7 @@ public class Identification extends JFrame {
 		this.champ_saisie.addKeyListener(new ComboKeyHandler(combo));
 		champ_saisie.setFont(police);
 		JPanel p = new JPanel(new BorderLayout());
-		p.setBounds(750, 425, 200, 50);
+		p.setBounds(width / 2 - width / 8, height / 3, width / 10, height / 20);
 		p.add(combo, BorderLayout.CENTER);
 		this.getContentPane().add(p, BorderLayout.CENTER);
 		// ////////////////////////////////////////
@@ -67,7 +71,8 @@ public class Identification extends JFrame {
 		this.bouton_seconnecter = new JButton("Se connecter");
 		this.bouton_seconnecter.setBackground(Color.ORANGE);
 		this.bouton_seconnecter.setFont(police);
-		this.bouton_seconnecter.setBounds(1000, 400, 200, 75);
+		this.bouton_seconnecter.setBounds(width / 2, height / 3, width / 10,
+				height / 20);
 		this.getContentPane().add(this.bouton_seconnecter, BorderLayout.CENTER);
 
 		this.bouton_seconnecter.addActionListener(new ActionListener() {
@@ -87,7 +92,7 @@ public class Identification extends JFrame {
 				System.out.println(utilisateur.toString());
 				if (connecte == true) {
 					Jeu.State = STATE.MENU;
-					dispose(); // efface l'écran de connexion
+					dispose(); // efface l'Ã©cran de connexion
 					try {
 						Jeu.controller();
 					} catch (IOException e1) {
@@ -102,7 +107,8 @@ public class Identification extends JFrame {
 		this.bouton_reset = new JButton("Reinitialiser les utilisateurs");
 		this.bouton_reset.setBackground(Color.WHITE);
 		this.bouton_reset.setFont(police);
-		this.bouton_reset.setBounds(1480, 900, 400, 75);
+		this.bouton_reset.setBounds(width - width / 4, height - height / 6,
+				width / 5, height / 15);
 		this.getContentPane().add(this.bouton_reset, BorderLayout.SOUTH);
 		this.bouton_reset.addActionListener(new ActionListener() {
 
