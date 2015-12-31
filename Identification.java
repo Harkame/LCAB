@@ -38,12 +38,17 @@ public class Identification extends JFrame {
 	private static Utilisateur utilisateur;
 	private String[] utilisateurs;
 
+	
+	
+	
+	
 	static boolean connecte = true; // Ã  changer
 
 	public Identification() throws IOException {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int width = (int) screenSize.getWidth();
 		int height = (int) screenSize.getHeight();
+		final double w = width/1.5;
 		Utilisateur.recupIdentifiants();
 		this.utilisateurs = Utilisateur.getutilisateurs();
 		this.setContentPane(new ImagePanel(new ImageIcon("bulle1.jpg")
@@ -71,7 +76,7 @@ public class Identification extends JFrame {
 		this.bouton_seconnecter = new JButton("Se connecter");
 		this.bouton_seconnecter.setBackground(Color.ORANGE);
 		this.bouton_seconnecter.setFont(police);
-		this.bouton_seconnecter.setBounds(width / 2, height / 3, width / 10,
+		this.bouton_seconnecter.setBounds(width / 2, height / 3, width / 5,
 				height / 20);
 		this.getContentPane().add(this.bouton_seconnecter, BorderLayout.CENTER);
 
@@ -107,8 +112,8 @@ public class Identification extends JFrame {
 		this.bouton_reset = new JButton("Reinitialiser les utilisateurs");
 		this.bouton_reset.setBackground(Color.WHITE);
 		this.bouton_reset.setFont(police);
-		this.bouton_reset.setBounds(width - width / 4, height - height / 6,
-				width / 5, height / 15);
+		this.bouton_reset.setBounds((int)w, height - height / 6,
+				width / 3, height / 15);
 		this.getContentPane().add(this.bouton_reset, BorderLayout.SOUTH);
 		this.bouton_reset.addActionListener(new ActionListener() {
 
