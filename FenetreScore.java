@@ -31,7 +31,10 @@ public class FenetreScore extends JFrame {
 	// private JPanel fenetre;
 
 	JLabel myLabel;
-	private static Utilisateur utilisateur = Jeu.getutilisateur();
+
+	private static Utilisateur recup = Identification.getutilisateur();
+	private static Utilisateur utilisateur = new Utilisateur(recup.getIdentifiant());
+//	private static Utilisateur utilisateur = Jeu.getutilisateur();
 	static {
 		try {
 			utilisateur.Identification();
