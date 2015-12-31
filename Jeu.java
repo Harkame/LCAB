@@ -64,8 +64,8 @@ public class Jeu extends Canvas implements Runnable {
 		// TODO Auto-generated method stub
 
 	}
-	
-	public static Utilisateur getutilisateur(){
+
+	public static Utilisateur getutilisateur() {
 		return utilisateur;
 	}
 
