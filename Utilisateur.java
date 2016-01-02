@@ -460,6 +460,10 @@ public class Utilisateur {
 	public boolean nouveau() {
 		return this.scores[0].getnombre_clics() == 0;
 	}
+	
+		public String getIdentifiant() {
+		return identifiant;
+	}
 
 	public static void main(String[] Args) throws IOException {
 		Utilisateur u = new Utilisateur("lee");
