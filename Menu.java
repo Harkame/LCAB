@@ -31,7 +31,7 @@ public class Menu extends JFrame {
 	
 	private JButton BoutonJouer;
 	private JButton BoutonChoisirNiveau;
-	private JButton BoutonOptions;
+	private JButton BoutonScores;
 	private JButton BoutonQuitterJeu;
 	private JButton BoutonRevenirConnexion;
 	
@@ -43,7 +43,7 @@ public class Menu extends JFrame {
 		super("Jeu De Bulles");
 		setSize(width,height);
 		
-		/* Redimensionner les images pour travailler sur tous les écrans */
+		/* Redimensionner les images pour travailler sur tous les Ã©crans */
 		// if(width == 1920 && height == 1080) {
 		this.setContentPane(new ImagePanel(new ImageIcon("wallpaper.jpg").getImage()));
 		 //}
@@ -102,13 +102,28 @@ public class Menu extends JFrame {
 		});
 		
 
-		this.BoutonOptions = new JButton("Options");
-		this.BoutonOptions.setBackground(Color.WHITE);
-		this.BoutonOptions.setFont(police);
-		this.BoutonOptions.setBounds(width /2 -110, 600, 200, 75);
-	this.getContentPane().add(this.BoutonOptions, BorderLayout.CENTER);
+		this.BoutonScores = new JButton("Scores");
+		this.BoutonScores.setBackground(Color.WHITE);
+		this.BoutonScores.setFont(police);
+		this.BoutonScores.setBounds(width /2 -110, 600, 200, 75);
+	this.getContentPane().add(this.BoutonScores, BorderLayout.CENTER);
 	
-	
+	this.BoutonScores.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Jeu.State = STATE.SCORES;
+			dispose();
+			try {
+				Jeu.controller();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+		}
+		
+	});
 		
 
 		this.BoutonQuitterJeu = new JButton("Quitter le jeu");
@@ -129,7 +144,7 @@ public class Menu extends JFrame {
 		
 	});
 	
-	this.BoutonRevenirConnexion = new JButton("Revenir à l'écran de connexion");
+	this.BoutonRevenirConnexion = new JButton("Revenir Ã  l'Ã©cran de connexion");
 	this.BoutonRevenirConnexion.setBackground(Color.ORANGE);
 	this.BoutonRevenirConnexion.setFont(police);
 	this.BoutonRevenirConnexion.setBounds(100, 900, 500, 75);
