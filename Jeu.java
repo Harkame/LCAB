@@ -21,7 +21,11 @@ public class Jeu extends Canvas implements Runnable {
 	public static final int HEIGHT = 750;
 	public Clip son; 
 	public static enum STATE {
-		MENU, GAME, IDENTIFICATIONS, OPTIONS, SELECTION_NIVEAU;
+		MENU,
+		GAME, 
+		IDENTIFICATIONS,
+		SCORES,
+		SELECTION_NIVEAU;
 	}
 
 	public final String Title = "Jeu de Bulles";
@@ -48,10 +52,10 @@ public class Jeu extends Canvas implements Runnable {
 				e.printStackTrace();
 			}	
 		controller();
-		this.addMouseListener(new MouseInput());
+	//	this.addMouseListener(new MouseInput());
 	}
 
-	// GÃ©re l'Ã©tat du jeu : Fait les transitions
+	// GÃƒÂ©re l'ÃƒÂ©tat du jeu : Fait les transitions
 	public static void controller() throws IOException {
 		if (State == STATE.IDENTIFICATIONS) {
 			try {
@@ -66,12 +70,16 @@ public class Jeu extends Canvas implements Runnable {
 
 		} else if (State == STATE.GAME) {
 			// !!!!!!! IMPORTANT, il faudra faire le bouton jouer pour revenir
-			// au niveau jouÃ© Ã  la derniÃ¨re fois par le joueur
+			// au niveau jouÃƒÂ© ÃƒÂ  la derniÃƒÂ¨re fois par le joueur
 			// NiveauBulle N1= new NiveauBulleStatic(9,4);
 			PlateauBulle N1 = new PlateauBulle(9, 4, 0); // niveau bulle static
+		
 
 		} else if (State == STATE.SELECTION_NIVEAU) {
 			ChoisirNiveau ch1 = new ChoisirNiveau();
+		}
+		else if (State == STATE.SCORES){
+			FenetreScore Recup_Score_user = new FenetreScore();
 		}
 
 	}
@@ -92,3 +100,4 @@ public class Jeu extends Canvas implements Runnable {
 	}
 
 }
+
