@@ -32,11 +32,11 @@ public class FenetreScore extends JFrame {
 
 	JLabel myLabel;
 
-//	private static Utilisateur recup = Identification.getutilisateur();
-//	private static Utilisateur utilisateur = new Utilisateur(recup.getIdentifiant());
-//	private static Utilisateur utilisateur = Jeu.getutilisateur();
-	// !!! A régler
-	private static Utilisateur utilisateur = new Utilisateur("marion"); // !!! Lance l'exception  java.lang.ArrayIndexOutOfBoundsException: 8
+	private static Utilisateur recup = Identification.getutilisateur();
+	private static Utilisateur utilisateur = new Utilisateur(recup.getIdentifiant());
+//private static Utilisateur utilisateur = Jeu.getutilisateur();
+	// !!! A rÃ©gler
+//	private static Utilisateur utilisateur = new Utilisateur("marion"); // !!! Lance l'exception  java.lang.ArrayIndexOutOfBoundsException: 8
 	static {
 		try {
 			utilisateur.Identification(); //On fait une identification de l'utilisateur courant
@@ -45,13 +45,13 @@ public class FenetreScore extends JFrame {
 	}
 
 	public void initialization(Object[][] valeurs) {
-		Object[][] tableau_niveau1 = utilisateur.niveau1toMatrice(); //On récupère les scores du niveau statique sous forme de matrice
-		Object[][] tableau_niveau2 = utilisateur.niveau2toMatrice(); //Même chose pour le niveau mobile
+		Object[][] tableau_niveau1 = utilisateur.niveau1toMatrice(); //On rÃ©cupÃ¨re les scores du niveau statique sous forme de matrice
+		Object[][] tableau_niveau2 = utilisateur.niveau2toMatrice(); //MÃªme chose pour le niveau mobile
 		for (int j = 0; j < 4; j++) { //Pour chaque des palliers 4/niveau
 			valeurs[j][2] = tableau_niveau1[j][0]; //On attribut le nombre de clics du niveau 1
 			valeurs[j][3] = tableau_niveau1[j][1]; //nombre de bulles du niveau 1
-			valeurs[j][5] = tableau_niveau2[j][0]; // Même chose mais niveau 2
-			valeurs[j][6] = tableau_niveau2[j][1]; // Encore même chose mais niveau 2
+			valeurs[j][5] = tableau_niveau2[j][0]; // MÃªme chose mais niveau 2
+			valeurs[j][6] = tableau_niveau2[j][1]; // Encore mÃªme chose mais niveau 2
 		}
 	}
 
@@ -59,19 +59,19 @@ public class FenetreScore extends JFrame {
 
 		// this.setContentPane(new ImagePanel(new ImageIcon(
 		// "/home/ann2/daviaudl/Bureau/bulle1.jpg").getImage()));
-		this.setTitle("La case a bulles"); //On titre la fenêtre
-		this.setExtendedState(Frame.MAXIMIZED_BOTH); //Plein écran
+		this.setTitle("La case a bulles"); //On titre la fenÃªtre
+		this.setExtendedState(Frame.MAXIMIZED_BOTH); //Plein Ã©cran
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Si on clique sur la croix rouge, sa tue le processus
-		this.setLocationRelativeTo(null); //La fenêtre est indépendante
+		this.setLocationRelativeTo(null); //La fenÃªtre est indÃ©pendante
 		Object[][] valeurs = {
 				{ "Pallier 1", null, null, null, null, null, null },
 				{ "Pallier 2", null, null, null, null, null, null },
 				{ "Pallier 3", null, null, null, null, null, null },
-				{ "Pallier 4", null, null, null, null, null, null }, }; //Par défault les valeurs sont à null
+				{ "Pallier 4", null, null, null, null, null, null }, }; //Par dÃ©fault les valeurs sont Ã  null
 		String[] titre = { "Pallier", "niveau 1", "nombre de clics",
 				"nombre de bulles", "niveau 2", "nombre de clics",
 				"nombre de bulles" }; //les titres de chacune des colonnes de la grille des scores
-		JTable table = new JTable(valeurs, titre); // On crée une JTable (grille), avec les scores et les valeurs
+		JTable table = new JTable(valeurs, titre); // On crÃ©e une JTable (grille), avec les scores et les valeurs
 		initialization(valeurs); //On va initialiser les valeurs des scores
 		/*
 		 * Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
@@ -82,7 +82,37 @@ public class FenetreScore extends JFrame {
 				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); //Si besoin il y a une scrollbar
 		this.getContentPane().add(scrollpane); //On l'ajoute
-		this.setVisible(true); //On affiche la fenêtre
+		this.setVisible(true); //On affiche la fenÃªtre
+		
+		
+		Font police = new Font("Verdana", Font.BOLD, 20);
+		JButton MenuPrincipal = new JButton("Menu principal");
+		MenuPrincipal.setBackground(Color.CYAN);
+		MenuPrincipal.setFont(police);
+		MenuPrincipal.setBounds(Jeu.WIDTH/2 + 350, 175, 200, 75); // 200 longueur, 75 hauteur
+
+		MenuPrincipal.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			Jeu.State = Jeu.STATE.MENU;
+			dispose();
+			try {
+				Jeu.controller();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+				
+				
+			}
+			
+		});
+		
+		this.getContentPane().add(MenuPrincipal, BorderLayout.CENTER);
+		this.getContentPane().add(scrollpane);
+		this.setUndecorated(true);
+		this.setVisible(true);
 	}
 
 	public boolean isCellEditable(int row, int col) {
@@ -94,7 +124,7 @@ public class FenetreScore extends JFrame {
 	}
 
 	public static void main(String[] args) throws IOException {
-		FenetreScore id1 = new FenetreScore();
+		//FenetreScore id1 = new FenetreScore(); invalide maintenant
 		// id1.execute();
 	}
 }
