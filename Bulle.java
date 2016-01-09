@@ -32,9 +32,9 @@ public class Bulle {
 							
 	public Bulle(int x, int y, int taille, int vitesse, JPanel pan){
 		try{
-			File fichierSon=new File ("eclatBullebest.wav");
+			//File fichierSon=new File ("eclatBullebest.wav");
 			AudioInputStream sound;
-			sound = AudioSystem.getAudioInputStream(fichierSon);
+			sound = AudioSystem.getAudioInputStream(getClass().getResource("/eclatBullebest.wav"));
 			DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
 			son  = (Clip) AudioSystem.getLine(info);
 			son.open(sound);
@@ -50,95 +50,95 @@ public class Bulle {
 				this.margx=115;
 				this.margy=115;
 				if (rand==1){
-					this.label = new JLabel(new ImageIcon("bulle1.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle1.png")));
 				}
 				else if (rand ==2){
-					this.label = new JLabel(new ImageIcon("bulle1b.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle1b.png")));
 				}
 				else if (rand ==3){
-					this.label = new JLabel(new ImageIcon("bulle1r.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle1r.png")));
 				}
 				else if (rand ==4){
-					this.label = new JLabel(new ImageIcon("bulle1v.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle1v.png")));
 				}
 				else{
-					this.label = new JLabel(new ImageIcon("bulle1violet.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle1violet.png")));
 				}
 			break;
 			case 2:
 				this.margx=151;
 				this.margy=151;
 				if (rand==1){
-					this.label = new JLabel(new ImageIcon("bulle2.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle2.png")));
 				}
 				else if (rand ==2){
-					this.label = new JLabel(new ImageIcon("bulle2b.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle2b.png")));
 				}
 				else if (rand ==3){
-					this.label = new JLabel(new ImageIcon("bulle2r.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle2r.png")));
 				}
 				else if (rand ==4){
-					this.label = new JLabel(new ImageIcon("bulle2v.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle2v.png")));
 				}
 				else{
-					this.label = new JLabel(new ImageIcon("bulle2violet.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle2violet.png")));
 				}
 			break;
 			case 3:
 				this.margx=255;
 				this.margy=255;
 				if (rand==1){
-					this.label = new JLabel(new ImageIcon("bulle3.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle3.png")));
 				}
 				else if (rand ==2){
-					this.label = new JLabel(new ImageIcon("bulle3b.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle3b.png")));
 				}
 				else if (rand ==3){
-					this.label = new JLabel(new ImageIcon("bulle3r.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle3r.png")));
 				}
 				else if (rand ==4){
-					this.label = new JLabel(new ImageIcon("bulle3v.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle3v.png")));
 				}
 				else{
-					this.label = new JLabel(new ImageIcon("bulle3violet.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle3violet.png")));
 				}
 			break;
 			case 4:
 				this.margx=350;
 				this.margy=353;
 				if (rand==1){
-					this.label = new JLabel(new ImageIcon("bulle4.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle4.png")));
 				}
 				else if (rand ==2){
-					this.label = new JLabel(new ImageIcon("bulle4b.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle4b.png")));
 				}
 				else if (rand ==3){
-					this.label = new JLabel(new ImageIcon("bulle4r.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle4r.png")));
 				}
 				else if (rand ==4){
-					this.label = new JLabel(new ImageIcon("bulle4v.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle4v.png")));
 				}
 				else{
-					this.label = new JLabel(new ImageIcon("bulle4violet.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle4violet.png")));
 				}
 			break;
 			case 5:
 				this.margx=520;
 				this.margy=523;
 				if (rand==1){
-					this.label = new JLabel(new ImageIcon("bulle5.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5.png")));
 				}
 				else if (rand ==2){
-					this.label = new JLabel(new ImageIcon("bulle5b.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5b.png")));
 				}
 				else if (rand ==3){
-					this.label = new JLabel(new ImageIcon("bulle5r.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5r.png")));
 				}
 				else if (rand ==4){
-					this.label = new JLabel(new ImageIcon("bulle5v.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5v.png")));
 				}
 				else{
-					this.label = new JLabel(new ImageIcon("bulle5violet.png"));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5violet.png")));
 				}
 			break;
 		}
