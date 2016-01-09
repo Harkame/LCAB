@@ -34,7 +34,7 @@ import java.io.IOException;
 
 
 
-public class PlateauBulle extends JFrame { // création de ma fenêtre 
+public class PlateauBulle extends JFrame { // crÃ©ation de ma fenÃªtre 
 	public static JPanel pan;	
 	public static Annimation[] anim;
 	private int countClick = 0;
@@ -66,7 +66,7 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 
 			public void actionPerformed(ActionEvent e) {
 				Jeu.State = STATE.MENU;
-				dispose(); // efface l'écran de connexion
+				dispose(); // efface l'Ã©cran de connexion
 				try {
 					Jeu.controller();
 				} catch (IOException e1) {
@@ -78,24 +78,24 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 		});
 		
 		
-		this.setTitle("La case à bulles");
+		this.setTitle("La case Ã  bulles");
 		this.setSize(1000, 1000);
-		this.setExtendedState(Frame.MAXIMIZED_BOTH); // fenetre plein écrant
+		this.setExtendedState(Frame.MAXIMIZED_BOTH); // fenetre plein Ã©crant
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // stopper le programme en au click sur la croix
 		this.pan =new JPanel(); // instanciation de mon conteneur
 		this.setContentPane(pan); // je choisi mon contenneur 
-		this.setVisible(true); // rentdre ma fenêtre visible
-		this.pan.setLayout(null); // aucune disposition par défault dans mon conteneur ce qui permet de déplacer comme on veut notre label
+		this.setVisible(true); // rentdre ma fenÃªtre visible
+		this.pan.setLayout(null); // aucune disposition par dÃ©fault dans mon conteneur ce qui permet de dÃ©placer comme on veut notre label
 		anim = new Annimation[nb];
 		
-		this.palierSuivant = new JButton("Palier Suivant");  // création du bouton palier suivant
+		this.palierSuivant = new JButton("Palier Suivant");  // crÃ©ation du bouton palier suivant
 		this.palierSuivant.setBackground(Color.WHITE);
-		this.palierSuivant.setBounds((width /2)-115, (height/2)+200, 300, 75); // à replacer
+		this.palierSuivant.setBounds((width /2)-115, (height/2)+200, 300, 75); // Ã  replacer
 		this.palierSuivant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				dispose();
-				if (nb+2 <=11 ){ // si on est pas déjà au dernier palier (donc à 9 bulles présentes)
+				if (nb+2 <=11 ){ // si on est pas dÃ©jÃ  au dernier palier (donc Ã  9 bulles prÃ©sentes)
 					if(vitesse==0){  // envoie au palier "statique" ou "mobile" suivant l'actuel
 						if(taille+1<=3){
 						
@@ -135,28 +135,29 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 				    public void mousePressed(MouseEvent me) {
 					     countBulleEclat++;
 					if(nb-countBulleEclat==0){  // quand il n'y a plus de bulle
-						 Icon imageFelicitation = new ImageIcon("bulle1.png"); // mettre ici le gif à la place
+						 Icon imageFelicitation = new ImageIcon(getClass().getResource("/feuDartifice.gif")); // mettre ici le gif Ã  la place
 						 JLabel labelFelicit = new JLabel(imageFelicitation);
 						 pan.add(labelFelicit); 
 						 labelFelicit.setBounds(width/3,height/8,500,500);
+						
 						 int palier;
 						 int nombre_clics = 0;
 						
 						 if (vitesse>0){
-						 if(nb==11){palier=8;}
-						 else{palier=taille+4;}
-						 nombre_clics = countClick;
+							 if(nb==11){palier=8;}
+							 else{palier=taille+4;}
+							 nombre_clics = countClick;
 						 try {
 							Identification.getutilisateur().modifieScore(palier, nombre_clics);
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
+							e.getMessage();
 							e.printStackTrace();
-						} 
+						}
 						 if(taille+1>3 && nb+2>11){
 								JLabel fin = new JLabel("Vous avez terminé ce mode de jeu, bravo !!!");
 								pan.add(fin);
 								fin.setBounds(width/2,height/3,500,500);
-								
+								MenuPrincipal.setBounds((int) (width /2)-115, (height/2)+200, 300, 75);
 								pan.add(MenuPrincipal);
 								
 							}
@@ -176,7 +177,7 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 									JLabel fin = new JLabel("Vous avez terminé ce mode de jeu, bravo !!!");
 									pan.add(fin);
 									fin.setBounds(width/2,height/3,500,500);
-									
+									MenuPrincipal.setBounds((int) (width /2)-115, (height/2)+200, 300, 75);
 									pan.add(MenuPrincipal);
 									
 								}
@@ -205,7 +206,7 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 		}); 
 		
 
-		this.setVisible(true);// rentdre ma fenÃªtre visible
+		this.setVisible(true);// rentdre ma fenÃƒÂªtre visible
 		//this.getContentPane().setBackground(Color.BLACK);
 		this.getContentPane().setBackground(Color.WHITE);
 		Action action = new AbstractAction("Echap") {
@@ -229,7 +230,7 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 				Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 				MenuBox.setLocation(dim.width/2-MenuBox.getSize().width/2, dim.height/2-MenuBox.getSize().height/2);
 				MenuBox.setUndecorated(true);
-				MenuBox.setContentPane(new ImagePanel(new ImageIcon("MenuBox_Wallpaper.jpg").getImage()));
+				MenuBox.setContentPane(new ImagePanel(new ImageIcon(getClass().getResource("/MenuBox_Wallpaper.png")).getImage()));
 				MenuBox.setVisible(true);
 				
 				JButton RevenirJeu;
@@ -331,7 +332,7 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 			ChoisirNiveau.setVisible(true);
 			MenuPrincipal.setVisible(true);
 				
-			/*	à faire pour plus tard Pop up menu en plein jeu plus propre que revenir au menu et pause le jeu en cours plutot que de le quitter
+			/*	Ã  faire pour plus tard Pop up menu en plein jeu plus propre que revenir au menu et pause le jeu en cours plutot que de le quitter
 			 *
 				JWindow w = new JWindow();
 				w.setLayout(null);
@@ -352,7 +353,7 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 		
 		
 		
-		this.pan.setLayout(null); // aucune disposition par dÃ©fault dans mon conteneur ce qui permet de dÃ©placer comme on veut notre label
+		this.pan.setLayout(null); // aucune disposition par dÃƒÂ©fault dans mon conteneur ce qui permet de dÃƒÂ©placer comme on veut notre label
 		this.countClick=nb;
 		/***/
 								
@@ -371,8 +372,8 @@ public class PlateauBulle extends JFrame { // création de ma fenêtre
 	}
 	
 	public static void main(String[]args){
-	new PlateauBulle(5, 1, 1);
-		// après cette instruction rien ne peut s'excuter car j'utilise un true dans la condition d'un tant que 
+	new PlateauBulle(9,5,0);
+		// aprÃ¨s cette instruction rien ne peut s'excuter car j'utilise un true dans la condition d'un tant que 
 
 	}
 }
