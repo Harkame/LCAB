@@ -51,7 +51,7 @@ public class Identification extends JFrame {
 		final double w = width/1.5; //La moitié de l'écran
 		Utilisateur.recupIdentifiants(); //On récup_re tous les identifiants, utile pour la suggestion
 		this.utilisateurs = Utilisateur.getutilisateurs(); //On prépare la suggestions
-		this.setContentPane(new ImagePanel(new ImageIcon("bulle1.jpg")
+		this.setContentPane(new ImagePanel(new ImageIcon(getClass().getResource("/bulle1.jpg"))
 				.getImage())); //on met le fond
 		this.setTitle("La case a bulles"); //Nommage de la fenêtre (titre)
 		this.setExtendedState(Frame.MAXIMIZED_BOTH); //Fenêtre en plein écran
