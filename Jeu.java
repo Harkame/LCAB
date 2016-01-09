@@ -40,9 +40,9 @@ public class Jeu extends Canvas implements Runnable {
            
 	public Jeu() throws IOException {
  		try{
-			File fichierSon=new File ("JeuxDenfants.wav");
+			//File fichierSon=new File ("JeuxDenfants.wav");
 			AudioInputStream sound;
-			sound = AudioSystem.getAudioInputStream(fichierSon);
+			sound = AudioSystem.getAudioInputStream(getClass().getResource("/JeuxDenfants.wav"));
 			DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
 			this.son  = (Clip) AudioSystem.getLine(info);
 			this.son.open(sound);
@@ -55,7 +55,7 @@ public class Jeu extends Canvas implements Runnable {
 	//	this.addMouseListener(new MouseInput());
 	}
 
-	// GÃƒÂ©re l'ÃƒÂ©tat du jeu : Fait les transitions
+	// GÃƒÆ’Ã‚Â©re l'ÃƒÆ’Ã‚Â©tat du jeu : Fait les transitions
 	public static void controller() throws IOException {
 		if (State == STATE.IDENTIFICATIONS) {
 			try {
@@ -70,7 +70,7 @@ public class Jeu extends Canvas implements Runnable {
 
 		} else if (State == STATE.GAME) {
 			// !!!!!!! IMPORTANT, il faudra faire le bouton jouer pour revenir
-			// au niveau jouÃƒÂ© ÃƒÂ  la derniÃƒÂ¨re fois par le joueur
+			// au niveau jouÃƒÆ’Ã‚Â© ÃƒÆ’Ã‚Â  la derniÃƒÆ’Ã‚Â¨re fois par le joueur
 			// NiveauBulle N1= new NiveauBulleStatic(9,4);
 			PlateauBulle N1 = new PlateauBulle(9, 4, 0); // niveau bulle static
 		
