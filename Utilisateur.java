@@ -739,6 +739,38 @@ public class Utilisateur {
 	public String getIdentifiant() {
 		return identifiant;
 	}
+	
+		public static void antibug() {
+		int pallier = getpallier_actuel();
+		if (pallier == 0) {
+			PlateauBulle N1 = new PlateauBulle(5, 1, 0);
+		}
+		if (pallier == 1) {
+			PlateauBulle N1 = new PlateauBulle(5, 1, 0);
+		}
+		if (pallier == 2) {
+			PlateauBulle N2 = new PlateauBulle(7, 2, 0);
+		}
+		if (pallier == 3) {
+			PlateauBulle N3 = new PlateauBulle(9, 3, 0);
+		}
+		if (pallier == 4) {
+			PlateauBulle N4 = new PlateauBulle(11, 3, 0);
+		}
+		if (pallier == 5) {
+			PlateauBulle N5 = new PlateauBulle(5, 1, 1);
+		}
+		if (pallier == 6) {
+			PlateauBulle N6 = new PlateauBulle(7, 2, 1);
+		}
+		if (pallier == 7) {
+			PlateauBulle N7 = new PlateauBulle(9, 2, 1);
+		}
+		if (pallier == 8) {
+			PlateauBulle N8 = new PlateauBulle(11, 3, 1);
+		}
+		
+	}
 
 	public static void main(String[] Args) throws IOException {
 		Utilisateur u = new Utilisateur("lee");
