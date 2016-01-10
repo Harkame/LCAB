@@ -35,7 +35,10 @@ public class Menu extends JFrame {
 	private JButton BoutonQuitterJeu;
 	private JButton BoutonRevenirConnexion;
 	
-	
+		private static Utilisateur utilisateur;
+	static {
+		utilisateur = Identification.getutilisateur();
+	}
 	
 	
 	public Menu()  throws IOException{
@@ -51,7 +54,13 @@ public class Menu extends JFrame {
 			this.setLayout(null); // permet le position correcte des boutons
 			
 		 Font police = new Font("Verdana", Font.BOLD, 20);
+		  int pallier = utilisateur.getpallier_actuel();
+		 if (pallier == 0 || pallier == 1) {
 			this.BoutonJouer = new JButton("Jouer");
+		 }
+		 else {
+		 	this.BoutonJouer = new JButton("Continuer");
+		 }
 			this.BoutonJouer.setBackground(Color.WHITE);
 			this.BoutonJouer.setFont(police);
 			this.BoutonJouer.setBounds(width /2 -110, 400, 200, 75);
@@ -65,12 +74,13 @@ public class Menu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Jeu.State = STATE.GAME;
 				dispose();
-				try {
-					Jeu.controller();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				Utilisateur.antibug();
+		//		try {
+		//			Jeu.controller();
+		//		} catch (IOException e1) {
+		//			// TODO Auto-generated catch block
+		//			e1.printStackTrace();
+		//		}
 				
 			}
 			
