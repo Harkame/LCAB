@@ -36,7 +36,7 @@ public class FenetreScore extends JFrame {
 	private static Utilisateur utilisateur = new Utilisateur(
 			recup.getIdentifiant());
 	// private static Utilisateur utilisateur = Jeu.getutilisateur();
-	// !!! A rÃ©gler
+	// !!! A regler
 	// private static Utilisateur utilisateur = new Utilisateur("marion"); //
 	// !!! Lance l'exception java.lang.ArrayIndexOutOfBoundsException: 8
 	static {
@@ -49,7 +49,7 @@ public class FenetreScore extends JFrame {
 
 	public void initialization(Object[][] valeurs) {
 		Object[][] tableau_niveau1 = utilisateur.niveau1toMatrice(); // On
-																		// rÃ©cupÃ¨re
+																		// recupÃ¨re
 																		// les
 																		// scores
 																		// du
@@ -81,18 +81,18 @@ public class FenetreScore extends JFrame {
 		// this.setContentPane(new ImagePanel(new ImageIcon(
 		// "/home/ann2/daviaudl/Bureau/bulle1.jpg").getImage()));
 		this.setTitle("La case a bulles"); // On titre la fenÃªtre
-		this.setExtendedState(Frame.MAXIMIZED_BOTH); // Plein Ã©cran
+		this.setExtendedState(Frame.MAXIMIZED_BOTH); // Plein ecran
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Si on clique sur
 																// la croix
 																// rouge, sa tue
 																// le processus
-		this.setLocationRelativeTo(null); // La fenÃªtre est indÃ©pendante
+		this.setLocationRelativeTo(null); // La fenÃªtre est independante
 		Object[][] valeurs = {
 				{ "Pallier 1", null, null, null, null, null, null },
 				{ "Pallier 2", null, null, null, null, null, null },
 				{ "Pallier 3", null, null, null, null, null, null },
 				{ "Pallier 4", null, null, null, null, null, null }, }; // Par
-																		// dÃ©fault
+																		// default
 																		// les
 																		// valeurs
 																		// sont
@@ -102,7 +102,7 @@ public class FenetreScore extends JFrame {
 				"nombre de bulles", "niveau 2", "nombre de clics",
 				"nombre de bulles" }; // les titres de chacune des colonnes de
 										// la grille des scores
-		this.table = new JTable(valeurs, titre); // On crÃ©e une JTable
+		this.table = new JTable(valeurs, titre); // On cree une JTable
 													// (grille), avec les scores
 													// et les valeurs
 		initialization(valeurs); // On va initialiser les valeurs des scores
