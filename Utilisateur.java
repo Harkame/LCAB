@@ -32,19 +32,7 @@ public class Utilisateur {
 															// fichier
 				fd.write("root|5-5|7-7|9-9|11-11|5-5|7-7|9-9|11-11|"
 						+ System.getProperty("line.separator")); // Il y a un
-																	// probleme
-																	// si le
-																	// fichier
-																	// est vide,
-																	// on met
-																	// alors
-																	// automatiquement
-																	// un
-																	// utilisateur
-																	// "root"
-																	// avec les
-																	// meilleurs
-																	// scores
+																// scores
 				fd.close(); // On ferme le FileWriter
 			} catch (IOException e) {
 			}
