@@ -71,12 +71,12 @@ public class Jeu extends Canvas implements Runnable {
 
 		} else if (State == STATE.GAME) {
 			
-			String identifiant = utilisateur.getIdentifiant();
-			Utilisateur u1 = new Utilisateur(identifiant);
+			String identifiant = utilisateur.getIdentifiant();// recupere l'identifiant de l'utilisateur courant
+			Utilisateur u1 = new Utilisateur(identifiant); // Instancie l'utilisateur courant
 			
 			
 			
-			int pallier = u1.getpallier_actuel();
+			int pallier = u1.getpallier_actuel(); // récupére le pallier actuel de l'utilisateur courant
 			if (pallier == 0) {
 				PlateauBulle N1 = new PlateauBulle(5, 1, 0);
 			}
