@@ -166,7 +166,7 @@ public class Menu extends JFrame {
 		
 	});
 	
-	this.BoutonRevenirConnexion = new JButton("Revenir a  l'ecran de connexion");
+	this.BoutonRevenirConnexion = new JButton("Revenir a l'ecran de connexion");
 	this.BoutonRevenirConnexion.setBackground(Color.ORANGE);
 	this.BoutonRevenirConnexion.setFont(police);
 	this.BoutonRevenirConnexion.setBounds((int) (width / 20), (int)(height /1.2), width / 3, height / 10);
