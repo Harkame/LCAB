@@ -69,6 +69,40 @@ public class Jeu extends Canvas implements Runnable {
 			// System.exit(0);
 
 		} else if (State == STATE.GAME) {
+			
+			String identifiant = Utilisateur.getIdentifiant();
+			Utilisateur u1 = new Utilisateur(identifiant);
+			
+			
+			int pallier = u1.getpallier_actuel();
+			if (pallier == 0) {
+				PlateauBulle N1 = new PlateauBulle(5, 1, 0);
+			}
+			if (pallier == 1) {
+				PlateauBulle N1 = new PlateauBulle(5, 1, 0);
+			}
+			if (pallier == 2) {
+				PlateauBulle N2 = new PlateauBulle(7, 2, 0);
+			}
+			if (pallier == 3) {
+				PlateauBulle N3 = new PlateauBulle(9, 3, 0);
+			}
+			if (pallier == 4) {
+				PlateauBulle N4 = new PlateauBulle(11, 3, 0);
+			}
+			if (pallier == 5) {
+				PlateauBulle N5 = new PlateauBulle(5, 1, 1);
+			}
+			if (pallier == 6) {
+				PlateauBulle N6 = new PlateauBulle(7, 2, 1);
+			}
+			if (pallier == 7) {
+				PlateauBulle N7 = new PlateauBulle(9, 2, 1);
+			}
+			if (pallier == 8) {
+				PlateauBulle N8 = new PlateauBulle(11, 3, 1);
+			}
+			
 			// !!!!!!! IMPORTANT, il faudra faire le bouton jouer pour revenir
 			// au niveau jouÃƒÆ’Ã‚Â© ÃƒÆ’Ã‚Â  la derniÃƒÆ’Ã‚Â¨re fois par le joueur
 			// NiveauBulle N1= new NiveauBulleStatic(9,4);
