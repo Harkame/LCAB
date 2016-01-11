@@ -31,14 +31,11 @@ public class Menu extends JFrame {
 	
 	private JButton BoutonJouer;
 	private JButton BoutonChoisirNiveau;
-	private JButton BoutonScores;
+	private JButton BoutonOptions;
 	private JButton BoutonQuitterJeu;
 	private JButton BoutonRevenirConnexion;
 	
-		private static Utilisateur utilisateur;
-	static {
-		utilisateur = Identification.getutilisateur();
-	}
+	
 	
 	
 	public Menu()  throws IOException{
@@ -54,16 +51,10 @@ public class Menu extends JFrame {
 			this.setLayout(null); // permet le position correcte des boutons
 			
 		 Font police = new Font("Verdana", Font.BOLD, 20);
-		  int pallier = utilisateur.getpallier_actuel();
-		 if (pallier == 0 || pallier == 1) {
 			this.BoutonJouer = new JButton("Jouer");
-		 }
-		 else {
-		 	this.BoutonJouer = new JButton("Continuer");
-		 }
 			this.BoutonJouer.setBackground(Color.WHITE);
 			this.BoutonJouer.setFont(police);
-			this.BoutonJouer.setBounds(width /2 -110, 400, 200, 75);
+			this.BoutonJouer.setBounds((int) (width / 2.5), height / 3, width / 6, height / 10);
 		this.getContentPane().add(this.BoutonJouer, BorderLayout.CENTER);
 		
 		
@@ -74,13 +65,12 @@ public class Menu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Jeu.State = STATE.GAME;
 				dispose();
-				Utilisateur.antibug();
-		//		try {
-		//			Jeu.controller();
-		//		} catch (IOException e1) {
-		//			// TODO Auto-generated catch block
-		//			e1.printStackTrace();
-		//		}
+				try {
+					Jeu.controller();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 			
@@ -90,7 +80,7 @@ public class Menu extends JFrame {
 			this.BoutonChoisirNiveau = new JButton("Choisir Niveau");
 			this.BoutonChoisirNiveau.setBackground(Color.WHITE);
 			this.BoutonChoisirNiveau.setFont(police);
-			this.BoutonChoisirNiveau.setBounds(width /2 -110, 500, 200, 75);
+			this.BoutonChoisirNiveau.setBounds((int) (width / 2.5), (int)(height / 2), width / 6, height / 10);
 		this.getContentPane().add(this.BoutonChoisirNiveau, BorderLayout.CENTER);
 		
 		
@@ -112,34 +102,19 @@ public class Menu extends JFrame {
 		});
 		
 
-		this.BoutonScores = new JButton("Scores");
-		this.BoutonScores.setBackground(Color.WHITE);
-		this.BoutonScores.setFont(police);
-		this.BoutonScores.setBounds(width /2 -110, 600, 200, 75);
-	this.getContentPane().add(this.BoutonScores, BorderLayout.CENTER);
+		this.BoutonOptions = new JButton("Options");
+		this.BoutonOptions.setBackground(Color.WHITE);
+		this.BoutonOptions.setFont(police);
+		this.BoutonOptions.setBounds((int) (width / 2.5), (int)(height / 1.5), width / 6, height / 10);
+	this.getContentPane().add(this.BoutonOptions, BorderLayout.CENTER);
 	
-	this.BoutonScores.addActionListener(new ActionListener() {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			Jeu.State = STATE.SCORES;
-			dispose();
-			try {
-				Jeu.controller();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			
-		}
-		
-	});
+	
 		
 
 		this.BoutonQuitterJeu = new JButton("Quitter le jeu");
 		this.BoutonQuitterJeu.setBackground(Color.WHITE);
 		this.BoutonQuitterJeu.setFont(police);
-		this.BoutonQuitterJeu.setBounds(width /2 -110, 700, 200, 75);
+		this.BoutonQuitterJeu.setBounds((int) (width / 2.5), (int)(height / 1.20), width / 6, height / 10);
 	this.getContentPane().add(this.BoutonQuitterJeu, BorderLayout.CENTER);
 	
 	this.BoutonQuitterJeu.addActionListener(new ActionListener() {
