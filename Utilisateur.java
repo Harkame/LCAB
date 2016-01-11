@@ -21,7 +21,7 @@ public class Utilisateur {
 	 */
 
 	static {
-		fichier = new File("utilisateurs.txt"); // On le met a la racine de c
+		fichier = new File("utilisateurs.txt"); // On le dans le dossier courant
 
 		if (fichier.exists()) { // Si il existe
 		} else {
