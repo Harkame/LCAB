@@ -31,7 +31,7 @@ public class Menu extends JFrame {
 	
 	private JButton BoutonJouer;  //on defini nos boutons permettant de faire les actions necessaires
 	private JButton BoutonChoisirNiveau;
-	private JButton BoutonOptions;
+	private JButton BoutonScores;
 	private JButton BoutonQuitterJeu;
 	private JButton BoutonRevenirConnexion;
 	
@@ -102,12 +102,29 @@ public class Menu extends JFrame {
 		});
 		
 
-		this.BoutonOptions = new JButton("Score"); // ce bouton revoie le fenetre de score de l'utilisateur actuel 
-		this.BoutonOptions.setBackground(Color.WHITE);
-		this.BoutonOptions.setFont(police);
-		this.BoutonOptions.setBounds((int) (width / 2.5), (int)(height /2), width / 6, height / 10);
-	this.getContentPane().add(this.BoutonOptions, BorderLayout.CENTER);
+		this.BoutonScores = new JButton("Score"); // ce bouton revoie le fenetre de score de l'utilisateur actuel 
+		this.BoutonScores.setBackground(Color.WHITE);
+		this.BoutonScores.setFont(police);
+		this.BoutonScores.setBounds((int) (width / 2.5), (int)(height /2), width / 6, height / 10);
+	this.getContentPane().add(this.BoutonScores, BorderLayout.CENTER);
 	
+	
+	this.BoutonScores.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Jeu.State = STATE.SCORES;
+			dispose();
+			try {
+				Jeu.controller();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+		}
+		
+	});
 	
 		
 
