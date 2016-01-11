@@ -25,11 +25,11 @@ public class Menu extends JFrame {
 	int SCALE = 2;
 	String title = "Jeu de Bulles";
 	
-	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // on recupere la taille de l'ecran
 	int width = (int) screenSize.getWidth();
 	int height = (int) screenSize.getHeight();
 	
-	private JButton BoutonJouer;
+	private JButton BoutonJouer;  //on defini nos boutons permettant de faire les actions necessaires
 	private JButton BoutonChoisirNiveau;
 	private JButton BoutonOptions;
 	private JButton BoutonQuitterJeu;
@@ -45,13 +45,13 @@ public class Menu extends JFrame {
 		
 		/* Redimensionner les images pour travailler sur tous les Ã©crans */
 		// if(width == 1920 && height == 1080) {
-		this.setContentPane(new ImagePanel(new ImageIcon("wallpaper.jpg").getImage()));
+		this.setContentPane(new ImagePanel(new ImageIcon("wallpaper.jpg").getImage()));  // le fond de la fenetre
 		 //}
 		 
 			this.setLayout(null); // permet le position correcte des boutons
 			
-		 Font police = new Font("Verdana", Font.BOLD, 20);
-			this.BoutonJouer = new JButton("Jouer");
+		 Font police = new Font("Verdana", Font.BOLD, 20);  
+			this.BoutonJouer = new JButton("Jouer"); // on place notre bouton a l'endroit desire
 			this.BoutonJouer.setBackground(Color.WHITE);
 			this.BoutonJouer.setFont(police);
 			this.BoutonJouer.setBounds((int) (width / 2.5), (int)(height / 6), width / 6, height / 10);
@@ -59,11 +59,11 @@ public class Menu extends JFrame {
 		
 		
 		
-		this.BoutonJouer.addActionListener(new ActionListener() {
+		this.BoutonJouer.addActionListener(new ActionListener() { //on definit son action
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Jeu.State = STATE.GAME;
+				Jeu.State = STATE.GAME; // ce bouton lance le jeu sur le dernier palier joue par l'utilisateur
 				dispose();
 				try {
 					Jeu.controller();
@@ -77,8 +77,8 @@ public class Menu extends JFrame {
 		});
 		
 	
-			this.BoutonChoisirNiveau = new JButton("Choisir Niveau");
-			this.BoutonChoisirNiveau.setBackground(Color.WHITE);
+			this.BoutonChoisirNiveau = new JButton("Choisir Niveau"); // ce bouton lance la fenetre de selection 
+			this.BoutonChoisirNiveau.setBackground(Color.WHITE);// du palier 
 			this.BoutonChoisirNiveau.setFont(police);
 			this.BoutonChoisirNiveau.setBounds((int) (width / 2.5), (int)(height /3), width / 6, height / 10);
 		this.getContentPane().add(this.BoutonChoisirNiveau, BorderLayout.CENTER);
@@ -102,7 +102,7 @@ public class Menu extends JFrame {
 		});
 		
 
-		this.BoutonOptions = new JButton("Options");
+		this.BoutonOptions = new JButton("Score"); // ce bouton revoie le fenetre de score de l'utilisateur actuel 
 		this.BoutonOptions.setBackground(Color.WHITE);
 		this.BoutonOptions.setFont(police);
 		this.BoutonOptions.setBounds((int) (width / 2.5), (int)(height /2), width / 6, height / 10);
