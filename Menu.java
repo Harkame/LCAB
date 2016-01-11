@@ -59,18 +59,38 @@ public class Menu extends JFrame {
 		
 		
 		
-		this.BoutonJouer.addActionListener(new ActionListener() { //on definit son action
+	//	this.BoutonJouer.addActionListener(new ActionListener() { //on definit son action
+
+	//		@Override
+	//		public void actionPerformed(ActionEvent e) {
+	//			Jeu.State = STATE.GAME; // ce bouton lance le jeu sur le dernier palier joue par l'utilisateur
+	//			dispose();
+	//			try {
+	//				Jeu.controller();
+	//			} catch (IOException e1) {
+	//				// TODO Auto-generated catch block
+	//				e1.printStackTrace();
+	//			}
+	//			
+	//		}
+	//		
+	//	});
+		
+		
+		
+			this.BoutonJouer.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Jeu.State = STATE.GAME; // ce bouton lance le jeu sur le dernier palier joue par l'utilisateur
+				Jeu.State = STATE.GAME;
 				dispose();
-				try {
-					Jeu.controller();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				Utilisateur.antibug();
+		//		try {
+		//			Jeu.controller();
+		//		} catch (IOException e1) {
+		//			// TODO Auto-generated catch block
+		//			e1.printStackTrace();
+		//		}
 				
 			}
 			
