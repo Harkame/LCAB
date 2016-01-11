@@ -224,11 +224,11 @@ public class PlateauBulle extends JFrame { // crÃ©ation de ma fenÃªtre
 				}*/
 				
 				
-				final JFrame MenuBox = new JFrame();
+				final JFrame MenuBox = new JFrame(); // Fait le menu echap 
 				MenuBox.setSize(600, 600);
 				MenuBox.getContentPane().setBackground(Color.BLACK);
 				Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-				MenuBox.setLocation(dim.width/2-MenuBox.getSize().width/2, dim.height/2-MenuBox.getSize().height/2);
+				MenuBox.setLocation(dim.width/2-MenuBox.getSize().width/2, dim.height/2-MenuBox.getSize().height/2); // met la taille
 				MenuBox.setUndecorated(true);
 				MenuBox.setContentPane(new ImagePanel(new ImageIcon(getClass().getResource("/MenuBox_Wallpaper.png")).getImage()));
 				MenuBox.setVisible(true);
@@ -269,7 +269,7 @@ public class PlateauBulle extends JFrame { // crÃ©ation de ma fenÃªtre
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					MenuBox.dispose();
+					MenuBox.dispose(); // Le Menu disparaît
 					try {
 						RevenirMenuPrincipal();
 					} catch (IOException e1) {
@@ -322,12 +322,12 @@ public class PlateauBulle extends JFrame { // crÃ©ation de ma fenÃªtre
 				
 			});
 
-			MenuBox.getContentPane().add(MenuPrincipal, BorderLayout.CENTER);
+			MenuBox.getContentPane().add(MenuPrincipal, BorderLayout.CENTER); // Ajoute le bouton à la fenetre MenuBox
 			MenuBox.getContentPane().add(ChoisirNiveau, BorderLayout.CENTER);
 			MenuBox.getContentPane().add(QuitterJeu, BorderLayout.CENTER);
 			MenuBox.getContentPane().add(RevenirJeu, BorderLayout.CENTER);
 			
-			RevenirJeu.setVisible(true);
+			RevenirJeu.setVisible(true); // rend visisible le bouton
 			QuitterJeu.setVisible(true);
 			ChoisirNiveau.setVisible(true);
 			MenuPrincipal.setVisible(true);
@@ -347,7 +347,7 @@ public class PlateauBulle extends JFrame { // crÃ©ation de ma fenÃªtre
 	
 
 			 };
-		KeyStroke key = KeyStroke.getKeyStroke((char) KeyEvent.VK_ESCAPE);
+		KeyStroke key = KeyStroke.getKeyStroke((char) KeyEvent.VK_ESCAPE); // KeyHandler pour echap pour afficher le menuBox
 		pan.getActionMap().put("Echap", action);
 		pan.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(key, "Echap");
 		
@@ -359,13 +359,13 @@ public class PlateauBulle extends JFrame { // crÃ©ation de ma fenÃªtre
 								
 	}
 
-	public void RevenirMenuPrincipal() throws IOException {
+	public void RevenirMenuPrincipal() throws IOException { // RevenirMenuprincipal
 		Jeu.State = STATE.MENU;
 		this.dispose();
 		Jeu.controller();
 	}
 	
-	public void RevenirEcranSelectionNiveau() throws IOException {
+	public void RevenirEcranSelectionNiveau() throws IOException { // RevenirEcranSelectionNiveau
 		Jeu.State = STATE.SELECTION_NIVEAU;
 		this.dispose();
 		Jeu.controller();
