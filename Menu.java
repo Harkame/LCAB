@@ -54,7 +54,7 @@ public class Menu extends JFrame {
 			this.BoutonJouer = new JButton("Jouer");
 			this.BoutonJouer.setBackground(Color.WHITE);
 			this.BoutonJouer.setFont(police);
-			this.BoutonJouer.setBounds((int) (width / 2.5), height / 3, width / 6, height / 10);
+			this.BoutonJouer.setBounds((int) (width / 2.5), (int)(height / 3.5), width / 6, height / 10);
 		this.getContentPane().add(this.BoutonJouer, BorderLayout.CENTER);
 		
 		
@@ -80,7 +80,7 @@ public class Menu extends JFrame {
 			this.BoutonChoisirNiveau = new JButton("Choisir Niveau");
 			this.BoutonChoisirNiveau.setBackground(Color.WHITE);
 			this.BoutonChoisirNiveau.setFont(police);
-			this.BoutonChoisirNiveau.setBounds((int) (width / 2.5), (int)(height / 2), width / 6, height / 10);
+			this.BoutonChoisirNiveau.setBounds((int) (width / 2.5), (int)(height /2.25), width / 6, height / 10);
 		this.getContentPane().add(this.BoutonChoisirNiveau, BorderLayout.CENTER);
 		
 		
@@ -105,7 +105,7 @@ public class Menu extends JFrame {
 		this.BoutonOptions = new JButton("Options");
 		this.BoutonOptions.setBackground(Color.WHITE);
 		this.BoutonOptions.setFont(police);
-		this.BoutonOptions.setBounds((int) (width / 2.5), (int)(height / 1.5), width / 6, height / 10);
+		this.BoutonOptions.setBounds((int) (width / 2.5), (int)(height /1.65), width / 6, height / 10);
 	this.getContentPane().add(this.BoutonOptions, BorderLayout.CENTER);
 	
 	
@@ -114,7 +114,7 @@ public class Menu extends JFrame {
 		this.BoutonQuitterJeu = new JButton("Quitter le jeu");
 		this.BoutonQuitterJeu.setBackground(Color.WHITE);
 		this.BoutonQuitterJeu.setFont(police);
-		this.BoutonQuitterJeu.setBounds((int) (width / 2.5), (int)(height / 1.20), width / 6, height / 10);
+		this.BoutonQuitterJeu.setBounds((int) (width / 2.5), (int)(height /1.3), width / 6, height / 10);
 	this.getContentPane().add(this.BoutonQuitterJeu, BorderLayout.CENTER);
 	
 	this.BoutonQuitterJeu.addActionListener(new ActionListener() {
@@ -129,10 +129,10 @@ public class Menu extends JFrame {
 		
 	});
 	
-	this.BoutonRevenirConnexion = new JButton("Revenir Ã  l'Ã©cran de connexion");
+	this.BoutonRevenirConnexion = new JButton("Revenir a  l'ecran de connexion");
 	this.BoutonRevenirConnexion.setBackground(Color.ORANGE);
 	this.BoutonRevenirConnexion.setFont(police);
-	this.BoutonRevenirConnexion.setBounds(100, 900, 500, 75);
+	this.BoutonRevenirConnexion.setBounds((int) (width / 20), (int)(height /1.2), width / 3, height / 10);
 this.getContentPane().add(this.BoutonRevenirConnexion, BorderLayout.CENTER);
 
 this.BoutonRevenirConnexion.addActionListener(new ActionListener() {
