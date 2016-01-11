@@ -34,13 +34,13 @@ import java.io.IOException;
 
 
 
-public class PlateauBulle extends JFrame { // crÃ©ation de ma fenÃªtre 
-	public static JPanel pan;	
-	public static Annimation[] anim;
-	private int countClick = 0;
-	private int countBulleEclat=0;
-        private	Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-	private int height = (int)dimension.getHeight();
+public class PlateauBulle extends JFrame { // creation de la fenetre
+	public static JPanel pan;	// notre conteneur
+	public static Annimation[] anim; // tableau animmation qui contiendra tout nos objets animmation
+	private int countClick = 0;      // le nombre de click total
+	private int countBulleEclat=0;  // nombre de click total sur les bulles
+        private	Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize(); // recuperation des dimensions de l'ecrant 
+	private int height = (int)dimension.getHeight(); 
 	private int width  = (int)dimension.getWidth();
 	private JButton palierSuivant;
 	private JButton MenuPrincipal;
