@@ -67,7 +67,7 @@ public class Jeu extends Canvas implements Runnable {
 		} else if (State == STATE.MENU) {
 			Menu m = new Menu();
 			utilisateur = identification.getutilisateur();
-			// System.exit(0);
+		
 
 		} else if (State == STATE.GAME) {
 			
@@ -108,7 +108,7 @@ public class Jeu extends Canvas implements Runnable {
 			
 		
 		
-// State inutilisable puisque l'appel de getpallier ici fait des bugs d'affichage
+
 		} else if (State == STATE.SELECTION_NIVEAU) {
 			ChoisirNiveau ch1 = new ChoisirNiveau();
 		}
