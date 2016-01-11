@@ -39,7 +39,7 @@ public class Jeu extends Canvas implements Runnable {
 	}
            
 	public Jeu() throws IOException {
- 		/*try{
+ 		try{
 			//File fichierSon=new File ("JeuxDenfants.wav");
 			AudioInputStream sound;
 			sound = AudioSystem.getAudioInputStream(getClass().getResource("/JeuxDenfants.wav"));
@@ -50,7 +50,7 @@ public class Jeu extends Canvas implements Runnable {
 			} catch (UnsupportedAudioFileException|LineUnavailableException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} */	
+			} 	
 		controller();
 	//	this.addMouseListener(new MouseInput());
 	}
