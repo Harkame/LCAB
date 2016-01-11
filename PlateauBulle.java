@@ -55,7 +55,8 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 	/**
 	 */
 	public PlateauBulle(int nb, int taille, int vitesse){
-		
+			this.setContentPane(new ImagePanel(new ImageIcon(getClass().getResource("/lefond.jpg"))
+				.getImage())); //on met le fond
 		this.MenuPrincipal = new JButton("Menu Principal");
 		this.MenuPrincipal.setBackground(Color.WHITE);
 		this.MenuPrincipal.setFont(police);
