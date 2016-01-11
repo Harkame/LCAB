@@ -55,7 +55,7 @@ public class Jeu extends Canvas implements Runnable {
 	//	this.addMouseListener(new MouseInput());
 	}
 
-	// GÃƒÆ’Ã‚Â©re l'ÃƒÆ’Ã‚Â©tat du jeu : Fait les transitions
+	// Gere l'etat du jeu : Fait les transitions
 	public static void controller() throws IOException {
 		if (State == STATE.IDENTIFICATIONS) {
 			try {
