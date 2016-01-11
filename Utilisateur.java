@@ -16,25 +16,36 @@ public class Utilisateur {
 									// utilisateurs
 
 	/*
-	* Permet de créer le fichier utilisateurs, en fonction du systeme d'exploitation
-	*/
-	
+	 * Permet de créer le fichier utilisateurs, en fonction du systeme
+	 * d'exploitation
+	 */
+
 	static {
-		
-			fichier = new File("utilisateurs.txt"); //On le met a la racine de c
-			
-		
-			fichier = new File("utilisateurs.txt"); //On le met a la racine /
-			
-		
-		if (fichier.exists()) { //Si il existe
+		fichier = new File("utilisateurs.txt"); // On le met a la racine de c
+
+		if (fichier.exists()) { // Si il existe
 		} else {
 			try {
-				fichier.createNewFile(); //On creer le fichier
-				FileWriter fd = new FileWriter(fichier); //Sa va permetre d'écrire dans le fichier
+				fichier.createNewFile(); // On creer le fichier
+				FileWriter fd = new FileWriter(fichier); // Sa va permetre
+															// d'écrire dans le
+															// fichier
 				fd.write("root|5-5|7-7|9-9|11-11|5-5|7-7|9-9|11-11|"
-						+ System.getProperty("line.separator")); //Il y a un probleme si le fichier est vide, on met alors automatiquement un utilisateur "root" avec les meilleurs scores
-				fd.close(); //On ferme le FileWriter
+						+ System.getProperty("line.separator")); // Il y a un
+																	// probleme
+																	// si le
+																	// fichier
+																	// est vide,
+																	// on met
+																	// alors
+																	// automatiquement
+																	// un
+																	// utilisateur
+																	// "root"
+																	// avec les
+																	// meilleurs
+																	// scores
+				fd.close(); // On ferme le FileWriter
 			} catch (IOException e) {
 			}
 		}
@@ -84,8 +95,8 @@ public class Utilisateur {
 
 	/*
 	 * RÃƒÆ’Ã†â€™e€šÃ‚ÂcupÃƒÆ’Ã†â€™e€šÃ‚Â¨re toute la ligne concercernant
-	 * l'utilisateur dans la base de donnÃƒÆ’Ã†â€™e€šÃ‚Âe sous forme de
-	 * String, content l'identifiant, les 10 scores pour chacun des palliers
+	 * l'utilisateur dans la base de donnÃƒÆ’Ã†â€™e€šÃ‚Âe sous forme de String,
+	 * content l'identifiant, les 10 scores pour chacun des palliers
 	 */
 	private StringBuilder recupLigne() throws IOException {
 		String ligne = new String(); // Variable temporaire qui va eªtre notre
@@ -131,11 +142,11 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Perme de recupere le pallier actuel de l'utilisateur On va
-	 * chercher le premier socre ou le nombre de clics est e  0 (valeur par
-	 * default et impossible de faire un score pareil) Si jamais il n'y a pas
-	 * pas de score avec un nombre de clics == e  0, l'utilisateur a fini le
-	 * jeu, on renvoit donc le dernier pallier
+	 * Perme de recupere le pallier actuel de l'utilisateur On va chercher le
+	 * premier socre ou le nombre de clics est e  0 (valeur par default et
+	 * impossible de faire un score pareil) Si jamais il n'y a pas pas de score
+	 * avec un nombre de clics == e  0, l'utilisateur a fini le jeu, on renvoit
+	 * donc le dernier pallier
 	 */
 	public void recuppallier_actuel() {
 		for (int i = 0; i < this.scores.length; i++) { // On parcours tous les
@@ -160,9 +171,9 @@ public class Utilisateur {
 	/*
 	 * Dit si l'identifiant est valide, sa retourne un int car je me base sur le
 	 * code ASCII, sa permet de
-	 * rÃƒÆ’Ã†â€™e€šÃ‚ÂcupÃƒÆ’Ã†â€™e€šÃ‚ÂrÃƒÆ’Ã†â€™e€šÃ‚Â le code ASCII
-	 * du caractÃƒÆ’Ã†â€™e€šÃ‚Â¨re interdit et d'afficher se dernier en
-	 * message d'ÃƒÆ’Ã†â€™e€šÃ‚Ârreure
+	 * rÃƒÆ’Ã†â€™e€šÃ‚ÂcupÃƒÆ’Ã†â€™e€šÃ‚ÂrÃƒÆ’Ã†â€™e€šÃ‚Â le code ASCII du
+	 * caractÃƒÆ’Ã†â€™e€šÃ‚Â¨re interdit et d'afficher se dernier en message
+	 * d'ÃƒÆ’Ã†â€™e€šÃ‚Ârreure
 	 */
 	private static int identifiantValide(String identifiant) {
 		if (identifiant == null || identifiant == ""
@@ -191,18 +202,18 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Getter du score correspondant ÃƒÆ’Ã†â€™e€šÃ‚Â  l'attribut
-	 * scores[pallier] de l'utilisateur (this)
+	 * Getter du score correspondant ÃƒÆ’Ã†â€™e€šÃ‚Â  l'attribut scores[pallier]
+	 * de l'utilisateur (this)
 	 */
 	public String getScore(int pallier) {
 		return this.scores[pallier].toString();
 	}
 
 	/*
-	 * Retourne le numÃƒÆ’Ã†â€™e€šÃ‚Âro de ligne de l'utilisateur dans la
-	 * base de donnÃƒÆ’Ã†â€™e€šÃ‚Âe, utiliser pour pouvoirs accelerer
-	 * l'accÃƒÆ’Ã†â€™e€šÃ‚Â¨s a la base de donnÃƒÆ’Ã†â€™e€šÃ‚Âe au lieu de
-	 * faire un parcour partiel ligne par ligne
+	 * Retourne le numÃƒÆ’Ã†â€™e€šÃ‚Âro de ligne de l'utilisateur dans la base
+	 * de donnÃƒÆ’Ã†â€™e€šÃ‚Âe, utiliser pour pouvoirs accelerer
+	 * l'accÃƒÆ’Ã†â€™e€šÃ‚Â¨s a la base de donnÃƒÆ’Ã†â€™e€šÃ‚Âe au lieu de faire
+	 * un parcour partiel ligne par ligne
 	 */
 	private void recupNumeroLigne() {
 		BufferedReader lecteur = null;
@@ -249,8 +260,8 @@ public class Utilisateur {
 
 	/*
 	 * Renvoit l'identifiant de la ligne passÃƒÆ’Ã†â€™e€šÃ‚Â en
-	 * paramÃƒÆ’Ã†â€™e€šÃ‚Â¨tre, utiliser pour savoir si la ligne de la base
-	 * de donnÃƒÆ’Ã†â€™e€šÃ‚Âe est bien celle de l'utilisateur (this)
+	 * paramÃƒÆ’Ã†â€™e€šÃ‚Â¨tre, utiliser pour savoir si la ligne de la base de
+	 * donnÃƒÆ’Ã†â€™e€šÃ‚Âe est bien celle de l'utilisateur (this)
 	 */
 	private static StringBuilder recupIdentifiant(String ligne) {
 		StringBuilder identifiant = new StringBuilder(); // Variable temporaire
@@ -273,9 +284,9 @@ public class Utilisateur {
 	}
 
 	/*
-	 * RÃƒÆ’Ã†â€™e€šÃ‚ÂcupÃƒÆ’Ã†â€™e€šÃ‚Â¨re tous les identifiants dans la
-	 * base de donnÃƒÆ’Ã†â€™e€šÃ‚Âe, utilisÃƒÆ’Ã†â€™e€šÃ‚Â pour faire les
-	 * suggestion des utilisateur sur la page d'identification
+	 * RÃƒÆ’Ã†â€™e€šÃ‚ÂcupÃƒÆ’Ã†â€™e€šÃ‚Â¨re tous les identifiants dans la base
+	 * de donnÃƒÆ’Ã†â€™e€šÃ‚Âe, utilisÃƒÆ’Ã†â€™e€šÃ‚Â pour faire les suggestion
+	 * des utilisateur sur la page d'identification
 	 */
 	static void recupIdentifiants() throws IOException {
 		BufferedReader lecteur = new BufferedReader(new FileReader(fichier)); // On
@@ -390,10 +401,10 @@ public class Utilisateur {
 
 	/*
 	 * Methode principal, elle fait 2 choses : Si l'utilisateur this n'existe
-	 * pas dans la base de donnÃƒÆ’Ã†â€™e€šÃ‚Âe, il est
-	 * rajoutÃƒÆ’Ã†â€™e€šÃ‚Â avec des scores initiaux de 0 partout, sinon ses
-	 * scores sont recupÃƒÆ’Ã†â€™e€šÃ‚ÂrÃƒÆ’Ã†â€™e€šÃ‚Âs et
-	 * attribuÃƒÆ’Ã†â€™e€šÃ‚Â ÃƒÆ’Ã†â€™e€šÃ‚Â  l'utilisateur (this)
+	 * pas dans la base de donnÃƒÆ’Ã†â€™e€šÃ‚Âe, il est rajoutÃƒÆ’Ã†â€™e€šÃ‚Â
+	 * avec des scores initiaux de 0 partout, sinon ses scores sont
+	 * recupÃƒÆ’Ã†â€™e€šÃ‚ÂrÃƒÆ’Ã†â€™e€šÃ‚Âs et attribuÃƒÆ’Ã†â€™e€šÃ‚Â
+	 * ÃƒÆ’Ã†â€™e€šÃ‚Â  l'utilisateur (this)
 	 */
 	public void Identification() throws IOException {
 		if (identifiantValide(this.identifiant) == -1) { // Si l'identifiant est
@@ -447,8 +458,8 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Indique si l'utilisateur (this) est prÃƒÆ’Ã†â€™e€šÃ‚Âsent dans la base
-	 * de donnÃƒÆ’Ã†â€™e€šÃ‚Âe, on compare les identifiant
+	 * Indique si l'utilisateur (this) est prÃƒÆ’Ã†â€™e€šÃ‚Âsent dans la base de
+	 * donnÃƒÆ’Ã†â€™e€šÃ‚Âe, on compare les identifiant
 	 */
 	public boolean UtilisateurExistant() throws IOException {
 		String ligne = new String(); // Ligne indique par le lecteur
@@ -530,10 +541,9 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Reinitialise la base de donnÃƒÆ’Ã†â€™e€šÃ‚Âe en
-	 * ÃƒÆ’Ã†â€™e€šÃ‚Âffacant son contenu intÃƒÆ’Ã†â€™e€šÃ‚Âgralement Un
-	 * demande de confirmation apprais, si oui alors reset, sinon rien n'est
-	 * fait
+	 * Reinitialise la base de donnÃƒÆ’Ã†â€™e€šÃ‚Âe en ÃƒÆ’Ã†â€™e€šÃ‚Âffacant
+	 * son contenu intÃƒÆ’Ã†â€™e€šÃ‚Âgralement Un demande de confirmation
+	 * apprais, si oui alors reset, sinon rien n'est fait
 	 */
 	public static void reinitialisation(boolean confirmation) {
 		// fichier.delete();
@@ -572,10 +582,9 @@ public class Utilisateur {
 	/*
 	 * Modifie le score d'un utilisateur (this), en passant en parametre le
 	 * pallier ÃƒÆ’Ã†â€™e€šÃ‚Â  modifier, et le nouveau nombre de clics
-	 * StratÃƒÆ’Ã†â€™e€šÃ‚Âgie : On
-	 * rÃƒÆ’Ã†â€™e€šÃ‚ÂcupÃƒÆ’Ã†â€™e€šÃ‚Â¨re toute la base de
-	 * donnÃƒÆ’Ã†â€™e€šÃ‚Âe en mÃƒÆ’Ã†â€™e€šÃ‚Âmoire, on modifie la ligne
-	 * souhaitÃƒÆ’Ã†â€™e€šÃ‚Â, puis on recopie le tout dans un nouveau
+	 * StratÃƒÆ’Ã†â€™e€šÃ‚Âgie : On rÃƒÆ’Ã†â€™e€šÃ‚ÂcupÃƒÆ’Ã†â€™e€šÃ‚Â¨re toute
+	 * la base de donnÃƒÆ’Ã†â€™e€šÃ‚Âe en mÃƒÆ’Ã†â€™e€šÃ‚Âmoire, on modifie la
+	 * ligne souhaitÃƒÆ’Ã†â€™e€šÃ‚Â, puis on recopie le tout dans un nouveau
 	 * fichier
 	 */
 	public void modifieScore(int pallier, int nouveau_score) throws IOException {
@@ -713,8 +722,8 @@ public class Utilisateur {
 
 	/*
 	 * Transforme les scores du niveau 2 en matrice
-	 * [nombre_clics][nombre_bulles] NÃƒÆ’Ã†â€™e€šÃ‚Âcessaire pour
-	 * l'affichage des scores
+	 * [nombre_clics][nombre_bulles] NÃƒÆ’Ã†â€™e€šÃ‚Âcessaire pour l'affichage
+	 * des scores
 	 */
 	public String[][] niveau2toMatrice() {
 		// Meªme chose que pour niveau 1
@@ -735,39 +744,21 @@ public class Utilisateur {
 	public String getIdentifiant() {
 		return identifiant;
 	}
-	
+
 	/*
-		public static void antibug() {
-		int pallier = getpallier_actuel();
-		if (pallier == 0) {
-			PlateauBulle N1 = new PlateauBulle(5, 1, 0);
-		}
-		if (pallier == 1) {
-			PlateauBulle N1 = new PlateauBulle(5, 1, 0);
-		}
-		if (pallier == 2) {
-			PlateauBulle N2 = new PlateauBulle(7, 2, 0);
-		}
-		if (pallier == 3) {
-			PlateauBulle N3 = new PlateauBulle(9, 3, 0);
-		}
-		if (pallier == 4) {
-			PlateauBulle N4 = new PlateauBulle(11, 3, 0);
-		}
-		if (pallier == 5) {
-			PlateauBulle N5 = new PlateauBulle(5, 1, 1);
-		}
-		if (pallier == 6) {
-			PlateauBulle N6 = new PlateauBulle(7, 2, 1);
-		}
-		if (pallier == 7) {
-			PlateauBulle N7 = new PlateauBulle(9, 2, 1);
-		}
-		if (pallier == 8) {
-			PlateauBulle N8 = new PlateauBulle(11, 3, 1);
-		}
-		
-	} */
+	 * public static void antibug() { int pallier = getpallier_actuel(); if
+	 * (pallier == 0) { PlateauBulle N1 = new PlateauBulle(5, 1, 0); } if
+	 * (pallier == 1) { PlateauBulle N1 = new PlateauBulle(5, 1, 0); } if
+	 * (pallier == 2) { PlateauBulle N2 = new PlateauBulle(7, 2, 0); } if
+	 * (pallier == 3) { PlateauBulle N3 = new PlateauBulle(9, 3, 0); } if
+	 * (pallier == 4) { PlateauBulle N4 = new PlateauBulle(11, 3, 0); } if
+	 * (pallier == 5) { PlateauBulle N5 = new PlateauBulle(5, 1, 1); } if
+	 * (pallier == 6) { PlateauBulle N6 = new PlateauBulle(7, 2, 1); } if
+	 * (pallier == 7) { PlateauBulle N7 = new PlateauBulle(9, 2, 1); } if
+	 * (pallier == 8) { PlateauBulle N8 = new PlateauBulle(11, 3, 1); }
+	 * 
+	 * }
+	 */
 
 	public static void main(String[] Args) throws IOException {
 		Utilisateur u = new Utilisateur("lee");
