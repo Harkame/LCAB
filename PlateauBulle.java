@@ -36,6 +36,8 @@ import java.io.IOException;
 
 public class PlateauBulle extends JFrame { // creation de la fenetre
 	public static JPanel pan;	// notre conteneur
+	this.setContentPane(new ImagePanel(new ImageIcon(getClass().getResource("/lefond.jpg"))
+				.getImage())); //on met le fond
 	public static Annimation[] anim; // tableau animmation qui contiendra tout nos objets animmation
 	private int countClick = 0;      // le nombre de click total
 	private int countBulleEclat=0;  // nombre de click total sur les bulles
