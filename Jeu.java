@@ -106,10 +106,7 @@ public class Jeu extends Canvas implements Runnable {
 				PlateauBulle N8 = new PlateauBulle(11, 3, 1);
 			}
 			
-			// !!!!!!! IMPORTANT, il faudra faire le bouton jouer pour revenir
-			// au niveau jouÃƒÆ’Ã‚Â© ÃƒÆ’Ã‚Â  la derniÃƒÆ’Ã‚Â¨re fois par le joueur
-			// NiveauBulle N1= new NiveauBulleStatic(9,4);
-		//	PlateauBulle N1 = new PlateauBulle(9, 4, 0); // niveau bulle static
+		
 		
 // State inutilisable puisque l'appel de getpallier ici fait des bugs d'affichage
 		} else if (State == STATE.SELECTION_NIVEAU) {
@@ -126,7 +123,7 @@ public class Jeu extends Canvas implements Runnable {
 		// TODO Auto-generated method stub
 
 	}
-
+// méthode pour retourner l'utilisateur courant
 	public static Utilisateur getutilisateur() {
 		return utilisateur;
 	}
