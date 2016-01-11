@@ -115,7 +115,7 @@ public class Identification extends JFrame {
 				Utilisateur.reinitialisation(true); //On réinitialiser le fichier texte, true indique qu'on demandera une confirmation à l'utilisateur
 				dispose(); //On éfface l'écran d'identification
 				try {
-					new Identification(); //?
+					new Identification(); //On en recrée une nouvelle (Sa met à jour les suggestions avec le nouvel utilisateur)
 				} catch (IOException e1) {
 				}
 
