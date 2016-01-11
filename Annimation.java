@@ -15,7 +15,7 @@ public class Annimation extends Thread {
 		this.bulle.animer(); // fonction annimer implementer dans notre classe Bulle.
 	   	Thread.yield();	   // fonction implementer pour tout Thread permentant d'alterner les Thread en rendant la main.
 	}
-		public Bulle getBulle(){ // fonction qui nous permettras de recuperer notre bulle courante.
+		public Bulle getBulle(){ // fonction qui nous permettra de recuperer notre bulle courante.
 	 	   return this.bulle;
 	}
 }
