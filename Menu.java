@@ -148,11 +148,11 @@ public class Menu extends JFrame {
 	
 		
 
-		this.BoutonQuitterJeu = new JButton("Quitter le jeu");
-		this.BoutonQuitterJeu.setBackground(Color.WHITE);
-		this.BoutonQuitterJeu.setFont(police);
+		this.BoutonQuitterJeu = new JButton("Quitter le jeu"); // ce bouton quitte le jeu
+		this.BoutonQuitterJeu.setBackground(Color.WHITE); // met l'arrière plan du bouton en oculeur blanc
+		this.BoutonQuitterJeu.setFont(police);// met la police au font
 		this.BoutonQuitterJeu.setBounds((int) (width / 2.5), (int)(height /1.5), width / 6, height / 10);
-	this.getContentPane().add(this.BoutonQuitterJeu, BorderLayout.CENTER);
+	this.getContentPane().add(this.BoutonQuitterJeu, BorderLayout.CENTER); // définit l'emplacement du bouton
 	
 	this.BoutonQuitterJeu.addActionListener(new ActionListener() {
 
@@ -166,20 +166,20 @@ public class Menu extends JFrame {
 		
 	});
 	
-	this.BoutonRevenirConnexion = new JButton("Revenir a l'ecran de connexion");
-	this.BoutonRevenirConnexion.setBackground(Color.ORANGE);
+	this.BoutonRevenirConnexion = new JButton("Revenir a l'ecran de connexion"); // bouton de revenirà la correction
+	this.BoutonRevenirConnexion.setBackground(Color.ORANGE);// met à la couleur orange
 	this.BoutonRevenirConnexion.setFont(police);
-	this.BoutonRevenirConnexion.setBounds((int) (width / 20), (int)(height /1.2), width / 3, height / 10);
+	this.BoutonRevenirConnexion.setBounds((int) (width / 20), (int)(height /1.2), width / 3, height / 10); // définit la taille
 this.getContentPane().add(this.BoutonRevenirConnexion, BorderLayout.CENTER);
 
 this.BoutonRevenirConnexion.addActionListener(new ActionListener() {
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent arg0) { // Met à jour l'état et efface la fenêtre actuelle
 		Jeu.State = STATE.IDENTIFICATIONS;
-		dispose();
-		try {
-			Jeu.controller();
+		dispose(); // efface la fenêtre actuelle
+		try { 
+			Jeu.controller(); // execute le controller
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
