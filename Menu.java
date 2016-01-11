@@ -43,7 +43,7 @@ public class Menu extends JFrame {
 		super("Jeu De Bulles");
 		setSize(width,height);
 		
-		/* Redimensionner les images pour travailler sur tous les Ã©crans */
+		/* Redimensionner les images pour travailler sur tous les ecrans */
 		// if(width == 1920 && height == 1080) {
 		this.setContentPane(new ImagePanel(new ImageIcon("wallpaper.jpg").getImage()));  // le fond de la fenetre
 		 //}
@@ -64,7 +64,7 @@ public class Menu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Jeu.State = STATE.GAME; // ce bouton lance le jeu sur le dernier palier joue par l'utilisateur
-				dispose();
+				dispose(); // efface la fenêtre courante
 				try {
 					Jeu.controller();
 				} catch (IOException e1) {
@@ -104,14 +104,14 @@ public class Menu extends JFrame {
 		this.getContentPane().add(this.BoutonChoisirNiveau, BorderLayout.CENTER); // Met à jour la taille de bouton
 		
 		
-		this.BoutonChoisirNiveau.addActionListener(new ActionListener() {
+		this.BoutonChoisirNiveau.addActionListener(new ActionListener() { // Key handler du bouton choisir niveau
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				Jeu.State = STATE.SELECTION_NIVEAU;
-				dispose();
+			public void actionPerformed(ActionEvent e) { 
+				Jeu.State = STATE.SELECTION_NIVEAU; // met à jour l'état =  selection niveau
+				dispose(); // efface la fenetre
 				try {
-					Jeu.controller();
+					Jeu.controller(); // lance le controller de la classe jeu
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -129,10 +129,10 @@ public class Menu extends JFrame {
 	this.getContentPane().add(this.BoutonScores, BorderLayout.CENTER);
 	
 	
-	this.BoutonScores.addActionListener(new ActionListener() {
+	this.BoutonScores.addActionListener(new ActionListener() { // Key handler du bouton score
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e) { // lance le score
 			Jeu.State = STATE.SCORES;
 			dispose();
 			try {
