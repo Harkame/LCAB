@@ -42,9 +42,9 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
         private	Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize(); // recuperation des dimensions de l'ecrant 
 	private int height = (int)dimension.getHeight(); 
 	private int width  = (int)dimension.getWidth();
-	private JButton palierSuivant;
-	private JButton MenuPrincipal;
-	Font police = new Font("Verdana", Font.BOLD, 15);
+	private JButton palierSuivant; // Declaration bouton palier suivant
+	private JButton MenuPrincipal; // Declaration bouton Menu Principal
+	Font police = new Font("Verdana", Font.BOLD, 15); // Police de notre texte
 	
 	
 	
@@ -53,7 +53,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 	/**
 	 */
 	public PlateauBulle(int nb, int taille, int vitesse){
-			this.setContentPane(new ImagePanel(new ImageIcon(getClass().getResource("/lefond.jpg"))
+			this.setContentPane(new ImagePanel(new ImageIcon(getClass().getResource("/lefond.jpg")) 
 				.getImage())); //on met le fond
 		this.MenuPrincipal = new JButton("Menu Principal");
 		this.MenuPrincipal.setBackground(Color.WHITE);
@@ -67,7 +67,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 
 			public void actionPerformed(ActionEvent e) {
 				Jeu.State = STATE.MENU;
-				dispose(); // efface l'Ã©cran de connexion
+				dispose(); // efface l'ecran de connexion
 				try {
 					Jeu.controller();
 				} catch (IOException e1) {
@@ -81,22 +81,22 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 		
 		this.setTitle("La case Ã  bulles");
 		this.setSize(1000, 1000);
-		this.setExtendedState(Frame.MAXIMIZED_BOTH); // fenetre plein Ã©crant
+		this.setExtendedState(Frame.MAXIMIZED_BOTH); // fenetre plein ecrant
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // stopper le programme en au click sur la croix
 		this.pan =new JPanel(); // instanciation de mon conteneur
 		this.setContentPane(pan); // je choisi mon contenneur 
-		this.setVisible(true); // rentdre ma fenÃªtre visible
-		this.pan.setLayout(null); // aucune disposition par dÃ©fault dans mon conteneur ce qui permet de dÃ©placer comme on veut notre label
+		this.setVisible(true); // rentdre ma fenetre visible
+		this.pan.setLayout(null); // aucune disposition par default dans mon conteneur ce qui permet de deplacer comme on veut notre label
 		anim = new Annimation[nb];
 		
-		this.palierSuivant = new JButton("Palier Suivant");  // crÃ©ation du bouton palier suivant
+		this.palierSuivant = new JButton("Palier Suivant");  // creation du bouton palier suivant
 		this.palierSuivant.setBackground(Color.WHITE);
-		this.palierSuivant.setBounds((width /2)-115, (height/2)+200, 300, 75); // Ã  replacer
-		this.palierSuivant.addActionListener(new ActionListener() {
+		this.palierSuivant.setBounds((width /2)-115, (height/2)+200, 300, 75); // a replacer
+		this.palierSuivant.addActionListener(new ActionListener() { //definition d'une action à chaque clique sur palier suivant
 			public void actionPerformed(ActionEvent e) {
 				
 				dispose();
-				if (nb+2 <=11 ){ // si on est pas dÃ©jÃ  au dernier palier (donc Ã  9 bulles prÃ©sentes)
+				if (nb+2 <=11 ){ // si on est pas deja au dernier palier (donc a 9 bulles presentes)
 					if(vitesse==0){  // envoie au palier "statique" ou "mobile" suivant l'actuel
 						if(taille+1<=3){
 						
@@ -125,10 +125,10 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 		this.palierSuivant.setVisible(false);
 		
 		
-		for (int i = 0; i<nb; i++){
+		for (int i = 0; i<nb; i++){ //realisation de nb objet annimation 
 			anim[i] = new Annimation("anim", pan, taille, vitesse);
 		}
-		for (int i = 0; i<nb; i++){
+		for (int i = 0; i<nb; i++){ // lancement des nb objet annimation
 			anim[i].start();
 		}
 		for (int i = 0; i<nb; i++){ // Une action a chaque bulle
@@ -149,7 +149,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 							 else{palier=taille+4;}
 							 nombre_clics = countClick;
 						 try {
-							Identification.getutilisateur().modifieScore(palier, nombre_clics);
+							Identification.getutilisateur().modifieScore(palier, nombre_clics); //modification des scores sur le fichier utilisateur.txt
 						} catch (IOException e) {
 							e.getMessage();
 							e.printStackTrace();
