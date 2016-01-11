@@ -20,16 +20,13 @@ public class Utilisateur {
 	*/
 	
 	static {
-		switch (System.getProperty("os.name")) { //On recup le systeme d'explotiation
-		case "Windows 7":
-		case "Windows 8":
-		case "Windows 10": //Tous les windows
-			fichier = new File("C:\\utilisateurs.txt"); //On le met a la racine de c
-			break;
-		case "Linux":
-			fichier = new File("/utilisateurs.txt"); //On le met a la racine /
-			break;
-		}
+		
+			fichier = new File("utilisateurs.txt"); //On le met a la racine de c
+			
+		
+			fichier = new File("utilisateurs.txt"); //On le met a la racine /
+			
+		
 		if (fichier.exists()) { //Si il existe
 		} else {
 			try {
@@ -739,6 +736,7 @@ public class Utilisateur {
 		return identifiant;
 	}
 	
+	/*
 		public static void antibug() {
 		int pallier = getpallier_actuel();
 		if (pallier == 0) {
@@ -769,7 +767,7 @@ public class Utilisateur {
 			PlateauBulle N8 = new PlateauBulle(11, 3, 1);
 		}
 		
-	}
+	} */
 
 	public static void main(String[] Args) throws IOException {
 		Utilisateur u = new Utilisateur("lee");
