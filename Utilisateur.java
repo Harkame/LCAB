@@ -94,8 +94,8 @@ public class Utilisateur {
 	}
 
 	/*
-	 * RÃƒÆ’Ã†â€™e€šÃ‚ÂcupÃƒÆ’Ã†â€™e€šÃ‚Â¨re toute la ligne concercernant
-	 * l'utilisateur dans la base de donnÃƒÆ’Ã†â€™e€šÃ‚Âe sous forme de String,
+	 * Recupe¨re toute la ligne concercernant
+	 * l'utilisateur dans la base de donnee sous forme de String,
 	 * content l'identifiant, les 10 scores pour chacun des palliers
 	 */
 	private StringBuilder recupLigne() throws IOException {
@@ -171,9 +171,9 @@ public class Utilisateur {
 	/*
 	 * Dit si l'identifiant est valide, sa retourne un int car je me base sur le
 	 * code ASCII, sa permet de
-	 * rÃƒÆ’Ã†â€™e€šÃ‚ÂcupÃƒÆ’Ã†â€™e€šÃ‚ÂrÃƒÆ’Ã†â€™e€šÃ‚Â le code ASCII du
-	 * caractÃƒÆ’Ã†â€™e€šÃ‚Â¨re interdit et d'afficher se dernier en message
-	 * d'ÃƒÆ’Ã†â€™e€šÃ‚Ârreure
+	 * recupere le code ASCII du
+	 * caracte¨re interdit et d'afficher se dernier en message
+	 * d'erreure
 	 */
 	private static int identifiantValide(String identifiant) {
 		if (identifiant == null || identifiant == ""
@@ -202,7 +202,7 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Getter du score correspondant ÃƒÆ’Ã†â€™e€šÃ‚Â  l'attribut scores[pallier]
+	 * Getter du score correspondant a l'attribut scores[pallier]
 	 * de l'utilisateur (this)
 	 */
 	public String getScore(int pallier) {
@@ -210,9 +210,9 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Retourne le numÃƒÆ’Ã†â€™e€šÃ‚Âro de ligne de l'utilisateur dans la base
-	 * de donnÃƒÆ’Ã†â€™e€šÃ‚Âe, utiliser pour pouvoirs accelerer
-	 * l'accÃƒÆ’Ã†â€™e€šÃ‚Â¨s a la base de donnÃƒÆ’Ã†â€™e€šÃ‚Âe au lieu de faire
+	 * Retourne le numero de ligne de l'utilisateur dans la base
+	 * de donnee, utiliser pour pouvoirs accelerer
+	 * l'acce¨s a la base de donnee au lieu de faire
 	 * un parcour partiel ligne par ligne
 	 */
 	private void recupNumeroLigne() {
@@ -259,9 +259,9 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Renvoit l'identifiant de la ligne passÃƒÆ’Ã†â€™e€šÃ‚Â en
-	 * paramÃƒÆ’Ã†â€™e€šÃ‚Â¨tre, utiliser pour savoir si la ligne de la base de
-	 * donnÃƒÆ’Ã†â€™e€šÃ‚Âe est bien celle de l'utilisateur (this)
+	 * Renvoit l'identifiant de la ligne passe en
+	 * parame¨tre, utiliser pour savoir si la ligne de la base de
+	 * donnee est bien celle de l'utilisateur (this)
 	 */
 	private static StringBuilder recupIdentifiant(String ligne) {
 		StringBuilder identifiant = new StringBuilder(); // Variable temporaire
@@ -284,8 +284,8 @@ public class Utilisateur {
 	}
 
 	/*
-	 * RÃƒÆ’Ã†â€™e€šÃ‚ÂcupÃƒÆ’Ã†â€™e€šÃ‚Â¨re tous les identifiants dans la base
-	 * de donnÃƒÆ’Ã†â€™e€šÃ‚Âe, utilisÃƒÆ’Ã†â€™e€šÃ‚Â pour faire les suggestion
+	 * Recupe¨re tous les identifiants dans la base
+	 * de donnee, utilise pour faire les suggestion
 	 * des utilisateur sur la page d'identification
 	 */
 	static void recupIdentifiants() throws IOException {
@@ -332,9 +332,9 @@ public class Utilisateur {
 	}
 
 	/*
-	 * RecupÃƒÆ’Ã†â€™e€šÃ‚Â¨re le scores de l'utilisateur pour chacun des
-	 * pallier depÃƒÆ’Ã†â€™e€šÃ‚Â»is la base de donnÃƒÆ’Ã†â€™e€šÃ‚Âe, et
-	 * assosciÃƒÆ’Ã†â€™e€šÃ‚Â ÃƒÆ’Ã†â€™e€šÃ‚Â  l'utilisateur (this)
+	 * Recupe¨re le scores de l'utilisateur pour chacun des
+	 * pallier depe»is la base de donnee, et
+	 * assoscie e  l'utilisateur (this)
 	 */
 	private void recupScores(StringBuilder ligne) {
 		StringBuilder scores = new StringBuilder(); // ?
@@ -401,10 +401,10 @@ public class Utilisateur {
 
 	/*
 	 * Methode principal, elle fait 2 choses : Si l'utilisateur this n'existe
-	 * pas dans la base de donnÃƒÆ’Ã†â€™e€šÃ‚Âe, il est rajoutÃƒÆ’Ã†â€™e€šÃ‚Â
+	 * pas dans la base de donnee, il est rajoute
 	 * avec des scores initiaux de 0 partout, sinon ses scores sont
-	 * recupÃƒÆ’Ã†â€™e€šÃ‚ÂrÃƒÆ’Ã†â€™e€šÃ‚Âs et attribuÃƒÆ’Ã†â€™e€šÃ‚Â
-	 * ÃƒÆ’Ã†â€™e€šÃ‚Â  l'utilisateur (this)
+	 * recuperes et attribue
+	 * e  l'utilisateur (this)
 	 */
 	public void Identification() throws IOException {
 		if (identifiantValide(this.identifiant) == -1) { // Si l'identifiant est
@@ -458,8 +458,8 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Indique si l'utilisateur (this) est prÃƒÆ’Ã†â€™e€šÃ‚Âsent dans la base de
-	 * donnÃƒÆ’Ã†â€™e€šÃ‚Âe, on compare les identifiant
+	 * Indique si l'utilisateur (this) est present dans la base de
+	 * donnee, on compare les identifiant
 	 */
 	public boolean UtilisateurExistant() throws IOException {
 		String ligne = new String(); // Ligne indique par le lecteur
@@ -541,8 +541,8 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Reinitialise la base de donnÃƒÆ’Ã†â€™e€šÃ‚Âe en ÃƒÆ’Ã†â€™e€šÃ‚Âffacant
-	 * son contenu intÃƒÆ’Ã†â€™e€šÃ‚Âgralement Un demande de confirmation
+	 * Reinitialise la base de donnee en effacant
+	 * son contenu integralement Un demande de confirmation
 	 * apprais, si oui alors reset, sinon rien n'est fait
 	 */
 	public static void reinitialisation(boolean confirmation) {
@@ -581,10 +581,10 @@ public class Utilisateur {
 
 	/*
 	 * Modifie le score d'un utilisateur (this), en passant en parametre le
-	 * pallier ÃƒÆ’Ã†â€™e€šÃ‚Â  modifier, et le nouveau nombre de clics
-	 * StratÃƒÆ’Ã†â€™e€šÃ‚Âgie : On rÃƒÆ’Ã†â€™e€šÃ‚ÂcupÃƒÆ’Ã†â€™e€šÃ‚Â¨re toute
-	 * la base de donnÃƒÆ’Ã†â€™e€šÃ‚Âe en mÃƒÆ’Ã†â€™e€šÃ‚Âmoire, on modifie la
-	 * ligne souhaitÃƒÆ’Ã†â€™e€šÃ‚Â, puis on recopie le tout dans un nouveau
+	 * pallier e  modifier, et le nouveau nombre de clics
+	 * Strategie : On recupe¨re toute
+	 * la base de donnee en memoire, on modifie la
+	 * ligne souhaite, puis on recopie le tout dans un nouveau
 	 * fichier
 	 */
 	public void modifieScore(int pallier, int nouveau_score) throws IOException {
@@ -722,7 +722,7 @@ public class Utilisateur {
 
 	/*
 	 * Transforme les scores du niveau 2 en matrice
-	 * [nombre_clics][nombre_bulles] NÃƒÆ’Ã†â€™e€šÃ‚Âcessaire pour l'affichage
+	 * [nombre_clics][nombre_bulles] Necessaire pour l'affichage
 	 * des scores
 	 */
 	public String[][] niveau2toMatrice() {
