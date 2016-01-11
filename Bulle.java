@@ -29,7 +29,10 @@ public class Bulle {
 	private static Icon image = new ImageIcon("giphy.gif");	private static Icon image2 = new ImageIcon("giphy2.gif");
         private static int cpt=0;
 	
-							
+/*
+	Méthode de création de bulle où la taille et la vitesse sont données en paramètres.
+*/
+	
 	public Bulle(int x, int y, int taille, int vitesse, JPanel pan){
 		try{
 			//File fichierSon=new File ("eclatBullebest.wav");
@@ -42,13 +45,16 @@ public class Bulle {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}	
-		
+			//Création d'un entier aléatiore pour le choix de la couleur aléatoire
 			int rand = (int)(Math.random()*5)+1;
-		
+			
+			//Ce switch est utilisé pour le choix de la taille définit en paramètre (1,2,3,4 ou 5)
 			switch(taille){
 			case 1:
 				this.margx=115;
 				this.margy=115;
+				// Ici, on choisit la couleur de la bulle en fonction de la valeur aléatoire définie précédement
+				// Les couleurs sont: gris, jaune, rouge, vert, violet
 				if (rand==1){
 					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle1.png")));
 				}
@@ -146,6 +152,7 @@ public class Bulle {
 		this.y=y;
 		this.pan=pan;
 		this.vitesse=vitesse;
+		// Quand une bulle est cliqué, elle disparait et un son est joué, le compteur de bulles éclaté est incrémenté.
 		this.label.addMouseListener(new MouseAdapter(){  public void mousePressed(MouseEvent me){
 	          cpt++;
               		System.out.println(cpt);
@@ -174,6 +181,12 @@ public class Bulle {
 		return cote;
 	}
 */
+
+/* 
+	Méthode d'animation des bulles. Elles bougent en fonction de la vitesse donné en paramètre à la création de l'objet Bulle.
+	Elles bougent toute les 15 milièmes de seconde (60 fps environ).
+	Les collisions contre les bords de l'écran sont aussi gérées en fonction de la taille de la bulle définie à sa création.
+*/
 	public void animer(){
 
 		
@@ -184,22 +197,20 @@ public class Bulle {
 		this.y=(int)(Math.random()*(height-(this.margy+65)));
 		int signal=0;
 		int signaly=0;
-		char coli='a';
 		while(true){
 		
 			this.label.setBounds(this.x,this.y,this.margx,this.margx);
-//			coli = this.colision();
-			if(this.x>=(width-this.margx)||coli=='d'){
+			if(this.x>=(width-this.margx)){
 				signal=1;	
 			}
-			else if(this.x<=0||coli=='g'){
+			else if(this.x<=0){
 				signal=0;
 			}
 
-			if(this.y>=(height-this.margx-65)||coli=='h'){
+			if(this.y>=(height-this.margx-65)){
 				signaly=1;
 			}
-			else if(this.y<=0||coli=='b'){
+			else if(this.y<=0){
 				signaly=0;
 			}
 			if(signal==1&&signaly==1){
