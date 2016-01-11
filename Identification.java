@@ -88,7 +88,7 @@ public class Identification extends JFrame {
 				try {
 					utilisateur.Identification(); //On fait l'indentification de l'utilisateur (voir fonction)
 					dispose(); //On efface l'écran
-					new Identification(); //On en recrée une nouvelle (Sa met à jour les suggestions avec le nouvel utilisateur)
+					//new Identification(); //On en recrée une nouvelle (Sa met à jour les suggestions avec le nouvel utilisateur)
 				} catch (IOException e1) {
 				}
 				System.out.println(utilisateur.toString()); //On affiche dans le terminal l'utilisateur courant, permet de verifié rapidement si sa a marché ou pas (utile pour le programmeur)
