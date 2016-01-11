@@ -53,9 +53,9 @@ public class Menu extends JFrame {
 		 Font police = new Font("Verdana", Font.BOLD, 20);  
 			this.BoutonJouer = new JButton("Jouer"); // on place notre bouton a l'endroit desire
 			this.BoutonJouer.setBackground(Color.WHITE);
-			this.BoutonJouer.setFont(police);
+			this.BoutonJouer.setFont(police); // Met à jour la police
 			this.BoutonJouer.setBounds((int) (width / 2.5), (int)(height / 6), width / 6, height / 10);
-		this.getContentPane().add(this.BoutonJouer, BorderLayout.CENTER);
+		this.getContentPane().add(this.BoutonJouer, BorderLayout.CENTER); // Définit la taille des boutons
 		
 		
 		
@@ -99,9 +99,9 @@ public class Menu extends JFrame {
 	
 			this.BoutonChoisirNiveau = new JButton("Choisir Niveau"); // ce bouton lance la fenetre de selection 
 			this.BoutonChoisirNiveau.setBackground(Color.WHITE);// du palier 
-			this.BoutonChoisirNiveau.setFont(police);
+			this.BoutonChoisirNiveau.setFont(police); // Met la police
 			this.BoutonChoisirNiveau.setBounds((int) (width / 2.5), (int)(height /3), width / 6, height / 10);
-		this.getContentPane().add(this.BoutonChoisirNiveau, BorderLayout.CENTER);
+		this.getContentPane().add(this.BoutonChoisirNiveau, BorderLayout.CENTER); // Met à jour la taille de bouton
 		
 		
 		this.BoutonChoisirNiveau.addActionListener(new ActionListener() {
