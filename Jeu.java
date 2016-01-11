@@ -77,6 +77,7 @@ public class Jeu extends Canvas implements Runnable {
 			
 			
 			int pallier = u1.getpallier_actuel(); // récupére le pallier actuel de l'utilisateur courant
+		// execute tel niveau selon tel pallier
 			if (pallier == 0) {
 				PlateauBulle N1 = new PlateauBulle(5, 1, 0);
 			}
