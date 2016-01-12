@@ -55,10 +55,10 @@ public class Menu extends JFrame {
 		this.BoutonJouer = new JButton("Jouer"); // on place notre bouton a
 													// l'endroit desire
 		this.BoutonJouer.setBackground(Color.WHITE);
-		this.BoutonJouer.setFont(police); // Met ÃƒÂ  jour la police
+		this.BoutonJouer.setFont(police); // Met ÃƒÆ’Ã‚Â  jour la police
 		this.BoutonJouer.setBounds((int) (width / 2.5), (int) (height / 6),
 				width / 6, height / 10);
-		this.getContentPane().add(this.BoutonJouer, BorderLayout.CENTER); // DÃƒÂ©finit
+		this.getContentPane().add(this.BoutonJouer, BorderLayout.CENTER); // DÃƒÆ’Ã‚Â©finit
 																			// la
 																			// taille
 																			// des
@@ -73,7 +73,7 @@ public class Menu extends JFrame {
 						Jeu.State = STATE.GAME; // ce bouton lance le jeu sur le
 												// dernier palier joue par
 												// l'utilisateur
-						dispose(); // efface la fenÃƒÂªtre courante
+						dispose(); // efface la fenÃƒÆ’Ã‚Âªtre courante
 						try {
 							Jeu.controller();
 						} catch (IOException e1) {
@@ -111,7 +111,8 @@ public class Menu extends JFrame {
 		this.BoutonChoisirNiveau.setBounds((int) (width / 2.5),
 				(int) (height / 3), width / 6, height / 10);
 		this.getContentPane()
-				.add(this.BoutonChoisirNiveau, BorderLayout.CENTER); // Met ÃƒÂ 
+				.add(this.BoutonChoisirNiveau, BorderLayout.CENTER); // Met
+																		// ÃƒÆ’Ã‚Â 
 																		// jour
 																		// la
 																		// taille
@@ -127,8 +128,8 @@ public class Menu extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						Jeu.State = STATE.SELECTION_NIVEAU; // met ÃƒÂ  jour
-															// l'ÃƒÂ©tat =
+						Jeu.State = STATE.SELECTION_NIVEAU; // met ÃƒÆ’Ã‚Â  jour
+															// l'ÃƒÆ’Ã‚Â©tat =
 															// selection niveau
 						dispose(); // efface la fenetre
 						try {
@@ -175,14 +176,15 @@ public class Menu extends JFrame {
 
 		this.BoutonQuitterJeu = new JButton("Quitter le jeu"); // ce bouton
 																// quitte le jeu
-		this.BoutonQuitterJeu.setBackground(Color.WHITE); // met l'arriÃƒÂ¨re
+		this.BoutonQuitterJeu.setBackground(Color.WHITE); // met
+															// l'arriÃƒÆ’Ã‚Â¨re
 															// plan
 															// du bouton en
 															// oculeur blanc
 		this.BoutonQuitterJeu.setFont(police);// met la police au font
 		this.BoutonQuitterJeu.setBounds((int) (width / 2.5),
 				(int) (height / 1.5), width / 6, height / 10);
-		this.getContentPane().add(this.BoutonQuitterJeu, BorderLayout.CENTER); // dÃƒÂ©finit
+		this.getContentPane().add(this.BoutonQuitterJeu, BorderLayout.CENTER); // dÃƒÆ’Ã‚Â©finit
 																				// l'emplacement
 																				// du
 																				// bouton
@@ -199,14 +201,17 @@ public class Menu extends JFrame {
 		});
 
 		this.BoutonRevenirConnexion = new JButton(
-				"Revenir a l'ecran de connexion"); // bouton de revenirÃƒÂ  la
+				"Revenir a l'ecran de connexion"); // bouton de revenirÃƒÆ’Ã‚Â 
+													// la
 													// correction
-		this.BoutonRevenirConnexion.setBackground(Color.ORANGE);// met ÃƒÂ  la
+		this.BoutonRevenirConnexion.setBackground(Color.ORANGE);// met ÃƒÆ’Ã‚Â 
+																// la
 																// couleur
 																// orange
 		this.BoutonRevenirConnexion.setFont(police);
 		this.BoutonRevenirConnexion.setBounds((int) (width / 20),
-				(int) (height / 1.2), width / 3, height / 10); // dÃƒÂ©finit la
+				(int) (height / 1.2), width / 3, height / 10); // dÃƒÆ’Ã‚Â©finit
+																// la
 																// taille
 		this.getContentPane().add(this.BoutonRevenirConnexion,
 				BorderLayout.CENTER);
@@ -214,13 +219,13 @@ public class Menu extends JFrame {
 		this.BoutonRevenirConnexion.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent arg0) { // Met ÃƒÂ  jour
-															// l'ÃƒÂ©tat et
+			public void actionPerformed(ActionEvent arg0) { // Met ÃƒÆ’Ã‚Â  jour
+															// l'ÃƒÆ’Ã‚Â©tat et
 															// efface
-															// la fenÃƒÂªtre
+															// la fenÃƒÆ’Ã‚Âªtre
 															// actuelle
 				Jeu.State = STATE.IDENTIFICATIONS;
-				dispose(); // efface la fenÃƒÂªtre actuelle
+				dispose(); // efface la fenÃƒÆ’Ã‚Âªtre actuelle
 				try {
 					Jeu.controller(); // execute le controller
 				} catch (IOException e) {
@@ -233,7 +238,7 @@ public class Menu extends JFrame {
 		});
 		police = new Font("Verdana", Font.BOLD, 30);
 		JLabel identifiant = new JLabel("Bienvenue, "
-				+ Identification.getutilisateur().getidentifiant());
+				+ Identification.getutilisateur().getIdentifiant());
 		JLabel pallier_actuel = new JLabel("Pallier actuel : "
 				+ Identification.getutilisateur().getpallier_actuel());
 		identifiant.setBounds((int) (width / 6), -(int) (height / 2.5), width,
