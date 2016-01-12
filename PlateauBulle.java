@@ -83,7 +83,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 		this.setSize(1000, 1000);
 		this.setExtendedState(Frame.MAXIMIZED_BOTH); // fenetre plein ecrant
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // stopper le programme en au click sur la croix
-		this.pan =new JPanel(); // instanciation de mon conteneur
+		this.pan =(JPanel)this.getContentPane(); // instanciation de mon conteneur
 		this.setContentPane(pan); // je choisi mon contenneur 
 		this.setVisible(true); // rentdre ma fenetre visible
 		this.pan.setLayout(null); // aucune disposition par default dans mon conteneur ce qui permet de deplacer comme on veut notre label
@@ -207,9 +207,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 		}); 
 		
 
-		this.setVisible(true);// rentdre ma fenÃƒÂªtre visible
-		//this.getContentPane().setBackground(Color.BLACK);
-		this.getContentPane().setBackground(Color.WHITE);
+	
 		Action action = new AbstractAction("Echap") {
 
 			@Override
