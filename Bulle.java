@@ -49,7 +49,6 @@ public class Bulle {
 			int rand = (int)(Math.random()*5)+1;
 			
 			//Ce switch est utilisé pour le choix de la taille définit en paramètre (1,2,3,4 ou 5)
-			switch(taille){
 				switch(taille){
 			case 1:
 				this.margx=350;
