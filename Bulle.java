@@ -117,7 +117,7 @@ public class Bulle {
 					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle1.png")));
 				}
 				else if (rand ==2){
-					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle1j.png")));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle1b.png")));
 				}
 				else if (rand ==3){
 					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle1r.png")));
@@ -136,7 +136,7 @@ public class Bulle {
 					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5.png")));
 				}
 				else if (rand ==2){
-					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5j.png")));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5b.png")));
 				}
 				else if (rand ==3){
 					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5r.png")));
