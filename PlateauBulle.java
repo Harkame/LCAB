@@ -14,6 +14,7 @@ import javax.swing.JWindow;
 import javax.swing.KeyStroke;
 import javax.swing.event.MenuKeyEvent;
 import javax.swing.event.MenuKeyListener;
+import java.awt.FlowLayout;
 
 import projet_bulles.Jeu.STATE;
 
@@ -53,8 +54,22 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 	/**
 	 */
 	public PlateauBulle(int nb, int taille, int vitesse){
-			this.setContentPane(new ImagePanel(new ImageIcon(getClass().getResource("/lefond.jpg")) 
-				.getImage())); //on met le fond
+		/*	this.setContentPane(new ImagePanel(new ImageIcon(getClass().getResource("/lefond.jpg")) 
+				.getImage())); //on met le fond */
+	// Les lignes de code ci-dessus font des bugs graphiques, c'est le code pour afficher 'Appuyez Echap pour afficher le menu' 
+	// Il est désormais remplacé par les trois lignes de code ci-dessous
+	
+		JLabel text = new JLabel("Appuyez sur Echap pour afficher le menu");
+		text.setFont(new Font("Serif", Font.BOLD, 25));
+		this.setLayout(new FlowLayout(FlowLayout.LEFT));
+		text.setForeground(Color.white);	
+		text.setOpaque(true);
+		text.setBackground(Color.black);	
+		
+	
+		this.add(label1);
+		
+				
 		this.MenuPrincipal = new JButton("Menu Principal");
 		this.MenuPrincipal.setBackground(Color.WHITE);
 		this.MenuPrincipal.setFont(police);
