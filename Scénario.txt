@@ -1,0 +1,28 @@
+On à déjà une base de donnée
+[Identification]
+--> Suggestion en direct (Actualisation à chaque nouvelle lettre)
+--> Reinitialiser de la base de donnée avec confirmation
+--> Création d'un utilisateur avec confirmation
+
+[Menu]
+--> En haut à gauche, il y a le nom de l'utilisateur et son pallier actuel (Comme demandé par le tuteur)
+
+[Fenêtre scores]
+--> De base, les scores sont à zero
+
+[Choix niveaux]
+--> On ne peut faire que le 1er niveau
+--> Lancement du jeu
+
+[Jeu]
+--> On clic sur les bulles (Avec 2/3 fails)
+--> Sa affiche le bravo
+--> Back au menu principale en appuyant sur echap comme afficher sur le wallpaper
+
+[Fenetre scores]
+--> On constate que le score à été modifié
+
+[Choix niveaux]
+--> On peut faire un nouveau niveau
+
+....BLABLABLA, peut-être faire un petit pallier mobile
