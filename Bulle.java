@@ -59,7 +59,7 @@ public class Bulle {
 					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle4.png")));
 				}
 				else if (rand ==2){
-					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle4b.png")));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle4j.png")));
 				}
 				else if (rand ==3){
 					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle4r.png")));
@@ -78,7 +78,7 @@ public class Bulle {
 					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle3.png")));
 				}
 				else if (rand ==2){
-					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle3b.png")));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle3j.png")));
 				}
 				else if (rand ==3){
 					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle3r.png")));
@@ -97,7 +97,7 @@ public class Bulle {
 					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle2.png")));
 				}
 				else if (rand ==2){
-					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle2b.png")));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle2j.png")));
 				}
 				else if (rand ==3){
 					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle2r.png")));
@@ -116,7 +116,7 @@ public class Bulle {
 					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle1.png")));
 				}
 				else if (rand ==2){
-					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle1b.png")));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle1j.png")));
 				}
 				else if (rand ==3){
 					this.label = new JLabel(new ImageIcon(getClass().getResource("bulle1r.png")));
@@ -135,7 +135,7 @@ public class Bulle {
 					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5.png")));
 				}
 				else if (rand ==2){
-					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5b.png")));
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5j.png")));
 				}
 				else if (rand ==3){
 					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5r.png")));
