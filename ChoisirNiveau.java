@@ -53,7 +53,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		setSize(width, height);
 		int i = 0;
 
-		/* Redimensionner les images pour travailler sur tous les ÃƒÂ©crans */
+		/* Redimensionner les images pour travailler sur tous les ÃƒÆ’Ã‚Â©crans */
 		// if(width == 1920 && height == 1080) {
 		this.setContentPane(new ImagePanel(new ImageIcon("wallpaper.jpg")
 				.getImage())); // le fond de la fenetre
@@ -77,11 +77,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.NiveauStatique1.setFont(police);// sur la fenetre
 		this.NiveauStatique1.setBounds(width / 10, height / 6, width / 5,
 				height / 10);
-		if (this.utilisateur.getscores()[i].getnombre_clics() != 0) {
-			NiveauStatique1.setEnabled(true);
-		} else {
-			NiveauStatique1.setEnabled(false);
-		}
+		NiveauStatique1.setEnabled(true);
 		this.getContentPane().add(this.NiveauStatique1);
 		i++;
 		this.NiveauStatique2 = new JButton("Niveau Statique2");
@@ -291,7 +287,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 
 					public void actionPerformed(ActionEvent e) {
 						Jeu.State = STATE.MENU;
-						dispose(); // efface l'Ã©cran de connexion
+						dispose(); // efface l'ÃƒÂ©cran de connexion
 						try {
 							Jeu.controller();
 						} catch (IOException e1) {
