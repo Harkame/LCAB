@@ -9,6 +9,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class FenetreScore extends JFrame {
 
 	public void initialization(Object[][] valeurs) {
 		Object[][] tableau_niveau1 = utilisateur.niveau1toMatrice(); // On
-																		// recupÃƒÂ¨re
+																		// recupÃƒÆ’Ã‚Â¨re
 																		// les
 																		// scores
 																		// du
@@ -52,7 +53,7 @@ public class FenetreScore extends JFrame {
 																		// forme
 																		// de
 																		// matrice
-		Object[][] tableau_niveau2 = utilisateur.niveau2toMatrice(); // MÃƒÂªme
+		Object[][] tableau_niveau2 = utilisateur.niveau2toMatrice(); // MÃƒÆ’Ã‚Âªme
 																		// chose
 																		// pour
 																		// le
@@ -63,24 +64,28 @@ public class FenetreScore extends JFrame {
 													// clics du niveau 1
 			valeurs[j][3] = tableau_niveau1[j][1]; // nombre de bulles du niveau
 													// 1
-			valeurs[j][5] = tableau_niveau2[j][0]; // MÃƒÂªme chose mais niveau
+			valeurs[j][5] = tableau_niveau2[j][0]; // MÃƒÆ’Ã‚Âªme chose mais
+													// niveau
 													// 2
-			valeurs[j][6] = tableau_niveau2[j][1]; // Encore mÃƒÂªme chose mais
+			valeurs[j][6] = tableau_niveau2[j][1]; // Encore mÃƒÆ’Ã‚Âªme chose
+													// mais
 													// niveau 2
 		}
 	}
 
 	public FenetreScore() throws IOException {
 
-		this.setContentPane(new ImagePanel(new ImageIcon(getClass()
-				.getResource("/wallpaper.jpg")).getImage()));
-		this.setTitle("La case a bulles"); // On titre la fenÃƒÂªtre
+		// this.setContentPane(new ImagePanel(new ImageIcon(getClass()
+		// .getResource("/wallpaper.jpg")).getImage()));
+		this.setTitle("La case a bulles"); // On titre la fenÃƒÆ’Ã‚Âªtre
 		this.setExtendedState(Frame.MAXIMIZED_BOTH); // Plein ecran
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Si on clique sur
-																// la croix
-																// rouge, sa tue
-																// le processus
-		this.setLocationRelativeTo(null); // La fenÃƒÂªtre est independante
+		// la croix
+		// le processus
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // RÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©cupÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©ration
+		int width = (int) screenSize.getWidth(); // La largeur
+		int height = (int) screenSize.getHeight(); // La hauteur
+		this.setLocationRelativeTo(null); // La fenÃƒÆ’Ã‚Âªtre est independante
 		Object[][] valeurs = {
 				{ "Pallier 1", null, null, null, null, null, null },
 				{ "Pallier 2", null, null, null, null, null, null },
@@ -90,8 +95,9 @@ public class FenetreScore extends JFrame {
 																		// les
 																		// valeurs
 																		// sont
-																		// ÃƒÂ 
-																		// null
+		Font police = new Font("Verdana", Font.BOLD, 30);
+		// ÃƒÆ’Ã‚Â 
+		// null
 		String[] titre = { "Pallier", "niveau 1", "nombre de clics",
 				"nombre de bulles", "niveau 2", "nombre de clics",
 				"nombre de bulles" }; // les titres de chacune des colonnes de
@@ -100,6 +106,11 @@ public class FenetreScore extends JFrame {
 													// (grille), avec les scores
 													// et les valeurs
 		initialization(valeurs); // On va initialiser les valeurs des scores
+		table.setFont(police);
+		table.setRowHeight(table.getRowHeight() + 30);
+		table.getTableHeader().setFont(new Font("Verdana", Font.BOLD, 25));
+
+		// table.get
 		/*
 		 * Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		 * table.setPreferredScrollableViewportSize(screen);
@@ -110,16 +121,13 @@ public class FenetreScore extends JFrame {
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); // Si besoin il y a
 																// une scrollbar
 		this.getContentPane().add(scrollpane); // On l'ajoute
-		this.setVisible(true); // On affiche la fenÃƒÂªtre
+		this.setVisible(true); // On affiche la fenÃƒÆ’Ã‚Âªtre
 
-		Font police = new Font("Verdana", Font.BOLD, 20);
 		JButton MenuPrincipal = new JButton("Menu principal");
 		MenuPrincipal.setBackground(Color.CYAN);
 		MenuPrincipal.setFont(police);
-		MenuPrincipal.setBounds(Jeu.WIDTH / 2 + 350, 175, 200, 75); // 200
-																	// longueur,
-																	// 75
-																	// hauteur
+		MenuPrincipal.setBounds((int) width / 3, height / 2,
+				(int) (width / 3.5), height / 15);
 
 		MenuPrincipal.addActionListener(new ActionListener() {
 
