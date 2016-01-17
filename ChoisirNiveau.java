@@ -55,7 +55,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 
 		/*
 		 * Redimensionner les images pour travailler sur tous les
-		 * ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©crans
+		 * ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©crans
 		 */
 		// if(width == 1920 && height == 1080) {
 		this.setContentPane(new ImagePanel(new ImageIcon(getClass().getResource("/wallpaper.jpg")).getImage()));
@@ -287,7 +287,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 
 					public void actionPerformed(ActionEvent e) {
 						Jeu.State = STATE.MENU;
-						dispose(); // efface l'ÃƒÆ’Ã‚Â©cran de connexion
+						dispose(); // efface l'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©cran de connexion
 						try {
 							Jeu.controller();
 						} catch (IOException e1) {
