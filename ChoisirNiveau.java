@@ -53,12 +53,13 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		setSize(width, height);
 		int i = 0;
 
-		/* Redimensionner les images pour travailler sur tous les ÃƒÆ’Ã‚Â©crans */
+		/*
+		 * Redimensionner les images pour travailler sur tous les
+		 * ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©crans
+		 */
 		// if(width == 1920 && height == 1080) {
-		this.setContentPane(new ImagePanel(new ImageIcon("wallpaper.jpg")
-				.getImage())); // le fond de la fenetre
-								// reprendre
-		// }
+		this.setContentPane(new ImagePanel(new ImageIcon(getClass()
+				.getResource("/wallpaper.jpg")).getImage()));
 		this.setVisible(true);
 		this.setLayout(null); // permet le position correcte des boutons
 
@@ -85,7 +86,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.NiveauStatique2.setFont(police);
 		this.NiveauStatique2.setBounds(width / 10, height / 3, width / 5,
 				height / 10);
-		if (this.utilisateur.getscores()[i].getnombre_clics() != 0) {
+		if (this.utilisateur.getscores()[i - 1].getnombre_clics() != 0) {
 			NiveauStatique2.setEnabled(true);
 		} else {
 			NiveauStatique2.setEnabled(false);
@@ -97,7 +98,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.NiveauStatique3.setFont(police);
 		this.NiveauStatique3.setBounds(width / 10, height / 2, width / 5,
 				height / 10);
-		if (this.utilisateur.getscores()[i].getnombre_clics() != 0) {
+		if (this.utilisateur.getscores()[i - 1].getnombre_clics() != 0) {
 			NiveauStatique3.setEnabled(true);
 		} else {
 			NiveauStatique3.setEnabled(false);
@@ -109,7 +110,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.NiveauStatique4.setFont(police);
 		this.NiveauStatique4.setBounds(width / 10, (int) h, width / 5,
 				height / 10);
-		if (this.utilisateur.getscores()[i].getnombre_clics() != 0) {
+		if (this.utilisateur.getscores()[i - 1].getnombre_clics() != 0) {
 			NiveauStatique4.setEnabled(true);
 		} else {
 			NiveauStatique4.setEnabled(false);
@@ -125,7 +126,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.NiveauMobile1.setFont(police);
 		this.NiveauMobile1.setBounds((int) w, height / 6, width / 5,
 				height / 10);
-		if (this.utilisateur.getscores()[i].getnombre_clics() != 0) {
+		if (this.utilisateur.getscores()[i - 1].getnombre_clics() != 0) {
 			NiveauMobile1.setEnabled(true);
 		} else {
 			NiveauMobile1.setEnabled(false);
@@ -137,7 +138,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.NiveauMobile2.setFont(police);
 		this.NiveauMobile2.setBounds((int) w, height / 3, width / 5,
 				height / 10);
-		if (this.utilisateur.getscores()[i].getnombre_clics() != 0) {
+		if (this.utilisateur.getscores()[i - 1].getnombre_clics() != 0) {
 			NiveauMobile2.setEnabled(true);
 		} else {
 			NiveauMobile2.setEnabled(false);
@@ -149,7 +150,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.NiveauMobile3.setFont(police);
 		this.NiveauMobile3.setBounds((int) w, height / 2, width / 5,
 				height / 10);
-		if (this.utilisateur.getscores()[i].getnombre_clics() != 0) {
+		if (this.utilisateur.getscores()[i - 1].getnombre_clics() != 0) {
 			NiveauMobile3.setEnabled(true);
 		} else {
 			NiveauMobile3.setEnabled(false);
@@ -160,7 +161,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.NiveauMobile4.setBackground(Color.WHITE);
 		this.NiveauMobile4.setFont(police);
 		this.NiveauMobile4.setBounds((int) w, (int) h, width / 5, height / 10);
-		if (this.utilisateur.getscores()[i].getnombre_clics() != 0) {
+		if (this.utilisateur.getscores()[i - 1].getnombre_clics() != 0) {
 			NiveauMobile4.setEnabled(true);
 		} else {
 			NiveauMobile4.setEnabled(false);
@@ -287,7 +288,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 
 					public void actionPerformed(ActionEvent e) {
 						Jeu.State = STATE.MENU;
-						dispose(); // efface l'ÃƒÂ©cran de connexion
+						dispose(); // efface l'ÃƒÆ’Ã‚Â©cran de connexion
 						try {
 							Jeu.controller();
 						} catch (IOException e1) {
