@@ -12,6 +12,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -49,7 +50,7 @@ public class FenetreScore extends JFrame {
 
 	public void initialization(Object[][] valeurs) {
 		Object[][] tableau_niveau1 = utilisateur.niveau1toMatrice(); // On
-																		// recupÃ¨re
+																		// recupÃƒÂ¨re
 																		// les
 																		// scores
 																		// du
@@ -59,7 +60,7 @@ public class FenetreScore extends JFrame {
 																		// forme
 																		// de
 																		// matrice
-		Object[][] tableau_niveau2 = utilisateur.niveau2toMatrice(); // MÃªme
+		Object[][] tableau_niveau2 = utilisateur.niveau2toMatrice(); // MÃƒÂªme
 																		// chose
 																		// pour
 																		// le
@@ -70,23 +71,24 @@ public class FenetreScore extends JFrame {
 													// clics du niveau 1
 			valeurs[j][3] = tableau_niveau1[j][1]; // nombre de bulles du niveau
 													// 1
-			valeurs[j][5] = tableau_niveau2[j][0]; // MÃªme chose mais niveau 2
-			valeurs[j][6] = tableau_niveau2[j][1]; // Encore mÃªme chose mais
+			valeurs[j][5] = tableau_niveau2[j][0]; // MÃƒÂªme chose mais niveau
+													// 2
+			valeurs[j][6] = tableau_niveau2[j][1]; // Encore mÃƒÂªme chose mais
 													// niveau 2
 		}
 	}
 
 	public FenetreScore() throws IOException {
 
-		// this.setContentPane(new ImagePanel(new ImageIcon(
-		// "/home/ann2/daviaudl/Bureau/bulle1.jpg").getImage()));
-		this.setTitle("La case a bulles"); // On titre la fenÃªtre
+		this.setContentPane(new ImagePanel(new ImageIcon(getClass()
+				.getResource("/wallpaper.jpg")).getImage()));
+		this.setTitle("La case a bulles"); // On titre la fenÃƒÂªtre
 		this.setExtendedState(Frame.MAXIMIZED_BOTH); // Plein ecran
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Si on clique sur
 																// la croix
 																// rouge, sa tue
 																// le processus
-		this.setLocationRelativeTo(null); // La fenÃªtre est independante
+		this.setLocationRelativeTo(null); // La fenÃƒÂªtre est independante
 		Object[][] valeurs = {
 				{ "Pallier 1", null, null, null, null, null, null },
 				{ "Pallier 2", null, null, null, null, null, null },
@@ -96,7 +98,7 @@ public class FenetreScore extends JFrame {
 																		// les
 																		// valeurs
 																		// sont
-																		// Ã 
+																		// ÃƒÂ 
 																		// null
 		String[] titre = { "Pallier", "niveau 1", "nombre de clics",
 				"nombre de bulles", "niveau 2", "nombre de clics",
@@ -116,7 +118,7 @@ public class FenetreScore extends JFrame {
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); // Si besoin il y a
 																// une scrollbar
 		this.getContentPane().add(scrollpane); // On l'ajoute
-		this.setVisible(true); // On affiche la fenÃªtre
+		this.setVisible(true); // On affiche la fenÃƒÂªtre
 
 		Font police = new Font("Verdana", Font.BOLD, 20);
 		JButton MenuPrincipal = new JButton("Menu principal");
