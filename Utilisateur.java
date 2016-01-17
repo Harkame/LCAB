@@ -16,8 +16,8 @@ public class Utilisateur {
 									// utilisateurs
 
 	/*
-	 * Permet de crÃƒÆ’Ã‚Â©er le fichier utilisateurs, en fonction du systeme
-	 * d'exploitation
+	 * Permet de crÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©er le fichier utilisateurs, en fonction du
+	 * systeme d'exploitation
 	 */
 
 	static {
@@ -28,7 +28,7 @@ public class Utilisateur {
 			try {
 				fichier.createNewFile(); // On creer le fichier
 				FileWriter fd = new FileWriter(fichier); // Sa va permetre
-															// d'ÃƒÆ’Ã‚Â©crire
+															// d'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©crire
 															// dans
 															// le
 															// fichier
@@ -42,7 +42,8 @@ public class Utilisateur {
 	}
 	private Score[] scores; // Les scores sont sous-formes d'un tableau
 	private int numero_ligne; // Pour faciliter la lecture, on retient en
-								// memoire la ligne correspondant eÃƒâ€šÃ‚Â 
+								// memoire la ligne correspondant
+								// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
 								// celle
 								// de l'utilisateur dans le fichier texte
 	private static String[] utilisateurs; // Un tableau contenant tous les
@@ -58,7 +59,8 @@ public class Utilisateur {
 	 */
 	public Utilisateur(String p_identifiant) {
 		this.identifiant = p_identifiant.toLowerCase(); // Afin d'eviter tout
-														// probleÃƒâ€šÃ‚Â¨me du
+														// probleÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨me
+														// du
 														// au
 														// majuscule lors de la
 														// creation/connexion,
@@ -73,21 +75,23 @@ public class Utilisateur {
 														// tableau des scores
 														// integralement
 			this.scores[i] = new Score(); // Initialisation de chacun des
-											// scores, eÃƒâ€šÃ‚Â  0 au departs
+											// scores, eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  0
+											// au departs
 		}
-		this.recuppallier_actuel(); // On recupeÃƒâ€šÃ‚Â¨re le pallier actuel de
+		this.recuppallier_actuel(); // On recupeÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re le
+									// pallier actuel de
 									// l'utilisateur
-		this.recupNumeroLigne(); // On recup_re le numero de ligne de
-									// l'utilisateur dans le fichier texte
+		this.numero_ligne = 0;
 	}
 
 	/*
-	 * RecupeÃƒâ€šÃ‚Â¨re toute la ligne concercernant l'utilisateur dans la base
-	 * de donnee sous forme de String, content l'identifiant, les 10 scores pour
-	 * chacun des palliers
+	 * RecupeÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re toute la ligne concercernant l'utilisateur
+	 * dans la base de donnee sous forme de String, content l'identifiant, les
+	 * 10 scores pour chacun des palliers
 	 */
 	private StringBuilder recupLigne() throws IOException {
-		String ligne = new String(); // Variable temporaire qui va eÃƒâ€šÃ‚Âªtre
+		String ligne = new String(); // Variable temporaire qui va
+										// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªtre
 										// notre
 										// lecteur ligne par ligne
 		BufferedReader lecteur = new BufferedReader(new FileReader(fichier)); // BufferedReader
@@ -110,7 +114,8 @@ public class Utilisateur {
 															// ligne
 		while ((ligne = lecteur.readLine()) != null) { // Tant qu'il reste une
 														// ligne dans le fichier
-			identifiant.append(recupIdentifiant(ligne)); // On recupeÃƒâ€šÃ‚Â¨re
+			identifiant.append(recupIdentifiant(ligne)); // On
+															// recupeÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re
 															// l'identifiant de
 															// de la ligne
 			if (identifiant.toString().equals(this.identifiant)) { // On regarde
@@ -119,7 +124,8 @@ public class Utilisateur {
 				lecteur.close(); // On ferme le lecteur
 				identifiant.setLength(0); // On reinitialise l'analyseur a une
 											// taille de 0
-				identifiant.append(ligne); // On recupeÃƒâ€šÃ‚Â¨re toute la
+				identifiant.append(ligne); // On recupeÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re
+											// toute la
 											// ligne
 				return identifiant; // On la renvoie
 			} else { // Se n'est pas la bonne ligne
@@ -133,26 +139,30 @@ public class Utilisateur {
 
 	/*
 	 * Perme de recupere le pallier actuel de l'utilisateur On va chercher le
-	 * premier socre ou le nombre de clics est eÃƒâ€šÃ‚Â  0 (valeur par default
-	 * et impossible de faire un score pareil) Si jamais il n'y a pas pas de
-	 * score avec un nombre de clics == eÃƒâ€šÃ‚Â  0, l'utilisateur a fini le
-	 * jeu, on renvoit donc le dernier pallier
+	 * premier socre ou le nombre de clics est eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  0 (valeur
+	 * par default et impossible de faire un score pareil) Si jamais il n'y a
+	 * pas pas de score avec un nombre de clics == eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  0,
+	 * l'utilisateur a fini le jeu, on renvoit donc le dernier pallier
 	 */
 	public void recuppallier_actuel() {
 		for (int i = 0; i < this.scores.length; i++) { // On parcours tous les
 														// scores
 			if (this.scores[i].getnombre_clics() == 0) { // Si le nombre de
 															// clics est
-															// egale eÃƒâ€šÃ‚Â 
+															// egale
+															// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
 															// 0,
 															// donc si c'est le
 															// pallier actuel
 				this.pallier_actuel = i + 1; // On attribut le pallier actuel
-												// eÃƒâ€šÃ‚Â  i car c'est ce
+												// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  i car
+												// c'est ce
 												// pallier
-												// leÃƒâ€šÃ‚Â , le +1 viens du
+												// leÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â , le +1
+												// viens du
 												// fait
-												// que compter eÃƒâ€šÃ‚Â  partir
+												// que compter
+												// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  partir
 												// du
 												// pallier 1 est plus naturel
 												// que du pallier 0
@@ -164,8 +174,9 @@ public class Utilisateur {
 
 	/*
 	 * Dit si l'identifiant est valide, sa retourne un int car je me base sur le
-	 * code ASCII, sa permet de recupere le code ASCII du caracteÃƒâ€šÃ‚Â¨re
-	 * interdit et d'afficher se dernier en message d'erreure
+	 * code ASCII, sa permet de recupere le code ASCII du
+	 * caracteÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re interdit et d'afficher se dernier en
+	 * message d'erreure
 	 */
 	private static int identifiantValide(String identifiant) {
 		if (identifiant == null || identifiant == ""
@@ -184,14 +195,16 @@ public class Utilisateur {
 															// pour
 															// recupere
 															// les scores
-				return i; // On retourne la position du caracteÃƒâ€šÃ‚Â¨re qui
+				return i; // On retourne la position du
+							// caracteÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re qui
 							// pose
-							// probleÃƒâ€šÃ‚Â¨me
+							// probleÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨me
 			} else {
 				// On passe au suivant
 			}
 		}
-		return -1; // -1 signifie qu'il n'y a pas eu de prlbleÃƒâ€šÃ‚Â¨me
+		return -1; // -1 signifie qu'il n'y a pas eu de
+					// prlbleÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨me
 	}
 
 	/*
@@ -204,8 +217,8 @@ public class Utilisateur {
 
 	/*
 	 * Retourne le numero de ligne de l'utilisateur dans la base de donnee,
-	 * utiliser pour pouvoirs accelerer l'acceÃƒâ€šÃ‚Â¨s a la base de donnee au
-	 * lieu de faire un parcour partiel ligne par ligne
+	 * utiliser pour pouvoirs accelerer l'acceÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨s a la base de
+	 * donnee au lieu de faire un parcour partiel ligne par ligne
 	 */
 	private void recupNumeroLigne() {
 		BufferedReader lecteur = null;
@@ -224,7 +237,7 @@ public class Utilisateur {
 			while ((ligne = lecteur.readLine()) != null) { // Temps qu'il reste
 															// une lignes
 				identifiant.append(recupIdentifiant(ligne)); // On
-																// recupeÃƒâ€šÃ‚Â¨re
+																// recupeÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re
 																// l'identifiant
 																// le la ligne
 				cpt++; // ?
@@ -238,7 +251,8 @@ public class Utilisateur {
 					return; // On quitte la fonction
 				} else {
 					identifiant.setLength(0); // On reinitialiser l'analyseur
-												// eÃƒâ€šÃ‚Â  0 pour la
+												// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  0 pour
+												// la
 												// prochaine
 												// ligne
 				}
@@ -252,8 +266,8 @@ public class Utilisateur {
 	}
 
 	/*
-	 * Renvoit l'identifiant de la ligne passe en parameÃƒâ€šÃ‚Â¨tre, utiliser
-	 * pour savoir si la ligne de la base de donnee est bien celle de
+	 * Renvoit l'identifiant de la ligne passe en parameÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨tre,
+	 * utiliser pour savoir si la ligne de la base de donnee est bien celle de
 	 * l'utilisateur (this)
 	 */
 	private static StringBuilder recupIdentifiant(String ligne) {
@@ -277,8 +291,9 @@ public class Utilisateur {
 	}
 
 	/*
-	 * RecupeÃƒâ€šÃ‚Â¨re tous les identifiants dans la base de donnee, utilise
-	 * pour faire les suggestion des utilisateur sur la page d'identification
+	 * RecupeÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re tous les identifiants dans la base de
+	 * donnee, utilise pour faire les suggestion des utilisateur sur la page
+	 * d'identification
 	 */
 	static void recupIdentifiants() throws IOException {
 		BufferedReader lecteur = new BufferedReader(new FileReader(fichier)); // On
@@ -324,9 +339,9 @@ public class Utilisateur {
 	}
 
 	/*
-	 * RecupeÃƒâ€šÃ‚Â¨re le scores de l'utilisateur pour chacun des pallier
-	 * depeÃƒâ€šÃ‚Â»is la base de donnee, et assoscie eÃƒâ€šÃ‚Â  l'utilisateur
-	 * (this)
+	 * RecupeÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re le scores de l'utilisateur pour chacun des
+	 * pallier depeÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»is la base de donnee, et assoscie
+	 * eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  l'utilisateur (this)
 	 */
 	private void recupScores(StringBuilder ligne) {
 		StringBuilder scores = new StringBuilder(); // ?
@@ -338,12 +353,14 @@ public class Utilisateur {
 		}
 		strb_ligne.append(ligne); // On ajoute toute la ligne a la variable
 									// temporaire
-		strb_ligne.delete(0, i); // On enleÃƒâ€šÃ‚Â¨ve tous se qui est innutile,
+		strb_ligne.delete(0, i); // On enleÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨ve tous se qui
+									// est innutile,
 									// soit
 									// l'identifiant, soit le score precedent
-									// dejeÃƒâ€šÃ‚Â  analyser
+									// dejeÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  analyser
 		for (i = 0; i < this.scores.length; i++) { // Pour chacun des palliers
-			this.scores[i].recupScore(strb_ligne); // On recupeÃƒâ€šÃ‚Â¨re
+			this.scores[i].recupScore(strb_ligne); // On
+													// recupeÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re
 													// chacun
 													// des scores 1 par 1
 		}
@@ -359,7 +376,9 @@ public class Utilisateur {
 														// designe qu'on ne
 														// veut pas ecraser
 														// le fichier, mais
-														// ecrire eÃƒâ€šÃ‚Â  la
+														// ecrire
+														// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
+														// la
 														// fin
 		fw.write(this.identifiant.toString() + '|'); // On ecrit
 														// l'identifiant et le
@@ -369,7 +388,8 @@ public class Utilisateur {
 		int nombre_bulles = 5; // Au debut il y a 5 bulles
 		for (int i = 0; i < 8; i++) { // Pour chacun des palliers
 			fw.write("0-" + nombre_bulles + "|"); // On ecrit que le nombre
-													// de clics est eÃƒâ€šÃ‚Â  0
+													// de clics est
+													// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  0
 													// (par
 													// default), pour un
 													// nombre de bulles
@@ -377,10 +397,12 @@ public class Utilisateur {
 													// palliers
 			nombre_bulles += 2;
 			if (i == 3) { // Si on atteinte le 4eme pallier (3 en java car on
-							// compte eÃƒâ€šÃ‚Â  partir de 0, le debut du niveau
+							// compte eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  partir de 0, le
+							// debut du niveau
 							// mobile), le nombre de bulles repassme au minimum
 							// 5
-				nombre_bulles = 5; // On reinitialise eÃƒâ€šÃ‚Â  5, et on
+				nombre_bulles = 5; // On reinitialise eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  5,
+									// et on
 									// continue
 									// decrire mais les palliers du niveau
 									// mobiles
@@ -399,30 +421,32 @@ public class Utilisateur {
 	/*
 	 * Methode principal, elle fait 2 choses : Si l'utilisateur this n'existe
 	 * pas dans la base de donnee, il est rajoute avec des scores initiaux de 0
-	 * partout, sinon ses scores sont recuperes et attribue eÃƒâ€šÃ‚Â 
-	 * l'utilisateur (this)
+	 * partout, sinon ses scores sont recuperes et attribue
+	 * eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  l'utilisateur (this)
 	 */
 	public void Identification() throws IOException {
 		if (identifiantValide(this.identifiant) == -1) { // Si l'identifiant est
 															// valide, le
 															// verificateur
-															// eÃƒâ€šÃ‚Â 
+															// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
 															// retoruner -1
 			if (this.UtilisateurExistant()) { // On regarde si il existe, si oui
 				StringBuilder informations = this.recupLigne(); // On
-																// recupeÃƒâ€šÃ‚Â¨re
+																// recupeÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re
 																// la ligne
 				this.recupIdentifiant(informations.toString()); // On
-																// recupeÃƒâ€šÃ‚Â¨re
+																// recupeÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re
 																// l'identifiant
 				this.recupScores(informations); // Recuperation du socres
 				this.recuppallier_actuel(); // recuperation du pallier actuel
+				this.recupNumeroLigne(); // On recup_re le numero de ligne de
+				// l'utilisateur dans le fichier texte
 			} else { // Si l'utilisateur n'est pas encore enregistre
 				Confirmation c1 = new Confirmation(this.identifiant); // On
 																		// demande
 																		// la
 																		// confirmation
-																		// eÃƒâ€šÃ‚Â 
+																		// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
 																		// l'utilisateur
 																		// (devant
 																		// l'ecran),
@@ -437,6 +461,9 @@ public class Utilisateur {
 					valide = true;
 					this.sauvegarderUtilisateur(); // On sauvegarde
 													// l'utilisateur
+					this.recupNumeroLigne(); // On recup_re le numero de ligne
+												// de
+					// l'utilisateur dans le fichier texte
 				} else { // Sinon on ne fait rien
 				}
 			}
@@ -448,9 +475,9 @@ public class Utilisateur {
 																	// alerte,
 																	// indiquant
 																	// quel
-																	// caracteÃƒâ€šÃ‚Â¨re
+																	// caracteÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re
 																	// pose
-																	// probleÃƒâ€šÃ‚Â¨me
+																	// probleÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨me
 			valide = false;
 		}
 	}
@@ -468,7 +495,8 @@ public class Utilisateur {
 															// chaque ligne
 		while ((ligne = lecteur.readLine()) != null) { // Tant qu'il reste une
 														// ligne
-			identifiant.append(recupIdentifiant(ligne)); // On recupeÃƒâ€šÃ‚Â¨re
+			identifiant.append(recupIdentifiant(ligne)); // On
+															// recupeÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re
 															// la
 															// ligne de
 															// l'utilsateur
@@ -512,7 +540,7 @@ public class Utilisateur {
 	 * (non-Javadoc)
 	 * 
 	 * @see java.lang.Object#toString() toString() classic Fonction utiliser que
-	 * pour des tests ou premieÃƒâ€šÃ‚Â¨res itterations
+	 * pour des tests ou premieÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨res itterations
 	 */
 	public String toString() {
 		StringBuilder utilisateur = new StringBuilder();
@@ -520,7 +548,7 @@ public class Utilisateur {
 				+ System.getProperty("line.separator")); // On prend
 															// l'identifiant et
 															// un passage
-															// eÃƒâ€šÃ‚Â 
+															// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
 															// la ligne
 		for (int i = 0; i < this.scores.length; i++) { // pour chacun des
 														// palliers
@@ -547,13 +575,17 @@ public class Utilisateur {
 	 */
 	public static void reinitialisation(boolean confirmation) {
 		// fichier.delete();
-		if (confirmation == true) { // Si le parameÃƒâ€šÃ‚Â¨tre est a true, on
+		if (confirmation == true) { // Si le parameÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨tre est a
+									// true, on
 									// demande
-									// eÃƒâ€šÃ‚Â  l'utilisateur une confirmation
-			Confirmation c1 = new Confirmation(); // On demande eÃƒâ€šÃ‚Â 
+									// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  l'utilisateur une
+									// confirmation
+			Confirmation c1 = new Confirmation(); // On demande
+													// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
 													// l'utilisateur une
 													// confirmation
-			if (c1.getreponse() == 0) { // Si la reponse est oui eÃƒâ€šÃ‚Â  la
+			if (c1.getreponse() == 0) { // Si la reponse est oui
+										// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  la
 										// reinitialisation
 				try {
 					FileWriter fw = new FileWriter(fichier, false); // On fait
@@ -582,9 +614,10 @@ public class Utilisateur {
 
 	/*
 	 * Modifie le score d'un utilisateur (this), en passant en parametre le
-	 * pallier eÃƒâ€šÃ‚Â  modifier, et le nouveau nombre de clics Strategie : On
-	 * recupeÃƒâ€šÃ‚Â¨re toute la base de donnee en memoire, on modifie la ligne
-	 * souhaite, puis on recopie le tout dans un nouveau fichier
+	 * pallier eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  modifier, et le nouveau nombre de clics
+	 * Strategie : On recupeÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re toute la base de donnee en
+	 * memoire, on modifie la ligne souhaite, puis on recopie le tout dans un
+	 * nouveau fichier
 	 */
 	public void modifieScore(int pallier, int nouveau_score) throws IOException {
 		ArrayList<StringBuilder> tamporaire = new ArrayList<StringBuilder>(); // Va
@@ -612,7 +645,7 @@ public class Utilisateur {
 		modificateur.append(tamporaire.get(this.numero_ligne)); // On ajoute
 																// toutes la
 																// ligne a cette
-																// dernieÃƒâ€šÃ‚Â¨re
+																// dernieÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re
 		// Debut de la modification
 		int i = 0; // Compteur de pallier
 		int j = 0; // Compteur de caractere
@@ -627,7 +660,9 @@ public class Utilisateur {
 			}
 		}
 		j++; // On incremente de 1 pour designer le dernier separateur |
-		String a = modificateur.substring(0, j - 1); // On recupeÃƒâ€šÃ‚Â¨re les
+		String a = modificateur.substring(0, j - 1); // On
+														// recupeÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re
+														// les
 														// premier scores qui ne
 														// seront pas modifie
 		while (modificateur.toString().charAt(j) != '-') { // Tant que ce n'est
@@ -644,7 +679,8 @@ public class Utilisateur {
 																// de la ligne
 		tamporaire.get(this.numero_ligne).setLength(0); // On reinitialise la
 														// ligne de la variable
-														// tamporaire eÃƒâ€šÃ‚Â 
+														// tamporaire
+														// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
 														// 0
 														// pour l'ecraser
 														// (comme c'est une
@@ -656,7 +692,8 @@ public class Utilisateur {
 		tamporaire.get(this.numero_ligne).append(b); // On y place la nouvelle
 														// ligne
 		reinitialisation(false); // On reinitialise directement le fichier sans
-									// onfirmation eÃƒâ€šÃ‚Â  l'utilisateur
+									// onfirmation eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
+									// l'utilisateur
 		FileWriter fw = new FileWriter(fichier, true); // On va reecrire
 														// chacune des lignes
 														// une par une
@@ -677,7 +714,8 @@ public class Utilisateur {
 		lecteur.close(); // On ferme le lecteur
 		StringBuilder informations = this.recupLigne(); // On va MAJ les
 														// informations
-		this.recupIdentifiant(informations.toString()); // On recupeÃƒâ€šÃ‚Â¨re
+		this.recupIdentifiant(informations.toString()); // On
+														// recupeÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re
 														// le
 														// nouvelle identifiant,
 														// sa parait innutile
@@ -712,7 +750,8 @@ public class Utilisateur {
 		String[][] matrice = new String[4][2]; // Une ligne par pallier, colonne
 												// 0 = nombre de clics, colonne
 												// 1 = nombre de bulles
-		for (int i = 0; i < 4; i++) { // Pour la premieÃƒâ€šÃ‚Â¨re colonne
+		for (int i = 0; i < 4; i++) { // Pour la premieÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re
+										// colonne
 			matrice[i][0] = "" + this.scores[i].getnombre_clics();
 		}
 		for (int i = 0; i < 4; i++) { // pour la seconde
@@ -726,7 +765,7 @@ public class Utilisateur {
 	 * [nombre_clics][nombre_bulles] Necessaire pour l'affichage des scores
 	 */
 	public String[][] niveau2toMatrice() {
-		// MeÃƒâ€šÃ‚Âªme chose que pour niveau 1
+		// MeÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªme chose que pour niveau 1
 		String[][] matrice = new String[4][2];
 		for (int i = 0; i < 4; i++) {
 			matrice[i][0] = "" + this.scores[i + 4].getnombre_clics();
