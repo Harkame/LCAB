@@ -19,7 +19,7 @@ import projet_bulles.Jeu.STATE;
 
 public class ChoisirNiveau extends JFrame implements KeyListener {
 
-	Utilisateur utilisateur = Identification.getutilisateur();
+	Utilisateur utilisateur = Jeu.getutilisateur();
 
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // ces
 																		// lignes
@@ -62,7 +62,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 				.getResource("/wallpaper.jpg")).getImage()));
 		this.setVisible(true);
 		this.setLayout(null); // permet le position correcte des boutons
-
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Font police = new Font("Verdana", Font.BOLD, 15); // on choisi la police
 															// du texte
 
