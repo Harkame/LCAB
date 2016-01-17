@@ -33,20 +33,12 @@ public class FenetreScore extends JFrame {
 	// JLabel myLabel;
 	private JTable table;
 
-	private static Utilisateur recup = Identification.getutilisateur();
-	private static Utilisateur utilisateur = new Utilisateur(
-			recup.getIdentifiant());
+	private static Utilisateur utilisateur = Jeu.getutilisateur();
+
 	// private static Utilisateur utilisateur = Jeu.getutilisateur();
 	// !!! A regler
 	// private static Utilisateur utilisateur = new Utilisateur("marion"); //
 	// !!! Lance l'exception java.lang.ArrayIndexOutOfBoundsException: 8
-	static {
-		try {
-			utilisateur.Identification(); // On fait une identification de
-											// l'utilisateur courant
-		} catch (IOException e) {
-		}
-	}
 
 	public void initialization(Object[][] valeurs) {
 		Object[][] tableau_niveau1 = utilisateur.niveau1toMatrice(); // On
@@ -148,7 +140,6 @@ public class FenetreScore extends JFrame {
 
 		this.getContentPane().add(MenuPrincipal, BorderLayout.CENTER);
 		this.getContentPane().add(scrollpane);
-		this.setUndecorated(true);
 		this.setVisible(true);
 	}
 
