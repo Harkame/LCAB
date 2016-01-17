@@ -202,6 +202,7 @@ public class Identification extends JFrame {
 						if (valide == true) { // Si on est passer connecter
 							Jeu.State = STATE.MENU; // on est rediriger sur le
 													// menu
+							Jeu.setutilisateur(utilisateur);
 							dispose(); // efface
 										// l'ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©cran
 										// de
