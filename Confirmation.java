@@ -5,7 +5,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 public class Confirmation {
-	private int reponse; //Reponse à la demande de confirmation, oui / non
+	private int reponse; //Reponse Ã  la demande de confirmation, oui / non
 
 	public Confirmation() {
 		JDialog.setDefaultLookAndFeelDecorated(false);
@@ -33,7 +33,7 @@ public class Confirmation {
 	}
 
 	public int getreponse() {
-		return this.reponse; //Retourn la reponse de la confirmation, pour le traitement de cette dernière
+		return this.reponse; //Retourn la reponse de la confirmation, pour le traitement de cette derniÃ¨re
 	}
 
 	public static void main(String[] args) {
