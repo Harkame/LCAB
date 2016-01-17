@@ -749,6 +749,17 @@ public class Utilisateur {
 		return valide;
 	}
 
+	public void maj() throws IOException {
+		this.scores = new Score[8];
+		for (int i = 0; i < this.scores.length; i++) {
+			this.scores[i] = new Score();
+		}
+		StringBuilder informations = this.recupLigne();
+		this.recupIdentifiant(informations.toString());
+		this.recupScores(informations);
+		this.recuppallier_actuel();
+	}
+
 	public static void main(String[] Args) throws IOException {
 		Utilisateur u = new Utilisateur("l||ee");
 	}
