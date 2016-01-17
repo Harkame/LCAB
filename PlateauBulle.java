@@ -90,7 +90,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 			}
 		});
 
-		this.setTitle("La case ÃƒÂ  bulles");
+		this.setTitle("La case a bulles");
 		this.setSize(1000, 1000);
 		this.setExtendedState(Frame.MAXIMIZED_BOTH); // fenetre plein ecrant
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // stopper le
@@ -200,7 +200,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 							}
 							if (taille + 1 > 3 && nb + 2 > 11) {
 								JLabel fin = new JLabel(
-										"Vous avez terminÃ© ce mode de jeu, bravo !!!");
+										"Vous avez termine ce mode de jeu, bravo !!!");
 								pan.add(fin);
 								fin.setBounds(width / 2, height / 3, 500, 500);
 								MenuPrincipal.setBounds(
@@ -227,7 +227,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 							}
 							if (taille + 1 > 3 && nb + 2 > 11) {
 								JLabel fin = new JLabel(
-										"Vous avez terminÃ© ce mode de jeu, bravo !!!");
+										"Vous avez termine ce mode de jeu, bravo !!!");
 								pan.add(fin);
 								fin.setBounds(width / 2, height / 3, 500, 500);
 								MenuPrincipal.setBounds(
