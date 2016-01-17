@@ -72,7 +72,7 @@ public class Jeu extends Canvas implements Runnable {
 
 			utilisateur.maj();
 
-			int pallier = utilisateur.getpallier_actuel(); // rÃ©cupÃ©re le
+			int pallier = utilisateur.getpallier_actuel(); // rÃƒÂ©cupÃƒÂ©re le
 															// pallier
 			// actuel de l'utilisateur
 			// courant
@@ -120,7 +120,7 @@ public class Jeu extends Canvas implements Runnable {
 
 	}
 
-	// mÃ©thode pour retourner l'utilisateur courant
+	// mÃƒÂ©thode pour retourner l'utilisateur courant
 	public static Utilisateur getutilisateur() {
 		return utilisateur;
 	}
