@@ -45,20 +45,26 @@ public class Menu extends JFrame {
 		setSize(width, height);
 		/* Redimensionner les images pour travailler sur tous les ecrans */
 		// if(width == 1920 && height == 1080) {
-		this.setContentPane(new ImagePanel(new ImageIcon("wallpaper.jpg")
-				.getImage())); // le fond de la fenetre
-		// }
-
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Si on clic sur
+		// la croix
+		// rouge (en
+		// haut a
+		// droite), sa
+		// fermera le
+		// processus
+		this.setContentPane(new ImagePanel(new ImageIcon(getClass()
+				.getResource("/wallpaper.jpg")).getImage()));
 		this.setLayout(null); // permet le position correcte des boutons
 
 		Font police = new Font("Verdana", Font.BOLD, 20);
 		this.BoutonJouer = new JButton("Jouer"); // on place notre bouton a
 													// l'endroit desire
 		this.BoutonJouer.setBackground(Color.WHITE);
-		this.BoutonJouer.setFont(police); // Met ÃƒÆ’Ã‚Â  jour la police
+		this.BoutonJouer.setFont(police); // Met ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â  jour la
+											// police
 		this.BoutonJouer.setBounds((int) (width / 2.5), (int) (height / 6),
 				width / 6, height / 10);
-		this.getContentPane().add(this.BoutonJouer, BorderLayout.CENTER); // DÃƒÆ’Ã‚Â©finit
+		this.getContentPane().add(this.BoutonJouer, BorderLayout.CENTER); // DÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©finit
 																			// la
 																			// taille
 																			// des
@@ -73,7 +79,8 @@ public class Menu extends JFrame {
 						Jeu.State = STATE.GAME; // ce bouton lance le jeu sur le
 												// dernier palier joue par
 												// l'utilisateur
-						dispose(); // efface la fenÃƒÆ’Ã‚Âªtre courante
+						dispose(); // efface la fenÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªtre
+									// courante
 						try {
 							Jeu.controller();
 						} catch (IOException e1) {
@@ -112,7 +119,7 @@ public class Menu extends JFrame {
 				(int) (height / 3), width / 6, height / 10);
 		this.getContentPane()
 				.add(this.BoutonChoisirNiveau, BorderLayout.CENTER); // Met
-																		// ÃƒÆ’Ã‚Â 
+																		// ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â 
 																		// jour
 																		// la
 																		// taille
@@ -128,8 +135,11 @@ public class Menu extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						Jeu.State = STATE.SELECTION_NIVEAU; // met ÃƒÆ’Ã‚Â  jour
-															// l'ÃƒÆ’Ã‚Â©tat =
+						Jeu.State = STATE.SELECTION_NIVEAU; // met
+															// ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â 
+															// jour
+															// l'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©tat
+															// =
 															// selection niveau
 						dispose(); // efface la fenetre
 						try {
@@ -177,14 +187,14 @@ public class Menu extends JFrame {
 		this.BoutonQuitterJeu = new JButton("Quitter le jeu"); // ce bouton
 																// quitte le jeu
 		this.BoutonQuitterJeu.setBackground(Color.WHITE); // met
-															// l'arriÃƒÆ’Ã‚Â¨re
+															// l'arriÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¨re
 															// plan
 															// du bouton en
 															// oculeur blanc
 		this.BoutonQuitterJeu.setFont(police);// met la police au font
 		this.BoutonQuitterJeu.setBounds((int) (width / 2.5),
 				(int) (height / 1.5), width / 6, height / 10);
-		this.getContentPane().add(this.BoutonQuitterJeu, BorderLayout.CENTER); // dÃƒÆ’Ã‚Â©finit
+		this.getContentPane().add(this.BoutonQuitterJeu, BorderLayout.CENTER); // dÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©finit
 																				// l'emplacement
 																				// du
 																				// bouton
@@ -201,16 +211,18 @@ public class Menu extends JFrame {
 		});
 
 		this.BoutonRevenirConnexion = new JButton(
-				"Revenir a l'ecran de connexion"); // bouton de revenirÃƒÆ’Ã‚Â 
+				"Revenir a l'ecran de connexion"); // bouton de
+													// revenirÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â 
 													// la
 													// correction
-		this.BoutonRevenirConnexion.setBackground(Color.ORANGE);// met ÃƒÆ’Ã‚Â 
+		this.BoutonRevenirConnexion.setBackground(Color.ORANGE);// met
+																// ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â 
 																// la
 																// couleur
 																// orange
 		this.BoutonRevenirConnexion.setFont(police);
 		this.BoutonRevenirConnexion.setBounds((int) (width / 20),
-				(int) (height / 1.2), width / 3, height / 10); // dÃƒÆ’Ã‚Â©finit
+				(int) (height / 1.2), width / 3, height / 10); // dÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©finit
 																// la
 																// taille
 		this.getContentPane().add(this.BoutonRevenirConnexion,
@@ -219,13 +231,17 @@ public class Menu extends JFrame {
 		this.BoutonRevenirConnexion.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent arg0) { // Met ÃƒÆ’Ã‚Â  jour
-															// l'ÃƒÆ’Ã‚Â©tat et
+			public void actionPerformed(ActionEvent arg0) { // Met
+															// ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â 
+															// jour
+															// l'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©tat
+															// et
 															// efface
-															// la fenÃƒÆ’Ã‚Âªtre
+															// la
+															// fenÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªtre
 															// actuelle
 				Jeu.State = STATE.IDENTIFICATIONS;
-				dispose(); // efface la fenÃƒÆ’Ã‚Âªtre actuelle
+				dispose(); // efface la fenÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªtre actuelle
 				try {
 					Jeu.controller(); // execute le controller
 				} catch (IOException e) {
