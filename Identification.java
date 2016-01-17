@@ -38,35 +38,35 @@ public class Identification extends JFrame {
 	private static Utilisateur utilisateur;
 	private String[] utilisateurs;
 
-	static boolean connecte = true; // ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
+	static boolean connecte = true; // ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
 									// changer
 
 	public Identification() throws IOException {
 		this.setContentPane(new ImagePanel(new ImageIcon(getClass()
 				.getResource("/wallpaper.jpg")).getImage())); // on met le fond
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // RÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©cupÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©ration
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // RÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©cupÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©ration
 																			// des
 																			// dimensions
 																			// de
-																			// l'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©cran
+																			// l'ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©cran
 		int width = (int) screenSize.getWidth(); // La largeur
 		int height = (int) screenSize.getHeight(); // La hauteur
-		final double w = width / 1.5; // La moitiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â© de
-										// l'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©cran
-		Utilisateur.recupIdentifiants(); // On rÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©cup_re tous
+		final double w = width / 1.5; // La moitiÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â© de
+										// l'ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©cran
+		Utilisateur.recupIdentifiants(); // On rÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©cup_re tous
 											// les
 											// identifiants, utile pour la
 											// suggestion
 		this.utilisateurs = Utilisateur.getutilisateurs(); // On
-															// prÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©pare
+															// prÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©pare
 															// la
 															// suggestions
 		this.setTitle("La case a bulles"); // Nommage de la
-											// fenÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªtre
+											// fenÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªtre
 											// (titre)
-		this.setExtendedState(Frame.MAXIMIZED_BOTH); // FenÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªtre
+		this.setExtendedState(Frame.MAXIMIZED_BOTH); // FenÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªtre
 														// en plein
-														// ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©cran
+														// ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©cran
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Si on clic sur
 																// la croix
 																// rouge (en
@@ -75,28 +75,28 @@ public class Identification extends JFrame {
 																// fermera le
 																// processus
 		this.setLocationRelativeTo(null); // On localisation de la
-											// fenÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªtre
-											// est indÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©pendante
+											// fenÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªtre
+											// est indÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©pendante
 		Font police = new Font("Verdana", Font.BOLD, 20); // Police lisible et
 															// suffisament
 															// grosse
-		this.setLayout(null); // La fenÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªtre est null au
-								// dÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©part
+		this.setLayout(null); // La fenÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªtre est null au
+								// dÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©part
 								// (utile pour
 								// la modifier comme on veux ensuite)
 		// make userbox to enter users name
 		JComboBox<String> combo = MainPanel.makeComboBox(this.utilisateurs); // On
-																				// crÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©e
+																				// crÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©e
 																				// les
 																				// suggestions
 		combo.setEditable(true); // La combo est modifiable
 		combo.setSelectedIndex(-1); // A la base il n'y a rien dedans
-		this.champ_saisie = (JTextField) combo.getEditor().getEditorComponent(); // CrÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©ation
+		this.champ_saisie = (JTextField) combo.getEditor().getEditorComponent(); // CrÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©ation
 																					// du
 																					// champ
 																					// de
 																					// saisie
-		this.champ_saisie.setText(""); // Par dÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©fault il est
+		this.champ_saisie.setText(""); // Par dÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©fault il est
 										// vide
 		this.champ_saisie.addKeyListener(new ComboKeyHandler(combo)); // On y
 																		// met
@@ -107,10 +107,10 @@ public class Identification extends JFrame {
 																		// suggestions
 																		// en
 																		// temps
-																		// rÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©el
+																		// rÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©el
 		champ_saisie.setFont(police); // On lui donne la plice
-										// crÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©e
-		JPanel p = new JPanel(new BorderLayout()); // on crÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©e
+										// crÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©e
+		JPanel p = new JPanel(new BorderLayout()); // on crÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©e
 													// un panel
 													// pour
 													// le champ de saisie
@@ -126,27 +126,27 @@ public class Identification extends JFrame {
 																					// position
 		p.add(combo, BorderLayout.CENTER); // On y ajoute le combo
 		this.getContentPane().add(p, BorderLayout.CENTER); // On l'ajoute a la
-															// fenÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªtre
+															// fenÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªtre
 															// principale
 		// ////////////////////////////////////////
 		Insets insets = this.getInsets(); // ?
-		this.bouton_seconnecter = new JButton("Se connecter"); // CrÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©ation
+		this.bouton_seconnecter = new JButton("Se connecter"); // CrÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©ation
 																// du
 																// bouton se
 																// connecter
 		this.bouton_seconnecter.setBackground(Color.ORANGE); // Coloration orane
 		this.bouton_seconnecter.setFont(police); // On lui donne la police
 		this.bouton_seconnecter.setBounds(width / 2, height / 3, width / 5,
-				height / 20); // DÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©finition de sa taille et de
+				height / 20); // DÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©finition de sa taille et de
 								// la
 								// position
 		this.getContentPane().add(this.bouton_seconnecter, BorderLayout.CENTER); // On
 																					// ajoute
 																					// le
 																					// bouton
-																					// ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â 
+																					// ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
 																					// la
-																					// fenÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªtre
+																					// fenÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªtre
 		this.bouton_seconnecter.addActionListener(new ActionListener() { // On
 																			// donne
 																			// un
@@ -156,11 +156,11 @@ public class Identification extends JFrame {
 					public void actionPerformed(ActionEvent e) { // Si on clic
 																	// dessus
 						// Identification.connecte = true; // On passe en
-						// connectÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©
+						// connectÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©
 						utilisateur = new Utilisateur(
 								champ_saisie.getText() == null ? ""
 										: champ_saisie.getText()); // On
-																	// crÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©e
+																	// crÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©e
 																	// un nouvel
 																	// utilisateur
 																	// avec le
@@ -173,10 +173,10 @@ public class Identification extends JFrame {
 															// l'indentification
 															// de l'utilisateur
 															// (voir fonction)
-							dispose(); // On efface l'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©cran
+							dispose(); // On efface l'ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©cran
 							// new Identification(); //On en
-							// recrÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©e une
-							// nouvelle (Sa met ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â  jour les
+							// recrÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©e une
+							// nouvelle (Sa met ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  jour les
 							// suggestions
 							// avec
 							// le nouvel utilisateur)
@@ -189,10 +189,10 @@ public class Identification extends JFrame {
 																	// l'utilisateur
 																	// courant,
 																	// permet de
-																	// verifiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©
+																	// verifiÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©
 																	// rapidement
 																	// si sa a
-																	// marchÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©
+																	// marchÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©
 																	// ou pas
 																	// (utile
 																	// pour le
@@ -204,7 +204,7 @@ public class Identification extends JFrame {
 													// menu
 							Jeu.setutilisateur(utilisateur);
 							dispose(); // efface
-										// l'ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©cran
+										// l'ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©cran
 										// de
 										// connexion
 							try {
@@ -230,7 +230,7 @@ public class Identification extends JFrame {
 		this.bouton_reset.setBackground(Color.WHITE); // Un fond blanc
 		this.bouton_reset.setFont(police); // On y met la police
 		this.bouton_reset.setBounds((int) w, height - height / 6,
-				(int) (width / 3.5), height / 15); // DÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©finition
+				(int) (width / 3.5), height / 15); // DÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©finition
 													// de la
 													// taille
 													// et de la position
@@ -238,9 +238,9 @@ public class Identification extends JFrame {
 																			// l'ajoute
 																			// a
 																			// la
-																			// fenÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªtre
+																			// fenÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªtre
 																			// actuel
-		this.bouton_reset.addActionListener(new ActionListener() { // DÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©fition
+		this.bouton_reset.addActionListener(new ActionListener() { // DÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©fition
 																	// d'une
 																	// action au
 																	// moment du
@@ -248,22 +248,22 @@ public class Identification extends JFrame {
 					public void actionPerformed(ActionEvent e) { // Si on clic
 																	// dessus
 						Utilisateur.reinitialisation(true); // On
-															// rÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©initialiser
+															// rÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©initialiser
 															// le fichier texte,
 															// true indique
 															// qu'on demandera
 															// une confirmation
-															// ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â 
+															// ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
 															// l'utilisateur
-						dispose(); // On ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©fface
-									// l'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©cran
+						dispose(); // On ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©fface
+									// l'ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©cran
 									// d'identification
 						try {
 							new Identification(); // On en
-													// recrÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©e
+													// recrÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©e
 													// une
 													// nouvelle (Sa met
-													// ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â 
+													// ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
 													// jour les suggestions avec
 													// le nouvel utilisateur)
 						} catch (IOException e1) {
@@ -271,7 +271,7 @@ public class Identification extends JFrame {
 
 					}
 				});
-		this.setVisible(true); // On affiche la fenÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªtre
+		this.setVisible(true); // On affiche la fenÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªtre
 								// d'identification
 	}
 
