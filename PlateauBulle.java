@@ -187,13 +187,13 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 							}
 							nombre_clics = countClick;
 							try {
-								Identification.getutilisateur().modifieScore(
-										palier, nombre_clics); // modification
-																// des scores
-																// sur le
-																// fichier
-																// utilisateur.txt
-								Identification.getutilisateur().maj();
+								Jeu.getutilisateur().modifieScore(palier,
+										nombre_clics); // modification
+														// des scores
+														// sur le
+														// fichier
+														// utilisateur.txt
+								Jeu.getutilisateur().maj();
 							} catch (IOException e) {
 								e.getMessage();
 								e.printStackTrace();
