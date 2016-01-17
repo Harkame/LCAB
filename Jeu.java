@@ -10,6 +10,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+
 public class Jeu extends Canvas implements Runnable {
 
 	/**
@@ -19,13 +20,10 @@ public class Jeu extends Canvas implements Runnable {
 	// private static int SCALE = 2;
 	public static final int WIDTH = 1000;
 	public static final int HEIGHT = 750;
-	public Clip son; 
+	public Clip son;
+
 	public static enum STATE {
-		MENU,
-		GAME, 
-		IDENTIFICATIONS,
-		SCORES,
-		SELECTION_NIVEAU;
+		MENU, GAME, IDENTIFICATIONS, SCORES, SELECTION_NIVEAU;
 	}
 
 	public final String Title = "Jeu de Bulles";
@@ -34,86 +32,84 @@ public class Jeu extends Canvas implements Runnable {
 	static Identification identification;
 	PlateauBulle plateau;
 	private static Utilisateur utilisateur;
-	static {
-		utilisateur = Identification.getutilisateur();
-	}
-           
+
 	public Jeu() throws IOException {
- 		try{
-			//File fichierSon=new File ("JeuxDenfants.wav");
+		try {
+			// File fichierSon=new File ("JeuxDenfants.wav");
 			AudioInputStream sound;
-			sound = AudioSystem.getAudioInputStream(getClass().getResource("/JeuxDenfants.wav"));
-			DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
-			this.son  = (Clip) AudioSystem.getLine(info);
+			sound = AudioSystem.getAudioInputStream(getClass().getResource(
+					"/JeuxDenfants.wav"));
+			DataLine.Info info = new DataLine.Info(Clip.class,
+					sound.getFormat());
+			this.son = (Clip) AudioSystem.getLine(info);
 			this.son.open(sound);
 			this.son.loop(300);
-			} catch (UnsupportedAudioFileException|LineUnavailableException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 	
+		} catch (UnsupportedAudioFileException | LineUnavailableException
+				| IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		controller();
-	//	this.addMouseListener(new MouseInput());
+		// this.addMouseListener(new MouseInput());
 	}
 
 	// Gere l'etat du jeu : Fait les transitions
 	public static void controller() throws IOException {
 		if (State == STATE.IDENTIFICATIONS) {
 			try {
-				identification = new Identification();
+				new Identification();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		} else if (State == STATE.MENU) {
-			Menu m = new Menu();
-			utilisateur = identification.getutilisateur();
-		
+			new Menu();
 
 		} else if (State == STATE.GAME) {
-			
-			String identifiant = utilisateur.getIdentifiant();// recupere l'identifiant de l'utilisateur courant
-			Utilisateur u1 = new Utilisateur(identifiant); // Instancie l'utilisateur courant
-			
-			
-			
-			int pallier = u1.getpallier_actuel(); // récupére le pallier actuel de l'utilisateur courant
-		// execute tel niveau selon tel pallier
-			if (pallier == 0) {
-				PlateauBulle N1 = new PlateauBulle(5, 1, 0);
-			}
-			if (pallier == 1) {
-				PlateauBulle N1 = new PlateauBulle(5, 1, 0);
-			}
-			if (pallier == 2) {
-				PlateauBulle N2 = new PlateauBulle(7, 2, 0);
-			}
-			if (pallier == 3) {
-				PlateauBulle N3 = new PlateauBulle(9, 3, 0);
-			}
-			if (pallier == 4) {
-				PlateauBulle N4 = new PlateauBulle(11, 3, 0);
-			}
-			if (pallier == 5) {
-				PlateauBulle N5 = new PlateauBulle(5, 1, 1);
-			}
-			if (pallier == 6) {
-				PlateauBulle N6 = new PlateauBulle(7, 2, 1);
-			}
-			if (pallier == 7) {
-				PlateauBulle N7 = new PlateauBulle(9, 2, 1);
-			}
-			if (pallier == 8) {
-				PlateauBulle N8 = new PlateauBulle(11, 3, 1);
-			}
-			
-		
-		
+			/*
+			 * String identifiant = utilisateur.getIdentifiant();// recupere //
+			 * l'identifiant // de // l'utilisateur // courant Utilisateur u1 =
+			 * new Utilisateur(identifiant); // Instancie // l'utilisateur
+			 */// courant
 
+			utilisateur.maj();
+
+			int pallier = utilisateur.getpallier_actuel(); // rÃ©cupÃ©re le
+															// pallier
+			// actuel de l'utilisateur
+			// courant
+			// execute tel niveau selon tel pallier
+			switch (pallier) {
+			case 1:
+				new PlateauBulle(5, 1, 0);
+				break;
+			case 2:
+				new PlateauBulle(7, 2, 0);
+				break;
+			case 3:
+				new PlateauBulle(9, 3, 0);
+				break;
+			case 4:
+				new PlateauBulle(11, 3, 0);
+				break;
+			case 5:
+				new PlateauBulle(5, 1, 1);
+				break;
+			case 6:
+				new PlateauBulle(7, 2, 1);
+				break;
+			case 7:
+				new PlateauBulle(9, 2, 1);
+				break;
+			case 8:
+				new PlateauBulle(11, 3, 1);
+				break;
+
+			}
 		} else if (State == STATE.SELECTION_NIVEAU) {
-			ChoisirNiveau ch1 = new ChoisirNiveau();
-		}
-		else if (State == STATE.SCORES){
-			FenetreScore Recup_Score_user = new FenetreScore();
+			utilisateur.maj();
+			new ChoisirNiveau();
+		} else if (State == STATE.SCORES) {
+			utilisateur.maj();
+			new FenetreScore();
 		}
 
 	}
@@ -123,9 +119,14 @@ public class Jeu extends Canvas implements Runnable {
 		// TODO Auto-generated method stub
 
 	}
-// méthode pour retourner l'utilisateur courant
+
+	// mÃ©thode pour retourner l'utilisateur courant
 	public static Utilisateur getutilisateur() {
 		return utilisateur;
+	}
+
+	public static void setutilisateur(Utilisateur p_utilisateur) {
+		utilisateur = p_utilisateur;
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -134,4 +135,3 @@ public class Jeu extends Canvas implements Runnable {
 	}
 
 }
-
