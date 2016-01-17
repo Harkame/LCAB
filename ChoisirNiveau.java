@@ -42,7 +42,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 	private JButton NiveauMobile3;//
 	private JButton NiveauMobile4;//
 	private JButton MenuPrincipal;//
-	double w = width / 1.75; // on prend dans une variable la largeur de l'ecran
+	double w = width / 1.60; // on prend dans une variable la largeur de l'ecran
 								// divisee par 1.75
 	double h = height / 1.5; // on prend dans une variable la hauteur de l'ecran
 								// divisee par 1.5
@@ -58,8 +58,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		 * ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©crans
 		 */
 		// if(width == 1920 && height == 1080) {
-		this.setContentPane(new ImagePanel(new ImageIcon(getClass()
-				.getResource("/wallpaper.jpg")).getImage()));
+		this.setContentPane(new ImagePanel(new ImageIcon(getClass().getResource("/wallpaper.jpg")).getImage()));
 		this.setVisible(true);
 		this.setLayout(null); // permet le position correcte des boutons
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,7 +75,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 														// le place au bon
 														// endroit
 		this.NiveauStatique1.setFont(police);// sur la fenetre
-		this.NiveauStatique1.setBounds(width / 10, height / 6, width / 5,
+		this.NiveauStatique1.setBounds((int)(width / 7), height / 6, width / 5,
 				height / 10);
 		NiveauStatique1.setEnabled(true);
 		this.getContentPane().add(this.NiveauStatique1);
@@ -84,7 +83,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.NiveauStatique2 = new JButton("Niveau Statique2");
 		this.NiveauStatique2.setBackground(Color.WHITE);
 		this.NiveauStatique2.setFont(police);
-		this.NiveauStatique2.setBounds(width / 10, height / 3, width / 5,
+		this.NiveauStatique2.setBounds(width / 7, height / 3, width / 5,
 				height / 10);
 		if (this.utilisateur.getscores()[i - 1].getnombre_clics() != 0) {
 			NiveauStatique2.setEnabled(true);
@@ -96,7 +95,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.NiveauStatique3 = new JButton("Niveau Statique3");
 		this.NiveauStatique3.setBackground(Color.WHITE);
 		this.NiveauStatique3.setFont(police);
-		this.NiveauStatique3.setBounds(width / 10, height / 2, width / 5,
+		this.NiveauStatique3.setBounds(width / 7, height / 2, width / 5,
 				height / 10);
 		if (this.utilisateur.getscores()[i - 1].getnombre_clics() != 0) {
 			NiveauStatique3.setEnabled(true);
@@ -108,7 +107,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.NiveauStatique4 = new JButton("Niveau Statique4");
 		this.NiveauStatique4.setBackground(Color.WHITE);
 		this.NiveauStatique4.setFont(police);
-		this.NiveauStatique4.setBounds(width / 10, (int) h, width / 5,
+		this.NiveauStatique4.setBounds(width / 7, (int) h, width / 5,
 				height / 10);
 		if (this.utilisateur.getscores()[i - 1].getnombre_clics() != 0) {
 			NiveauStatique4.setEnabled(true);
@@ -173,7 +172,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.MenuPrincipal.setBackground(Color.WHITE);// de revenir au menu
 														// principal
 		this.MenuPrincipal.setFont(police);
-		this.MenuPrincipal.setBounds((int) (width / 3 * 1.05), height / 2,
+		this.MenuPrincipal.setBounds((int) (width /2.5), height / 2,
 				width / 6, height / 10);
 		this.getContentPane().add(this.MenuPrincipal, BorderLayout.CENTER);
 
