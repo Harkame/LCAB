@@ -60,11 +60,11 @@ public class Menu extends JFrame {
 		this.BoutonJouer = new JButton("Jouer"); // on place notre bouton a
 													// l'endroit desire
 		this.BoutonJouer.setBackground(Color.WHITE);
-		this.BoutonJouer.setFont(police); // Met ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â  jour la
+		this.BoutonJouer.setFont(police); // Met ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  jour la
 											// police
 		this.BoutonJouer.setBounds((int) (width / 2.5), (int) (height / 6),
 				width / 6, height / 10);
-		this.getContentPane().add(this.BoutonJouer, BorderLayout.CENTER); // DÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©finit
+		this.getContentPane().add(this.BoutonJouer, BorderLayout.CENTER); // DÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©finit
 																			// la
 																			// taille
 																			// des
@@ -79,7 +79,7 @@ public class Menu extends JFrame {
 						Jeu.State = STATE.GAME; // ce bouton lance le jeu sur le
 												// dernier palier joue par
 												// l'utilisateur
-						dispose(); // efface la fenÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªtre
+						dispose(); // efface la fenÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªtre
 									// courante
 						try {
 							Jeu.controller();
@@ -119,7 +119,7 @@ public class Menu extends JFrame {
 				(int) (height / 3), width / 6, height / 10);
 		this.getContentPane()
 				.add(this.BoutonChoisirNiveau, BorderLayout.CENTER); // Met
-																		// ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â 
+																		// ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
 																		// jour
 																		// la
 																		// taille
@@ -136,9 +136,9 @@ public class Menu extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						Jeu.State = STATE.SELECTION_NIVEAU; // met
-															// ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â 
+															// ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
 															// jour
-															// l'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©tat
+															// l'ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©tat
 															// =
 															// selection niveau
 						dispose(); // efface la fenetre
@@ -187,14 +187,14 @@ public class Menu extends JFrame {
 		this.BoutonQuitterJeu = new JButton("Quitter le jeu"); // ce bouton
 																// quitte le jeu
 		this.BoutonQuitterJeu.setBackground(Color.WHITE); // met
-															// l'arriÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¨re
+															// l'arriÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re
 															// plan
 															// du bouton en
 															// oculeur blanc
 		this.BoutonQuitterJeu.setFont(police);// met la police au font
 		this.BoutonQuitterJeu.setBounds((int) (width / 2.5),
 				(int) (height / 1.5), width / 6, height / 10);
-		this.getContentPane().add(this.BoutonQuitterJeu, BorderLayout.CENTER); // dÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©finit
+		this.getContentPane().add(this.BoutonQuitterJeu, BorderLayout.CENTER); // dÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©finit
 																				// l'emplacement
 																				// du
 																				// bouton
@@ -212,17 +212,17 @@ public class Menu extends JFrame {
 
 		this.BoutonRevenirConnexion = new JButton(
 				"Revenir a l'ecran de connexion"); // bouton de
-													// revenirÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â 
+													// revenirÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
 													// la
 													// correction
 		this.BoutonRevenirConnexion.setBackground(Color.ORANGE);// met
-																// ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â 
+																// ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
 																// la
 																// couleur
 																// orange
 		this.BoutonRevenirConnexion.setFont(police);
 		this.BoutonRevenirConnexion.setBounds((int) (width / 20),
-				(int) (height / 1.2), width / 3, height / 10); // dÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©finit
+				(int) (height / 1.2), width / 3, height / 10); // dÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©finit
 																// la
 																// taille
 		this.getContentPane().add(this.BoutonRevenirConnexion,
@@ -232,16 +232,16 @@ public class Menu extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) { // Met
-															// ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â 
+															// ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
 															// jour
-															// l'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©tat
+															// l'ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©tat
 															// et
 															// efface
 															// la
-															// fenÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªtre
+															// fenÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªtre
 															// actuelle
 				Jeu.State = STATE.IDENTIFICATIONS;
-				dispose(); // efface la fenÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªtre actuelle
+				dispose(); // efface la fenÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âªtre actuelle
 				try {
 					Jeu.controller(); // execute le controller
 				} catch (IOException e) {
