@@ -263,6 +263,8 @@ public class Menu extends JFrame {
 				height);
 		identifiant.setFont(police);
 		pallier_actuel.setFont(police);
+		identifiant.setForeground(Color.WHITE);
+		pallier_actuel.setForeground(Color.WHITE);
 		this.add(identifiant);
 		this.add(pallier_actuel);
 		setResizable(false);
