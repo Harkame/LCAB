@@ -61,6 +61,7 @@ public class Jeu extends Canvas implements Runnable {
 			} catch (IOException e) {
 			}
 		} else if (State == STATE.MENU) {
+			utilisateur.maj();
 			new Menu();
 
 		} else if (State == STATE.GAME) {
@@ -72,7 +73,8 @@ public class Jeu extends Canvas implements Runnable {
 
 			utilisateur.maj();
 
-			int pallier = utilisateur.getpallier_actuel(); // rÃƒÂ©cupÃƒÂ©re le
+			int pallier = utilisateur.getpallier_actuel(); // rÃƒÆ’Ã‚Â©cupÃƒÆ’Ã‚Â©re
+															// le
 															// pallier
 			// actuel de l'utilisateur
 			// courant
@@ -120,7 +122,7 @@ public class Jeu extends Canvas implements Runnable {
 
 	}
 
-	// mÃƒÂ©thode pour retourner l'utilisateur courant
+	// mÃƒÆ’Ã‚Â©thode pour retourner l'utilisateur courant
 	public static Utilisateur getutilisateur() {
 		return utilisateur;
 	}
