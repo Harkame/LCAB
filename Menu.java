@@ -254,9 +254,9 @@ public class Menu extends JFrame {
 		});
 		police = new Font("Verdana", Font.BOLD, 30);
 		JLabel identifiant = new JLabel("Bienvenue, "
-				+ Identification.getutilisateur().getIdentifiant());
+				+ Jeu.getutilisateur().getIdentifiant());
 		JLabel pallier_actuel = new JLabel("Pallier actuel : "
-				+ Identification.getutilisateur().getpallier_actuel());
+				+ Jeu.getutilisateur().getpallier_actuel());
 		identifiant.setBounds((int) (width / 6), -(int) (height / 2.5), width,
 				height);
 		pallier_actuel.setBounds((int) (width / 6), -(int) (height / 3), width,
@@ -268,7 +268,6 @@ public class Menu extends JFrame {
 		this.add(identifiant);
 		this.add(pallier_actuel);
 		setResizable(false);
-
 		this.setVisible(true);
 		//
 	}
