@@ -65,7 +65,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 		text.setOpaque(true);
 		text.setBackground(Color.black);
 
-		// this.add(label1);
+		// this.add(text);
 
 		this.MenuPrincipal = new JButton("Menu Principal");
 		this.MenuPrincipal.setBackground(Color.WHITE);
