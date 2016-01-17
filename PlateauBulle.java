@@ -56,7 +56,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 				.getResource("/lefond.jpg")).getImage()));
 		// Les lignes de code ci-dessus font des bugs graphiques, c'est le code
 		// pour afficher 'Appuyez Echap pour afficher le menu'
-		// Il est dÃ©sormais remplacÃ© par les trois lignes de code ci-dessous
+		// Il est dÃƒÂ©sormais remplacÃƒÂ© par les trois lignes de code ci-dessous
 
 		JLabel text = new JLabel("Appuyez sur Echap pour afficher le menu");
 		text.setFont(new Font("Serif", Font.BOLD, 25));
@@ -114,7 +114,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 				300, 75); // a replacer
 		this.palierSuivant.addActionListener(new ActionListener() { // definition
 																	// d'une
-																	// action Ã 
+																	// action ÃƒÂ 
 																	// chaque
 																	// clique
 																	// sur
@@ -170,7 +170,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 						Icon imageFelicitation = new ImageIcon(getClass()
 								.getResource("/feuDartifice.gif")); // mettre
 																	// ici le
-																	// gif ÃƒÂ 
+																	// gif ÃƒÆ’Ã‚Â 
 																	// la place
 						JLabel labelFelicit = new JLabel(imageFelicitation);
 						pan.add(labelFelicit);
@@ -314,7 +314,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						MenuBox.dispose(); // Le Menu disparaÃ®t
+						MenuBox.dispose(); // Le Menu disparaÃƒÂ®t
 						try {
 							RevenirMenuPrincipal();
 						} catch (IOException e1) {
@@ -364,7 +364,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 
 				MenuBox.getContentPane()
 						.add(MenuPrincipal, BorderLayout.CENTER); // Ajoute le
-																	// bouton Ã 
+																	// bouton ÃƒÂ 
 																	// la
 																	// fenetre
 																	// MenuBox
@@ -379,7 +379,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 				MenuPrincipal.setVisible(true);
 
 				/*
-				 * ÃƒÂ  faire pour plus tard Pop up menu en plein jeu plus
+				 * ÃƒÆ’Ã‚Â  faire pour plus tard Pop up menu en plein jeu plus
 				 * propre que revenir au menu et pause le jeu en cours plutot
 				 * que de le quitter
 				 * 
@@ -402,9 +402,9 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 		pan.getActionMap().put("Echap", action);
 		pan.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(key, "Echap");
 
-		this.pan.setLayout(null); // aucune disposition par dÃƒÆ’Ã‚Â©fault dans
+		this.pan.setLayout(null); // aucune disposition par dÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©fault dans
 									// mon conteneur ce qui permet de
-									// dÃƒÆ’Ã‚Â©placer comme on veut notre label
+									// dÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©placer comme on veut notre label
 		this.countClick = nb;
 		/***/
 
@@ -424,7 +424,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 
 	public static void main(String[] args) {
 		new PlateauBulle(9, 5, 0);
-		// aprÃƒÂ¨s cette instruction rien ne peut s'excuter car j'utilise un
+		// aprÃƒÆ’Ã‚Â¨s cette instruction rien ne peut s'excuter car j'utilise un
 		// true dans la condition d'un tant que
 
 	}
