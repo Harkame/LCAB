@@ -201,6 +201,9 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 							if (taille + 1 > 3 && nb + 2 > 11) {
 								JLabel fin = new JLabel(
 										"Vous avez termine ce mode de jeu, bravo !!!");
+								Font font = new Font("Arial",Font.BOLD,12);
+								fin.setFont(font);
+								fin.setForeground(Color.white);
 								pan.add(fin);
 								fin.setBounds(width / 2, height / 3, 500, 500);
 								MenuPrincipal.setBounds(
@@ -228,6 +231,9 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 							if (taille + 1 > 3 && nb + 2 > 11) {
 								JLabel fin = new JLabel(
 										"Vous avez termine ce mode de jeu, bravo !!!");
+								Font font = new Font("Arial",Font.BOLD,12);
+								fin.setFont(font);
+								fin.setForeground(Color.white);
 								pan.add(fin);
 								fin.setBounds(width / 2, height / 3, 500, 500);
 								MenuPrincipal.setBounds(
