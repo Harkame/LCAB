@@ -52,8 +52,13 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 	 */
 	public PlateauBulle(int nb, int taille, int vitesse) {
 
-		this.setContentPane(new ImagePanel(new ImageIcon(getClass()
-				.getResource("/lefond.jpg")).getImage()));
+	 //Adaptation de l'image de fond par rapport aux resolutions	
+	Image monFond=new ImageIcon(getClass().getResource("/lefond.jpg")).getImage();
+	BufferedImage bi=new BufferedImage(monFond.getWidth(null),monFond.getHeight(null),BufferedImage.TYPE_INT_ARGB);
+	Graphics g =bi.createGraphics(); // on cree un objet graphic pour faire nos operations
+	g.drawImage(monFond,0,0,width,height,null); // on utilise notre methode drawImage pour dessiner le fond
+	ImageIcon newFond =new ImageIcon(bi);
+	this.setContentPane(new ImagePanel(newFond.getImage()));
 		// Les lignes de code ci-dessus font des bugs graphiques, c'est le code
 		// pour afficher 'Appuyez Echap pour afficher le menu'
 		// Il est dÃƒÂ©sormais remplacÃƒÂ© par les trois lignes de code ci-dessous
