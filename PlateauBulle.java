@@ -286,6 +286,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 				MenuBox.setSize(600, 600);
 				MenuBox.getContentPane().setBackground(Color.BLACK);
 				Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+				MenuBox.setForeground(true);
 				MenuBox.setLocation(
 						dim.width / 2 - MenuBox.getSize().width / 2, dim.height
 								/ 2 - MenuBox.getSize().height / 2); // met la
