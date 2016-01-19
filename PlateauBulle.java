@@ -15,6 +15,7 @@ import javax.swing.JWindow;
 import javax.swing.KeyStroke;
 import javax.swing.event.MenuKeyEvent;
 import javax.swing.event.MenuKeyListener;
+
 import java.awt.FlowLayout;
 
 import projet_bulles.Jeu.STATE;
@@ -23,6 +24,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,6 +34,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.awt.Dimension;
 import java.io.IOException;
 
@@ -52,21 +56,21 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 	 */
 	public PlateauBulle(int nb, int taille, int vitesse) {
 
-	 //Adaptation de l'image de fond par rapport aux resolutions	
+    //Adaptation de l'image de fond par rapport aux resolutions	
 	Image monFond=new ImageIcon(getClass().getResource("/lefond.jpg")).getImage();
 	BufferedImage bi=new BufferedImage(monFond.getWidth(null),monFond.getHeight(null),BufferedImage.TYPE_INT_ARGB);
 	Graphics g =bi.createGraphics(); // on cree un objet graphic pour faire nos operations
 	g.drawImage(monFond,0,0,width,height,null); // on utilise notre methode drawImage pour dessiner le fond
 	ImageIcon newFond =new ImageIcon(bi);
 	this.setContentPane(new ImagePanel(newFond.getImage()));
-		// Les lignes de code ci-dessus font des bugs graphiques, c'est le code
+	// Les lignes de code ci-dessus font des bugs graphiques, c'est le code
 		// pour afficher 'Appuyez Echap pour afficher le menu'
-		// Il est dÃƒÂ©sormais remplacÃƒÂ© par les trois lignes de code ci-dessous
+		// Il est dÃƒÆ’Ã‚Â©sormais remplacÃƒÆ’Ã‚Â© par les trois lignes de code ci-dessous
 
 		JLabel text = new JLabel("Appuyez sur Echap pour afficher le menu");
 		text.setFont(new Font("Serif", Font.BOLD, 25));
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));
-		text.setForeground(Color.white);
+		//text.setForeground(Color.white);
 		text.setOpaque(true);
 		text.setBackground(Color.black);
 
@@ -119,7 +123,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 				300, 75); // a replacer
 		this.palierSuivant.addActionListener(new ActionListener() { // definition
 																	// d'une
-																	// action ÃƒÂ 
+																	// action ÃƒÆ’Ã‚Â 
 																	// chaque
 																	// clique
 																	// sur
@@ -175,7 +179,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 						Icon imageFelicitation = new ImageIcon(getClass()
 								.getResource("/feuDartifice.gif")); // mettre
 																	// ici le
-																	// gif ÃƒÆ’Ã‚Â 
+																	// gif ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â 
 																	// la place
 						JLabel labelFelicit = new JLabel(imageFelicitation);
 						pan.add(labelFelicit);
@@ -325,7 +329,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						MenuBox.dispose(); // Le Menu disparaÃƒÂ®t
+						MenuBox.dispose(); // Le Menu disparaÃƒÆ’Ã‚Â®t
 						try {
 							RevenirMenuPrincipal();
 						} catch (IOException e1) {
@@ -375,7 +379,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 
 				MenuBox.getContentPane()
 						.add(MenuPrincipal, BorderLayout.CENTER); // Ajoute le
-																	// bouton ÃƒÂ 
+																	// bouton ÃƒÆ’Ã‚Â 
 																	// la
 																	// fenetre
 																	// MenuBox
@@ -383,14 +387,14 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 						.add(ChoisirNiveau, BorderLayout.CENTER);
 				MenuBox.getContentPane().add(QuitterJeu, BorderLayout.CENTER);
 				MenuBox.getContentPane().add(RevenirJeu, BorderLayout.CENTER);
-
+				MenuBox.setForeground(null);
 				RevenirJeu.setVisible(true); // rend visisible le bouton
 				QuitterJeu.setVisible(true);
 				ChoisirNiveau.setVisible(true);
 				MenuPrincipal.setVisible(true);
 
 				/*
-				 * ÃƒÆ’Ã‚Â  faire pour plus tard Pop up menu en plein jeu plus
+				 * ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â  faire pour plus tard Pop up menu en plein jeu plus
 				 * propre que revenir au menu et pause le jeu en cours plutot
 				 * que de le quitter
 				 * 
@@ -413,9 +417,9 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 		pan.getActionMap().put("Echap", action);
 		pan.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(key, "Echap");
 
-		this.pan.setLayout(null); // aucune disposition par dÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©fault dans
+		this.pan.setLayout(null); // aucune disposition par dÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©fault dans
 									// mon conteneur ce qui permet de
-									// dÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©placer comme on veut notre label
+									// dÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©placer comme on veut notre label
 		this.countClick = nb;
 		/***/
 
@@ -435,7 +439,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 
 	public static void main(String[] args) {
 		new PlateauBulle(9, 5, 0);
-		// aprÃƒÆ’Ã‚Â¨s cette instruction rien ne peut s'excuter car j'utilise un
+		// aprÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¨s cette instruction rien ne peut s'excuter car j'utilise un
 		// true dans la condition d'un tant que
 
 	}
