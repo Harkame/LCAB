@@ -1,4 +1,4 @@
-package projet_bulles;
+package fenetre;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -18,7 +18,7 @@ import javax.swing.event.MenuKeyListener;
 
 import java.awt.FlowLayout;
 
-import projet_bulles.Jeu.STATE;
+import main.Jeu.STATE;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -38,39 +38,78 @@ import java.awt.image.BufferedImage;
 import java.awt.Dimension;
 import java.io.IOException;
 
+import model.*;
+import fenetre.*;
+import main.Jeu;
+import main.Jeu.STATE;
+
 public class PlateauBulle extends JFrame { // creation de la fenetre
-	public static JPanel pan; // notre conteneur
-	public static Annimation[] anim; // tableau animmation qui contiendra tout
-										// nos objets animmation
-	private int countClick = 0; // le nombre de click total
-	private int countBulleEclat = 0; // nombre de click total sur les bulles
-	private Dimension dimension = java.awt.Toolkit.getDefaultToolkit()
-			.getScreenSize(); // recuperation des dimensions de l'ecrant
-	private int height = (int) dimension.getHeight();
-	private int width = (int) dimension.getWidth();
-	private JButton palierSuivant; // Declaration bouton palier suivant
-	private JButton MenuPrincipal; // Declaration bouton Menu Principal
-	Font police = new Font("Verdana", Font.BOLD, 15); // Police de notre texte
+	public static JPanel		pan;																	// notre
+																										// conteneur
+	public static Annimation[]	anim;																	// tableau
+																										// animmation
+																										// qui
+																										// contiendra
+																										// tout
+																										// nos
+																										// objets
+																										// animmation
+	private int					countClick		= 0;													// le
+																										// nombre
+																										// de
+																										// click
+																										// total
+	private int					countBulleEclat	= 0;													// nombre
+																										// de
+																										// click
+																										// total
+																										// sur
+																										// les
+																										// bulles
+	private Dimension			dimension		= java.awt.Toolkit.getDefaultToolkit().getScreenSize();	// recuperation
+																										// des
+																										// dimensions
+																										// de
+																										// l'ecrant
+	private int					height			= (int) dimension.getHeight();
+	private int					width			= (int) dimension.getWidth();
+	private JButton				palierSuivant;															// Declaration
+																										// bouton
+																										// palier
+																										// suivant
+	private JButton				MenuPrincipal;															// Declaration
+																										// bouton
+																										// Menu
+																										// Principal
+	Font						police			= new Font("Verdana", Font.BOLD, 15);					// Police
+																										// de
+																										// notre
+																										// texte
 
 	/**
 	 */
 	public PlateauBulle(int nb, int taille, int vitesse) {
 
-    //Adaptation de l'image de fond par rapport aux resolutions	
-	Image monFond=new ImageIcon(getClass().getResource("/lefond.jpg")).getImage();
-	BufferedImage bi=new BufferedImage(monFond.getWidth(null),monFond.getHeight(null),BufferedImage.TYPE_INT_ARGB);
-	Graphics g =bi.createGraphics(); // on cree un objet graphic pour faire nos operations
-	g.drawImage(monFond,0,0,width,height,null); // on utilise notre methode drawImage pour dessiner le fond
-	ImageIcon newFond =new ImageIcon(bi);
-	this.setContentPane(new ImagePanel(newFond.getImage()));
-	// Les lignes de code ci-dessus font des bugs graphiques, c'est le code
+		// Adaptation de l'image de fond par rapport aux resolutions
+		Image monFond = new ImageIcon(getClass().getResource("/lefond.jpg")).getImage();
+		BufferedImage bi = new BufferedImage(monFond.getWidth(null), monFond.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+		Graphics g = bi.createGraphics(); // on cree un objet graphic pour faire
+											// nos operations
+		g.drawImage(monFond, 0, 0, width, height, null); // on utilise notre
+															// methode drawImage
+															// pour dessiner le
+															// fond
+		ImageIcon newFond = new ImageIcon(bi);
+		this.setContentPane(new ImagePanel(newFond.getImage()));
+		// Les lignes de code ci-dessus font des bugs graphiques, c'est le code
 		// pour afficher 'Appuyez Echap pour afficher le menu'
-		// Il est dÃƒÆ’Ã‚Â©sormais remplacÃƒÆ’Ã‚Â© par les trois lignes de code ci-dessous
+		// Il est dÃƒÆ’Ã‚Â©sormais remplacÃƒÆ’Ã‚Â© par les trois lignes de code
+		// ci-dessous
 
 		JLabel text = new JLabel("Appuyez sur Echap pour afficher le menu");
 		text.setFont(new Font("Serif", Font.BOLD, 25));
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));
-		//text.setForeground(Color.white);
+		// text.setForeground(Color.white);
 		text.setOpaque(true);
 		text.setBackground(Color.black);
 
@@ -79,12 +118,11 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 		this.MenuPrincipal = new JButton("Menu Principal");
 		this.MenuPrincipal.setBackground(Color.WHITE);
 		this.MenuPrincipal.setFont(police);
-		this.MenuPrincipal.setBounds((int) (width / 3 * 1.05), height / 3,
-				width / 6, height / 10);
+		this.MenuPrincipal.setBounds((int) (width / 3 * 1.05), height / 3, width / 6, height / 10);
 		// this.getContentPane().add(this.MenuPrincipal);
 		// this.MenuPrincipal.setVisible(false);
 
-		this.MenuPrincipal.addActionListener(new ActionListener() {
+		this.MenuPrincipal.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 				Jeu.State = STATE.MENU;
@@ -119,47 +157,44 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 															// bouton palier
 															// suivant
 		this.palierSuivant.setBackground(Color.WHITE);
-		this.palierSuivant.setBounds((width / 2) - 115, (height / 2) + 200,
-				300, 75); // a replacer
-		this.palierSuivant.addActionListener(new ActionListener() { // definition
+		this.palierSuivant.setBounds((width / 2) - 115, (height / 2) + 200, 300, 75); // a
+																						// replacer
+		this.palierSuivant.addActionListener(new ActionListener(){ // definition
 																	// d'une
-																	// action ÃƒÆ’Ã‚Â 
+																	// action
+																	// ÃƒÆ’Ã‚Â 
 																	// chaque
 																	// clique
 																	// sur
 																	// palier
 																	// suivant
-					public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {
 
-						dispose();
-						if (nb + 2 <= 11) { // si on est pas deja au dernier
-											// palier (donc a 9 bulles
-											// presentes)
-							if (vitesse == 0) { // envoie au palier "statique"
-												// ou "mobile" suivant l'actuel
-								if (taille + 1 <= 3) {
+				dispose();
+				if (nb + 2 <= 11) { // si on est pas deja au dernier
+									// palier (donc a 9 bulles
+									// presentes)
+					if (vitesse == 0) { // envoie au palier "statique"
+										// ou "mobile" suivant l'actuel
+						if (taille + 1 <= 3) {
 
-									PlateauBulle N1 = new PlateauBulle(nb + 2,
-											taille + 1, 0);
-								} else {
-									PlateauBulle N1 = new PlateauBulle(nb + 2,
-											taille, 0);
-								}
-							} else if (taille + 1 <= 3) {
-								PlateauBulle N1 = new PlateauBulle(nb + 2,
-										taille + 1, 1);
-							}
-
-							else {
-								PlateauBulle N1 = new PlateauBulle(nb + 2,
-										taille, 1);
-							}
-
+							PlateauBulle N1 = new PlateauBulle(nb + 2, taille + 1, 0);
+						} else {
+							PlateauBulle N1 = new PlateauBulle(nb + 2, taille, 0);
 						}
-
+					} else if (taille + 1 <= 3) {
+						PlateauBulle N1 = new PlateauBulle(nb + 2, taille + 1, 1);
 					}
 
-				});
+					else {
+						PlateauBulle N1 = new PlateauBulle(nb + 2, taille, 1);
+					}
+
+				}
+
+			}
+
+		});
 
 		this.getContentPane().add(this.palierSuivant);
 		this.palierSuivant.setVisible(false);
@@ -171,16 +206,18 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 			anim[i].start();
 		}
 		for (int i = 0; i < nb; i++) { // Une action a chaque bulle
-			anim[i].getBulle().getLabel().addMouseListener(new MouseAdapter() {
+			anim[i].getBulle().getLabel().addMouseListener(new MouseAdapter(){
 				public void mousePressed(MouseEvent me) {
 					countBulleEclat++;
 					if (nb - countBulleEclat == 0) { // quand il n'y a plus de
 														// bulle
-						Icon imageFelicitation = new ImageIcon(getClass()
-								.getResource("/feuDartifice.gif")); // mettre
-																	// ici le
-																	// gif ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â 
-																	// la place
+						Icon imageFelicitation = new ImageIcon(getClass().getResource("/feuDartifice.gif")); // mettre
+																												// ici
+																												// le
+																												// gif
+																												// ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â 
+																												// la
+																												// place
 						JLabel labelFelicit = new JLabel(imageFelicitation);
 						pan.add(labelFelicit);
 						labelFelicit.setBounds(width / 3, height / 8, 500, 500);
@@ -196,28 +233,26 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 							}
 							nombre_clics = countClick;
 							try {
-								Jeu.getutilisateur().modifieScore(palier,
-										nombre_clics); // modification
-														// des scores
-														// sur le
-														// fichier
-														// utilisateur.txt
+								Jeu.getutilisateur().modifieScore(palier, nombre_clics); // modification
+																							// des
+																							// scores
+																							// sur
+																							// le
+																							// fichier
+																							// utilisateur.txt
 								Jeu.getutilisateur().maj();
 							} catch (IOException e) {
 								e.getMessage();
 								e.printStackTrace();
 							}
 							if (taille + 1 > 3 && nb + 2 > 11) {
-								JLabel fin = new JLabel(
-										"Vous avez termine ce mode de jeu, bravo !!!");
-								Font font = new Font("Arial",Font.BOLD,12);
+								JLabel fin = new JLabel("Vous avez termine ce mode de jeu, bravo !!!");
+								Font font = new Font("Arial", Font.BOLD, 12);
 								fin.setFont(font);
 								fin.setForeground(Color.white);
 								pan.add(fin);
 								fin.setBounds(width / 2, height / 3, 500, 500);
-								MenuPrincipal.setBounds(
-										(int) (width / 2) - 115,
-										(height / 2) + 200, 300, 75);
+								MenuPrincipal.setBounds((int) (width / 2) - 115, (height / 2) + 200, 300, 75);
 								pan.add(MenuPrincipal);
 
 							} else {
@@ -231,23 +266,19 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 							}
 							nombre_clics = countClick;
 							try {
-								Identification.getutilisateur().modifieScore(
-										palier, nombre_clics);
+								Identification.getutilisateur().modifieScore(palier, nombre_clics);
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 							if (taille + 1 > 3 && nb + 2 > 11) {
-								JLabel fin = new JLabel(
-										"Vous avez termine ce mode de jeu, bravo !!!");
-								Font font = new Font("Arial",Font.BOLD,12);
+								JLabel fin = new JLabel("Vous avez termine ce mode de jeu, bravo !!!");
+								Font font = new Font("Arial", Font.BOLD, 12);
 								fin.setFont(font);
 								fin.setForeground(Color.white);
 								pan.add(fin);
 								fin.setBounds(width / 2, height / 3, 500, 500);
-								MenuPrincipal.setBounds(
-										(int) (width / 2) - 115,
-										(height / 2) + 200, 300, 75);
+								MenuPrincipal.setBounds((int) (width / 2) - 115, (height / 2) + 200, 300, 75);
 								pan.add(MenuPrincipal);
 
 							} else {
@@ -262,7 +293,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 
 			});
 		}
-		this.pan.addMouseListener(new MouseAdapter() {
+		this.pan.addMouseListener(new MouseAdapter(){
 			public void mousePressed(MouseEvent me) {
 				countClick++;
 				System.out.println(countClick);
@@ -271,7 +302,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 			}
 		});
 
-		Action action = new AbstractAction("Echap") {
+		Action action = new AbstractAction("Echap"){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -287,13 +318,11 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 				MenuBox.getContentPane().setBackground(Color.BLACK);
 				Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 				MenuBox.setAlwaysOnTop(true);
-				MenuBox.setLocation(
-						dim.width / 2 - MenuBox.getSize().width / 2, dim.height
-								/ 2 - MenuBox.getSize().height / 2); // met la
-																		// taille
+				MenuBox.setLocation(dim.width / 2 - MenuBox.getSize().width / 2, dim.height / 2 - MenuBox.getSize().height / 2); // met
+																																	// la
+																																	// taille
 				MenuBox.setUndecorated(true);
-				MenuBox.setContentPane(new ImagePanel(new ImageIcon(getClass()
-						.getResource("/wallpaper.jpg")).getImage()));
+				MenuBox.setContentPane(new ImagePanel(new ImageIcon(getClass().getResource("/wallpaper.jpg")).getImage()));
 				MenuBox.setVisible(true);
 
 				JButton RevenirJeu;
@@ -311,7 +340,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 																// mettre au
 																// milieu
 
-				RevenirJeu.addActionListener(new ActionListener() {
+				RevenirJeu.addActionListener(new ActionListener(){
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -326,7 +355,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 				MenuPrincipal.setFont(police);
 				MenuPrincipal.setBounds(215, 175, 200, 75);
 
-				MenuPrincipal.addActionListener(new ActionListener() {
+				MenuPrincipal.addActionListener(new ActionListener(){
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -347,7 +376,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 				ChoisirNiveau.setFont(police);
 				ChoisirNiveau.setBounds(215, 300, 200, 75);
 
-				ChoisirNiveau.addActionListener(new ActionListener() {
+				ChoisirNiveau.addActionListener(new ActionListener(){
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -368,7 +397,7 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 				QuitterJeu.setFont(police);
 				QuitterJeu.setBounds(215, 425, 200, 75);
 
-				QuitterJeu.addActionListener(new ActionListener() {
+				QuitterJeu.addActionListener(new ActionListener(){
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -378,14 +407,14 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 
 				});
 
-				MenuBox.getContentPane()
-						.add(MenuPrincipal, BorderLayout.CENTER); // Ajoute le
-																	// bouton ÃƒÆ’Ã‚Â 
-																	// la
-																	// fenetre
-																	// MenuBox
-				MenuBox.getContentPane()
-						.add(ChoisirNiveau, BorderLayout.CENTER);
+				MenuBox.getContentPane().add(MenuPrincipal, BorderLayout.CENTER); // Ajoute
+																					// le
+																					// bouton
+																					// ÃƒÆ’Ã‚Â 
+																					// la
+																					// fenetre
+																					// MenuBox
+				MenuBox.getContentPane().add(ChoisirNiveau, BorderLayout.CENTER);
 				MenuBox.getContentPane().add(QuitterJeu, BorderLayout.CENTER);
 				MenuBox.getContentPane().add(RevenirJeu, BorderLayout.CENTER);
 				MenuBox.setForeground(null);
@@ -395,7 +424,8 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 				MenuPrincipal.setVisible(true);
 
 				/*
-				 * ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â  faire pour plus tard Pop up menu en plein jeu plus
+				 * ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â  faire pour plus tard Pop up menu en plein
+				 * jeu plus
 				 * propre que revenir au menu et pause le jeu en cours plutot
 				 * que de le quitter
 				 * 
@@ -418,9 +448,12 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 		pan.getActionMap().put("Echap", action);
 		pan.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(key, "Echap");
 
-		this.pan.setLayout(null); // aucune disposition par dÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©fault dans
+		this.pan.setLayout(null); // aucune disposition par
+									// dÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©fault
+									// dans
 									// mon conteneur ce qui permet de
-									// dÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©placer comme on veut notre label
+									// dÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©placer
+									// comme on veut notre label
 		this.countClick = nb;
 		/***/
 
@@ -440,7 +473,8 @@ public class PlateauBulle extends JFrame { // creation de la fenetre
 
 	public static void main(String[] args) {
 		new PlateauBulle(9, 5, 0);
-		// aprÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¨s cette instruction rien ne peut s'excuter car j'utilise un
+		// aprÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¨s cette instruction rien ne peut s'excuter car
+		// j'utilise un
 		// true dans la condition d'un tant que
 
 	}

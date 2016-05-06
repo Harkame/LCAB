@@ -1,4 +1,4 @@
-package projet_bulles;
+package model;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -18,18 +18,18 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Bulle {
-	private JPanel pan;
-	private JLabel label;
-	private int margx;
-	private int margy;
-	private int x;
-	private int y;
-	private int vitesse;
-	private Clip son;
+	private JPanel		pan;
+	private JLabel		label;
+	private int			margx;
+	private int			margy;
+	private int			x;
+	private int			y;
+	private int			vitesse;
+	private Clip		son;
 
-	private static Icon image = new ImageIcon("giphy.gif");
-	private static Icon image2 = new ImageIcon("giphy2.gif");
-	private static int cpt = 0;
+	private static Icon	image	= new ImageIcon("giphy.gif");
+	private static Icon	image2	= new ImageIcon("giphy2.gif");
+	private static int	cpt		= 0;
 
 	/*
 	 * MÃ©thode de crÃ©ation de bulle oÃ¹ la taille et la vitesse sont donnÃ©es
@@ -40,14 +40,11 @@ public class Bulle {
 		try {
 			// File fichierSon=new File ("eclatBullebest.wav");
 			AudioInputStream sound;
-			sound = AudioSystem.getAudioInputStream(getClass().getResource(
-					"/eclatBullebest.wav"));
-			DataLine.Info info = new DataLine.Info(Clip.class,
-					sound.getFormat());
+			sound = AudioSystem.getAudioInputStream(getClass().getResource("/eclatBullebest.wav"));
+			DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
 			son = (Clip) AudioSystem.getLine(info);
 			son.open(sound);
-		} catch (UnsupportedAudioFileException | LineUnavailableException
-				| IOException e) {
+		} catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -58,108 +55,84 @@ public class Bulle {
 		// Ce switch est utilisÃ© pour le choix de la taille dÃ©finit en
 		// paramÃ¨tre (1,2,3,4 ou 5)
 		switch (taille) {
-		case 1:
-			this.margx = 350;
-			this.margy = 353;
-			// Ici, on choisit la couleur de la bulle en fonction de la valeur
-			// alÃ©atoire dÃ©finie prÃ©cÃ©dement
-			// Les couleurs sont: gris, jaune, rouge, vert, violet
-			if (rand == 1) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle4.png")));
-			} else if (rand == 2) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle4j.png")));
-			} else if (rand == 3) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle4r.png")));
-			} else if (rand == 4) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle4v.png")));
-			} else {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle4violet.png")));
-			}
+			case 1:
+				this.margx = 350;
+				this.margy = 353;
+				// Ici, on choisit la couleur de la bulle en fonction de la
+				// valeur
+				// alÃ©atoire dÃ©finie prÃ©cÃ©dement
+				// Les couleurs sont: gris, jaune, rouge, vert, violet
+				if (rand == 1) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle4.png")));
+				} else if (rand == 2) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle4j.png")));
+				} else if (rand == 3) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle4r.png")));
+				} else if (rand == 4) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle4v.png")));
+				} else {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle4violet.png")));
+				}
 			break;
-		case 2:
-			this.margx = 255;
-			this.margy = 255;
-			if (rand == 1) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle3.png")));
-			} else if (rand == 2) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle3j.png")));
-			} else if (rand == 3) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle3r.png")));
-			} else if (rand == 4) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle3v.png")));
-			} else {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle3violet.png")));
-			}
+			case 2:
+				this.margx = 255;
+				this.margy = 255;
+				if (rand == 1) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle3.png")));
+				} else if (rand == 2) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle3j.png")));
+				} else if (rand == 3) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle3r.png")));
+				} else if (rand == 4) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle3v.png")));
+				} else {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle3violet.png")));
+				}
 			break;
-		case 3:
-			this.margx = 151;
-			this.margy = 151;
-			if (rand == 1) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle2.png")));
-			} else if (rand == 2) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle2j.png")));
-			} else if (rand == 3) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle2r.png")));
-			} else if (rand == 4) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle2v.png")));
-			} else {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle2violet.png")));
-			}
+			case 3:
+				this.margx = 151;
+				this.margy = 151;
+				if (rand == 1) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle2.png")));
+				} else if (rand == 2) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle2j.png")));
+				} else if (rand == 3) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle2r.png")));
+				} else if (rand == 4) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle2v.png")));
+				} else {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle2violet.png")));
+				}
 			break;
-		case 4:
-			this.margx = 115;
-			this.margy = 115;
-			if (rand == 1) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle1.png")));
-			} else if (rand == 2) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle1j.png")));
-			} else if (rand == 3) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle1r.png")));
-			} else if (rand == 4) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle1v.png")));
-			} else {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle1violet.png")));
-			}
+			case 4:
+				this.margx = 115;
+				this.margy = 115;
+				if (rand == 1) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle1.png")));
+				} else if (rand == 2) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle1j.png")));
+				} else if (rand == 3) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle1r.png")));
+				} else if (rand == 4) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle1v.png")));
+				} else {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle1violet.png")));
+				}
 			break;
-		case 5:
-			this.margx = 520;
-			this.margy = 523;
-			if (rand == 1) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle5.png")));
-			} else if (rand == 2) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle5j.png")));
-			} else if (rand == 3) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle5r.png")));
-			} else if (rand == 4) {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle5v.png")));
-			} else {
-				this.label = new JLabel(new ImageIcon(getClass().getResource(
-						"/bulle5violet.png")));
-			}
+			case 5:
+				this.margx = 520;
+				this.margy = 523;
+				if (rand == 1) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5.png")));
+				} else if (rand == 2) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5j.png")));
+				} else if (rand == 3) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5r.png")));
+				} else if (rand == 4) {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5v.png")));
+				} else {
+					this.label = new JLabel(new ImageIcon(getClass().getResource("/bulle5violet.png")));
+				}
 			break;
 		}
 		this.x = x;
@@ -168,7 +141,7 @@ public class Bulle {
 		this.vitesse = vitesse;
 		// Quand une bulle est cliquÃ©, elle disparait et un son est jouÃ©, le
 		// compteur de bulles Ã©clatÃ© est incrÃ©mentÃ©.
-		this.label.addMouseListener(new MouseAdapter() {
+		this.label.addMouseListener(new MouseAdapter(){
 			public void mousePressed(MouseEvent me) {
 				cpt++;
 				System.out.println(cpt);
@@ -209,8 +182,7 @@ public class Bulle {
 	 */
 	public void animer() {
 
-		Dimension dimension = java.awt.Toolkit.getDefaultToolkit()
-				.getScreenSize();
+		Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		int height = (int) dimension.getHeight();
 		int width = (int) dimension.getWidth();
 		this.x = (int) (Math.random() * (width - this.margx));

@@ -1,4 +1,4 @@
-package projet_bulles;
+package model;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,9 +11,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Utilisateur {
-	private String identifiant; // L'indentifiant d'un utilisateur
-	private static File fichier; // Le fichier contenant les scores de tous les
-									// utilisateurs
+	private String		identifiant;	// L'indentifiant d'un utilisateur
+	private static File	fichier;		// Le fichier contenant les scores de
+										// tous les
+										// utilisateurs
 
 	/*
 	 * Permet de crÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©er le fichier utilisateurs, en fonction du
@@ -32,27 +33,34 @@ public class Utilisateur {
 															// dans
 															// le
 															// fichier
-				fd.write("root|5-5|7-7|9-9|11-11|5-5|7-7|9-9|11-11|"
-						+ System.getProperty("line.separator")); // Il y a un
-																	// scores
+				fd.write("root|5-5|7-7|9-9|11-11|5-5|7-7|9-9|11-11|" + System.getProperty("line.separator")); // Il
+																												// y
+																												// a
+																												// un
+																												// scores
 				fd.close(); // On ferme le FileWriter
 			} catch (IOException e) {
 			}
 		}
 	}
-	private Score[] scores; // Les scores sont sous-formes d'un tableau
-	private int numero_ligne; // Pour faciliter la lecture, on retient en
-								// memoire la ligne correspondant
-								// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
-								// celle
-								// de l'utilisateur dans le fichier texte
-	private static String[] utilisateurs; // Un tableau contenant tous les
+	private Score[]			scores;			// Les scores sont sous-formes d'un
+											// tableau
+	private int				numero_ligne;	// Pour faciliter la lecture, on
+											// retient en
+											// memoire la ligne correspondant
+											// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
+											// celle
+											// de l'utilisateur dans le fichier
+											// texte
+	private static String[]	utilisateurs;	// Un tableau contenant tous les
 											// utilisateurs (simplement leurs
 											// idnetifiants)
-	private int pallier_actuel; // Le pallier actuel de l'utilisateur, utile
-								// pour la fonctionnalite "continuer"
+	private int				pallier_actuel;	// Le pallier actuel de
+											// l'utilisateur, utile
+											// pour la fonctionnalite
+											// "continuer"
 
-	private static boolean valide = true;
+	private static boolean	valide	= true;
 
 	/*
 	 * Constructeur de base
@@ -179,22 +187,37 @@ public class Utilisateur {
 	 * message d'erreure
 	 */
 	private static int identifiantValide(String identifiant) {
-		if (identifiant == null || identifiant == ""
-				|| identifiant.length() <= 1) { // Si l'attribut est d'une
-												// taille trop petite
+		if (identifiant == null || identifiant == "" || identifiant.length() <= 1) { // Si
+																						// l'attribut
+																						// est
+																						// d'une
+																						// taille
+																						// trop
+																						// petite
 			return 1; // On retourne 1 (erreure)
 		}
 		for (int i = 0; i < identifiant.length(); i++) {
-			if ((int) identifiant.charAt(i) < 97
-					|| (int) identifiant.charAt(i) > 123) { // Pour des raisons
-															// fonctionnelle, on
-															// interdit certain
-															// caractere comme
-															// le | et le - qui
-															// poserais probleme
-															// pour
-															// recupere
-															// les scores
+			if ((int) identifiant.charAt(i) < 97 || (int) identifiant.charAt(i) > 123) { // Pour
+																							// des
+																							// raisons
+																							// fonctionnelle,
+																							// on
+																							// interdit
+																							// certain
+																							// caractere
+																							// comme
+																							// le
+																							// |
+																							// et
+																							// le
+																							// -
+																							// qui
+																							// poserais
+																							// probleme
+																							// pour
+																							// recupere
+																							// les
+																							// scores
 				return i; // On retourne la position du
 							// caracteÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re qui
 							// pose
@@ -295,7 +318,7 @@ public class Utilisateur {
 	 * donnee, utilise pour faire les suggestion des utilisateur sur la page
 	 * d'identification
 	 */
-	static void recupIdentifiants() throws IOException {
+	public static void recupIdentifiants() throws IOException {
 		BufferedReader lecteur = new BufferedReader(new FileReader(fichier)); // On
 																				// creer
 																				// le
@@ -468,16 +491,15 @@ public class Utilisateur {
 				}
 			}
 		} else { // Si l'identifiant n'est pas valide
-			new JOptionPane().showMessageDialog(null, "Caractere interdit : \""
-					+ identifiant.charAt(identifiantValide(this.identifiant))
-					+ "\"", "Erreur", JOptionPane.ERROR_MESSAGE); // On affiche
-																	// une
-																	// alerte,
-																	// indiquant
-																	// quel
-																	// caracteÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re
-																	// pose
-																	// probleÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨me
+			new JOptionPane().showMessageDialog(null, "Caractere interdit : \"" + identifiant.charAt(identifiantValide(this.identifiant)) + "\"", "Erreur", JOptionPane.ERROR_MESSAGE); // On
+																																														// affiche
+																																														// une
+																																														// alerte,
+																																														// indiquant
+																																														// quel
+																																														// caracteÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨re
+																																														// pose
+																																														// probleÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨me
 			valide = false;
 		}
 	}
@@ -544,24 +566,23 @@ public class Utilisateur {
 	 */
 	public String toString() {
 		StringBuilder utilisateur = new StringBuilder();
-		utilisateur.append(this.identifiant
-				+ System.getProperty("line.separator")); // On prend
-															// l'identifiant et
-															// un passage
-															// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
-															// la ligne
+		utilisateur.append(this.identifiant + System.getProperty("line.separator")); // On
+																						// prend
+																						// l'identifiant
+																						// et
+																						// un
+																						// passage
+																						// eÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 
+																						// la
+																						// ligne
 		for (int i = 0; i < this.scores.length; i++) { // pour chacun des
 														// palliers
 			switch (i) {
-			default:
-				utilisateur.append("Pallier " + (i + 1) + "  ~ "
-						+ this.scores[i].toString()
-						+ System.getProperty("line.separator"));
+				default:
+					utilisateur.append("Pallier " + (i + 1) + "  ~ " + this.scores[i].toString() + System.getProperty("line.separator"));
 				break;
-			case 9:
-				utilisateur.append("Pallier " + (i + 1) + " ~ "
-						+ this.scores[i].toString()
-						+ System.getProperty("line.separator"));
+				case 9:
+					utilisateur.append("Pallier " + (i + 1) + " ~ " + this.scores[i].toString() + System.getProperty("line.separator"));
 				break;
 			}
 		}
@@ -699,16 +720,24 @@ public class Utilisateur {
 														// une par une
 		for (int z = 0; z < tamporaire.size(); z++) { // Pour chacune des cases
 														// de l'ArrayListe
-			fw.write(tamporaire.get(z).toString()
-					+ System.getProperty("line.separator")); // on y ecrit la
-																// case de
-																// tamporaire
-																// avec un
-																// separateur
-																// de ligne pour
-																// passer a la
-																// ligne
-																// suivante
+			fw.write(tamporaire.get(z).toString() + System.getProperty("line.separator")); // on
+																							// y
+																							// ecrit
+																							// la
+																							// case
+																							// de
+																							// tamporaire
+																							// avec
+																							// un
+																							// separateur
+																							// de
+																							// ligne
+																							// pour
+																							// passer
+																							// a
+																							// la
+																							// ligne
+																							// suivante
 		}
 		fw.close(); // on ferme le FileWriter
 		lecteur.close(); // On ferme le lecteur

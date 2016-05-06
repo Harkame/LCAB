@@ -1,4 +1,4 @@
-package projet_bulles;
+package fenetre;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -7,6 +7,11 @@ import java.util.*;
 import java.util.List;
 
 import javax.swing.*;
+
+import model.*;
+import fenetre.*;
+import main.Jeu;
+import main.Jeu.STATE;
 
 public final class MainPanel extends JPanel {
 	private MainPanel() {
@@ -48,8 +53,7 @@ public final class MainPanel extends JPanel {
 	public static void createAndShowGUI() {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (ClassNotFoundException | InstantiationException
-				| IllegalAccessException | UnsupportedLookAndFeelException ex) {
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
 			ex.printStackTrace();
 		}
 		JFrame frame = new JFrame("ComboBoxSuggestion");
@@ -62,9 +66,9 @@ public final class MainPanel extends JPanel {
 }
 
 class ComboKeyHandler extends KeyAdapter {
-	private final JComboBox<String> comboBox;
-	private final List<String> list = new ArrayList<>();
-	private boolean shouldHide;
+	private final JComboBox<String>	comboBox;
+	private final List<String>		list	= new ArrayList<>();
+	private boolean					shouldHide;
 
 	public ComboKeyHandler(JComboBox<String> combo) {
 		super();
@@ -76,7 +80,7 @@ class ComboKeyHandler extends KeyAdapter {
 
 	@Override
 	public void keyTyped(final KeyEvent e) {
-		EventQueue.invokeLater(new Runnable() {
+		EventQueue.invokeLater(new Runnable(){
 			@Override
 			public void run() {
 				String text = ((JTextField) e.getComponent()).getText();
@@ -105,42 +109,40 @@ class ComboKeyHandler extends KeyAdapter {
 		String text = textField.getText();
 		shouldHide = false;
 		switch (e.getKeyCode()) {
-		case KeyEvent.VK_RIGHT:
-			for (String s : list) {
-				if (s.startsWith(text)) {
-					textField.setText(s);
-					return;
+			case KeyEvent.VK_RIGHT:
+				for (String s : list) {
+					if (s.startsWith(text)) {
+						textField.setText(s);
+						return;
+					}
 				}
-			}
 			break;
-		case KeyEvent.VK_ENTER:
-			if (!list.contains(text)) {
-				list.add(text);
-				Collections.sort(list);
-				// setSuggestionModel(comboBox, new DefaultComboBoxModel(list),
-				// text);
-				setSuggestionModel(comboBox, getSuggestedModel(list, text),
-						text);
-			}
-			shouldHide = true;
+			case KeyEvent.VK_ENTER:
+				if (!list.contains(text)) {
+					list.add(text);
+					Collections.sort(list);
+					// setSuggestionModel(comboBox, new
+					// DefaultComboBoxModel(list),
+					// text);
+					setSuggestionModel(comboBox, getSuggestedModel(list, text), text);
+				}
+				shouldHide = true;
 			break;
-		case KeyEvent.VK_ESCAPE:
-			shouldHide = true;
+			case KeyEvent.VK_ESCAPE:
+				shouldHide = true;
 			break;
-		default:
+			default:
 			break;
 		}
 	}
 
-	private static void setSuggestionModel(JComboBox<String> comboBox,
-			ComboBoxModel<String> mdl, String str) {
+	private static void setSuggestionModel(JComboBox<String> comboBox, ComboBoxModel<String> mdl, String str) {
 		comboBox.setModel(mdl);
 		comboBox.setSelectedIndex(-1);
 		((JTextField) comboBox.getEditor().getEditorComponent()).setText(str);
 	}
 
-	private static ComboBoxModel<String> getSuggestedModel(List<String> list,
-			String text) {
+	private static ComboBoxModel<String> getSuggestedModel(List<String> list, String text) {
 		DefaultComboBoxModel<String> m = new DefaultComboBoxModel<>();
 		for (String s : list) {
 			if (s.startsWith(text)) {

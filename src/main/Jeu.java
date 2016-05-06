@@ -1,4 +1,4 @@
-package projet_bulles;
+package main;
 
 import java.awt.Canvas;
 import java.io.File;
@@ -11,41 +11,41 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import fenetre.*;
+import model.*;
+
 public class Jeu extends Canvas implements Runnable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 	// private static int SCALE = 2;
-	public static final int WIDTH = 1000;
-	public static final int HEIGHT = 750;
-	public Clip son;
+	public static final int		WIDTH				= 1000;
+	public static final int		HEIGHT				= 750;
+	public Clip					son;
 
 	public static enum STATE {
 		MENU, GAME, IDENTIFICATIONS, SCORES, SELECTION_NIVEAU;
 	}
 
-	public final String Title = "Jeu de Bulles";
-	public static STATE State = STATE.IDENTIFICATIONS;
+	public final String			Title	= "Jeu de Bulles";
+	public static STATE			State	= STATE.IDENTIFICATIONS;
 
-	static Identification identification;
-	PlateauBulle plateau;
-	private static Utilisateur utilisateur;
+	static Identification		identification;
+	PlateauBulle				plateau;
+	private static Utilisateur	utilisateur;
 
 	public Jeu() throws IOException {
 		try {
 			// File fichierSon=new File ("JeuxDenfants.wav");
 			AudioInputStream sound;
-			sound = AudioSystem.getAudioInputStream(getClass().getResource(
-					"/JeuxDenfants.wav"));
-			DataLine.Info info = new DataLine.Info(Clip.class,
-					sound.getFormat());
+			sound = AudioSystem.getAudioInputStream(getClass().getResource("/JeuxDenfants.wav"));
+			DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
 			this.son = (Clip) AudioSystem.getLine(info);
 			this.son.open(sound);
 			this.son.loop(300);
-		} catch (UnsupportedAudioFileException | LineUnavailableException
-				| IOException e) {
+		} catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -69,7 +69,8 @@ public class Jeu extends Canvas implements Runnable {
 			 * String identifiant = utilisateur.getIdentifiant();// recupere //
 			 * l'identifiant // de // l'utilisateur // courant Utilisateur u1 =
 			 * new Utilisateur(identifiant); // Instancie // l'utilisateur
-			 */// courant
+			 */
+			// courant
 
 			utilisateur.maj();
 
@@ -80,29 +81,29 @@ public class Jeu extends Canvas implements Runnable {
 			// courant
 			// execute tel niveau selon tel pallier
 			switch (pallier) {
-			case 1:
-				new PlateauBulle(5, 1, 0);
+				case 1:
+					new PlateauBulle(5, 1, 0);
 				break;
-			case 2:
-				new PlateauBulle(7, 2, 0);
+				case 2:
+					new PlateauBulle(7, 2, 0);
 				break;
-			case 3:
-				new PlateauBulle(9, 3, 0);
+				case 3:
+					new PlateauBulle(9, 3, 0);
 				break;
-			case 4:
-				new PlateauBulle(11, 3, 0);
+				case 4:
+					new PlateauBulle(11, 3, 0);
 				break;
-			case 5:
-				new PlateauBulle(5, 1, 1);
+				case 5:
+					new PlateauBulle(5, 1, 1);
 				break;
-			case 6:
-				new PlateauBulle(7, 2, 1);
+				case 6:
+					new PlateauBulle(7, 2, 1);
 				break;
-			case 7:
-				new PlateauBulle(9, 2, 1);
+				case 7:
+					new PlateauBulle(9, 2, 1);
 				break;
-			case 8:
-				new PlateauBulle(11, 3, 1);
+				case 8:
+					new PlateauBulle(11, 3, 1);
 				break;
 
 			}

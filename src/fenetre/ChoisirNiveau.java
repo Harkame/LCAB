@@ -1,4 +1,4 @@
-package projet_bulles;
+package fenetre;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -15,37 +15,82 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import projet_bulles.Jeu.STATE;
+import model.*;
+import fenetre.*;
+import main.Jeu;
+import main.Jeu.STATE;
 
 public class ChoisirNiveau extends JFrame implements KeyListener {
 
-	Utilisateur utilisateur = Jeu.getutilisateur();
+	Utilisateur		utilisateur	= Jeu.getutilisateur();
 
-	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // ces
-																		// lignes
-																		// vont
-																		// servir
-																		// a
-																		// connaitre
-	int width = (int) screenSize.getWidth();// la taille des ecrans de
-											// l'utilisateur.
-	int height = (int) screenSize.getHeight();
-	private JButton NiveauStatique1;// chaque bouton correspondra a un bouton de
-									// palier
-	private JButton NiveauStatique2;// NiveauStatique2 est le 2eme palier du
-									// mode statique.
-	private JButton NiveauStatique3;//
-	private JButton NiveauStatique4;//
-	private JButton NiveauMobile1;// NiveauMobile est le 1er palier du mode
-									// mobile
-	private JButton NiveauMobile2;//
-	private JButton NiveauMobile3;//
-	private JButton NiveauMobile4;//
-	private JButton MenuPrincipal;//
-	double w = width / 1.60; // on prend dans une variable la largeur de l'ecran
-								// divisee par 1.75
-	double h = height / 1.5; // on prend dans une variable la hauteur de l'ecran
-								// divisee par 1.5
+	Dimension		screenSize	= Toolkit.getDefaultToolkit().getScreenSize();	// ces
+																				// lignes
+																				// vont
+																				// servir
+																				// a
+																				// connaitre
+	int				width		= (int) screenSize.getWidth();					// la
+																				// taille
+																				// des
+																				// ecrans
+																				// de
+																				// l'utilisateur.
+	int				height		= (int) screenSize.getHeight();
+	private JButton	NiveauStatique1;											// chaque
+																				// bouton
+																				// correspondra
+																				// a
+																				// un
+																				// bouton
+																				// de
+																				// palier
+	private JButton	NiveauStatique2;											// NiveauStatique2
+																				// est
+																				// le
+																				// 2eme
+																				// palier
+																				// du
+																				// mode
+																				// statique.
+	private JButton	NiveauStatique3;											//
+	private JButton	NiveauStatique4;											//
+	private JButton	NiveauMobile1;												// NiveauMobile
+																				// est
+																				// le
+																				// 1er
+																				// palier
+																				// du
+																				// mode
+																				// mobile
+	private JButton	NiveauMobile2;												//
+	private JButton	NiveauMobile3;												//
+	private JButton	NiveauMobile4;												//
+	private JButton	MenuPrincipal;												//
+	double			w			= width / 1.60;									// on
+																				// prend
+																				// dans
+																				// une
+																				// variable
+																				// la
+																				// largeur
+																				// de
+																				// l'ecran
+																				// divisee
+																				// par
+																				// 1.75
+	double			h			= height / 1.5;									// on
+																				// prend
+																				// dans
+																				// une
+																				// variable
+																				// la
+																				// hauteur
+																				// de
+																				// l'ecran
+																				// divisee
+																				// par
+																				// 1.5
 
 	public ChoisirNiveau() {
 
@@ -75,16 +120,14 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 														// le place au bon
 														// endroit
 		this.NiveauStatique1.setFont(police);// sur la fenetre
-		this.NiveauStatique1.setBounds((int)(width / 7), height / 6, width / 5,
-				height / 10);
+		this.NiveauStatique1.setBounds((int) (width / 7), height / 6, width / 5, height / 10);
 		NiveauStatique1.setEnabled(true);
 		this.getContentPane().add(this.NiveauStatique1);
 		i++;
 		this.NiveauStatique2 = new JButton("Niveau Statique2");
 		this.NiveauStatique2.setBackground(Color.WHITE);
 		this.NiveauStatique2.setFont(police);
-		this.NiveauStatique2.setBounds(width / 7, height / 3, width / 5,
-				height / 10);
+		this.NiveauStatique2.setBounds(width / 7, height / 3, width / 5, height / 10);
 		if (this.utilisateur.getscores()[i - 1].getnombre_clics() != 0) {
 			NiveauStatique2.setEnabled(true);
 		} else {
@@ -95,8 +138,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.NiveauStatique3 = new JButton("Niveau Statique3");
 		this.NiveauStatique3.setBackground(Color.WHITE);
 		this.NiveauStatique3.setFont(police);
-		this.NiveauStatique3.setBounds(width / 7, height / 2, width / 5,
-				height / 10);
+		this.NiveauStatique3.setBounds(width / 7, height / 2, width / 5, height / 10);
 		if (this.utilisateur.getscores()[i - 1].getnombre_clics() != 0) {
 			NiveauStatique3.setEnabled(true);
 		} else {
@@ -107,8 +149,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.NiveauStatique4 = new JButton("Niveau Statique4");
 		this.NiveauStatique4.setBackground(Color.WHITE);
 		this.NiveauStatique4.setFont(police);
-		this.NiveauStatique4.setBounds(width / 7, (int) h, width / 5,
-				height / 10);
+		this.NiveauStatique4.setBounds(width / 7, (int) h, width / 5, height / 10);
 		if (this.utilisateur.getscores()[i - 1].getnombre_clics() != 0) {
 			NiveauStatique4.setEnabled(true);
 		} else {
@@ -123,8 +164,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 														// difficulte 1 et on le
 														// place
 		this.NiveauMobile1.setFont(police);
-		this.NiveauMobile1.setBounds((int) w, height / 6, width / 5,
-				height / 10);
+		this.NiveauMobile1.setBounds((int) w, height / 6, width / 5, height / 10);
 		if (this.utilisateur.getscores()[i - 1].getnombre_clics() != 0) {
 			NiveauMobile1.setEnabled(true);
 		} else {
@@ -135,8 +175,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.NiveauMobile2 = new JButton("Niveau mobile2");
 		this.NiveauMobile2.setBackground(Color.WHITE);
 		this.NiveauMobile2.setFont(police);
-		this.NiveauMobile2.setBounds((int) w, height / 3, width / 5,
-				height / 10);
+		this.NiveauMobile2.setBounds((int) w, height / 3, width / 5, height / 10);
 		if (this.utilisateur.getscores()[i - 1].getnombre_clics() != 0) {
 			NiveauMobile2.setEnabled(true);
 		} else {
@@ -147,8 +186,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.NiveauMobile3 = new JButton("Niveau mobile3");
 		this.NiveauMobile3.setBackground(Color.WHITE);
 		this.NiveauMobile3.setFont(police);
-		this.NiveauMobile3.setBounds((int) w, height / 2, width / 5,
-				height / 10);
+		this.NiveauMobile3.setBounds((int) w, height / 2, width / 5, height / 10);
 		if (this.utilisateur.getscores()[i - 1].getnombre_clics() != 0) {
 			NiveauMobile3.setEnabled(true);
 		} else {
@@ -172,11 +210,10 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 		this.MenuPrincipal.setBackground(Color.WHITE);// de revenir au menu
 														// principal
 		this.MenuPrincipal.setFont(police);
-		this.MenuPrincipal.setBounds((int) (width /2.5), height / 2,
-				width / 6, height / 10);
+		this.MenuPrincipal.setBounds((int) (width / 2.5), height / 2, width / 6, height / 10);
 		this.getContentPane().add(this.MenuPrincipal, BorderLayout.CENTER);
 
-		this.NiveauStatique1.addActionListener(new ActionListener() { // on
+		this.NiveauStatique1.addActionListener(new ActionListener(){ // on
 																		// choisi
 																		// l'action
 																		// au
@@ -184,22 +221,22 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 																		// du
 																		// bouton
 
-					public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {
 
-						dispose();
+				dispose();
 
-						PlateauBulle N1 = new PlateauBulle(5, 1, 0); // on lance
-																		// un
-																		// palier
-																		// correspond
-																		// a la
-																		// difficulte
-																		// 1
-						// d'un niveau statique
-					}
-				});
+				PlateauBulle N1 = new PlateauBulle(5, 1, 0); // on lance
+																// un
+																// palier
+																// correspond
+																// a la
+																// difficulte
+																// 1
+				// d'un niveau statique
+			}
+		});
 
-		this.NiveauStatique2.addActionListener(new ActionListener() {
+		this.NiveauStatique2.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 
@@ -210,7 +247,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 			}
 		});
 
-		this.NiveauStatique3.addActionListener(new ActionListener() {
+		this.NiveauStatique3.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 
@@ -221,7 +258,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 			}
 		});
 
-		this.NiveauStatique4.addActionListener(new ActionListener() {
+		this.NiveauStatique4.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 
@@ -232,7 +269,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 			}
 		});
 
-		this.NiveauMobile1.addActionListener(new ActionListener() {
+		this.NiveauMobile1.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 
@@ -243,7 +280,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 			}
 		});
 
-		this.NiveauMobile2.addActionListener(new ActionListener() {
+		this.NiveauMobile2.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 
@@ -254,7 +291,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 			}
 		});
 
-		this.NiveauMobile3.addActionListener(new ActionListener() {
+		this.NiveauMobile3.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 
@@ -265,7 +302,7 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 			}
 		});
 
-		this.NiveauMobile4.addActionListener(new ActionListener() {
+		this.NiveauMobile4.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 
@@ -278,25 +315,25 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 
 		this.setVisible(true);
 
-		this.MenuPrincipal.addActionListener(new ActionListener() { // on choisi
+		this.MenuPrincipal.addActionListener(new ActionListener(){ // on choisi
 																	// l'action
 																	// au lic du
 																	// bouton
 																	// menu
 																	// principal
 
-					public void actionPerformed(ActionEvent e) {
-						Jeu.State = STATE.MENU;
-						dispose(); // efface l'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©cran de connexion
-						try {
-							Jeu.controller();
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+			public void actionPerformed(ActionEvent e) {
+				Jeu.State = STATE.MENU;
+				dispose(); // efface l'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©cran de connexion
+				try {
+					Jeu.controller();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
-					}
-				});
+			}
+		});
 
 	}
 
@@ -321,5 +358,4 @@ public class ChoisirNiveau extends JFrame implements KeyListener {
 	public static void main(String[] args) {
 		ChoisirNiveau ch1 = new ChoisirNiveau();
 	}
-
 }

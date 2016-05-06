@@ -1,4 +1,4 @@
-package projet_bulles;
+package fenetre;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -28,14 +28,19 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import model.*;
+import fenetre.*;
+import main.Jeu;
+import main.Jeu.STATE;
+
 public class FenetreScore extends JFrame {
 
 	// private JPanel fenetre;
 
 	// JLabel myLabel;
-	private JTable table;
+	private JTable				table;
 
-	private static Utilisateur utilisateur = Jeu.getutilisateur();
+	private static Utilisateur	utilisateur	= Jeu.getutilisateur();
 
 	// private static Utilisateur utilisateur = Jeu.getutilisateur();
 	// !!! A regler
@@ -76,11 +81,11 @@ public class FenetreScore extends JFrame {
 
 	public FenetreScore() throws IOException {
 
-		 this.setContentPane(new ImagePanel(new ImageIcon(getClass().getResource("/wallpaper.jpg")).getImage()));
+		this.setContentPane(new ImagePanel(new ImageIcon(getClass().getResource("/wallpaper.jpg")).getImage()));
 		this.setTitle("La case a bulles"); // On titre la fenÃƒÆ’Ã‚Âªtre
 		this.setExtendedState(Frame.MAXIMIZED_BOTH); // Plein ecran
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Si on clique sur
-		
+
 		this.setVisible(true); // On affiche la fenÃƒÆ’Ã‚Âªtre
 		// la croix
 		// le processus
@@ -88,11 +93,9 @@ public class FenetreScore extends JFrame {
 		int width = (int) screenSize.getWidth(); // La largeur
 		int height = (int) screenSize.getHeight(); // La hauteur
 		this.setLayout(null);
-		//this.setLocationRelativeTo(null); // La fenÃƒÆ’Ã‚Âªtre est independante
-		Object[][] valeurs = {
-				{ "Pallier 1", null, null, null, null, null, null },
-				{ "Pallier 2", null, null, null, null, null, null },
-				{ "Pallier 3", null, null, null, null, null, null },
+		// this.setLocationRelativeTo(null); // La fenÃƒÆ’Ã‚Âªtre est
+		// independante
+		Object[][] valeurs = { { "Pallier 1", null, null, null, null, null, null }, { "Pallier 2", null, null, null, null, null, null }, { "Pallier 3", null, null, null, null, null, null },
 				{ "Pallier 4", null, null, null, null, null, null }, }; // Par
 																		// default
 																		// les
@@ -101,42 +104,50 @@ public class FenetreScore extends JFrame {
 		Font police = new Font("Verdana", Font.BOLD, 30);
 		// ÃƒÆ’Ã‚Â 
 		// null
-		String[] titre = { "Pallier", "niveau 1", "nombre de clics",
-				"nombre de bulles", "niveau 2", "nombre de clics",
-				"nombre de bulles" }; // les titres de chacune des colonnes de
-										// la grille des scores
-		this.table =  new JTable(valeurs, titre) {
+		String[] titre = { "Pallier", "niveau 1", "nombre de clics", "nombre de bulles", "niveau 2", "nombre de clics", "nombre de bulles" }; // les
+																																				// titres
+																																				// de
+																																				// chacune
+																																				// des
+																																				// colonnes
+																																				// de
+																																				// la
+																																				// grille
+																																				// des
+																																				// scores
+		this.table = new JTable(valeurs, titre){
 			public boolean isCellEditable(int row, int col) {
 				return false;
 			}
-			}; // On cree une JTable
-													// (grille), avec les scores
-													// et les valeurs
+		}; // On cree une JTable
+			// (grille), avec les scores
+			// et les valeurs
 		initialization(valeurs); // On va initialiser les valeurs des scores
 		table.setFont(police);
 		table.setRowHeight(table.getRowHeight() + 30);
 		table.getTableHeader().setFont(new Font("Verdana", Font.BOLD, 18));
-		
+
 		// table.get
 		/*
 		 * Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		 * table.setPreferredScrollableViewportSize(screen);
 		 */
 		// scroller
-		JScrollPane scrollpane = new JScrollPane(table,
-				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); // Si besoin il y a
-																// une scrollbar
-		scrollpane.setBounds(0,0,width,height/4+(height/28));
-		
-	
+		JScrollPane scrollpane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); // Si
+																																				// besoin
+																																				// il
+																																				// y
+																																				// a
+																																				// une
+																																				// scrollbar
+		scrollpane.setBounds(0, 0, width, height / 4 + (height / 28));
+
 		JButton MenuPrincipal = new JButton("Menu principal");
 		MenuPrincipal.setBackground(Color.CYAN);
 		MenuPrincipal.setFont(police);
-		MenuPrincipal.setBounds((int) width / 3, height / 2,
-				(int) (width / 3.5), height / 15);
+		MenuPrincipal.setBounds((int) width / 3, height / 2, (int) (width / 3.5), height / 15);
 
-		MenuPrincipal.addActionListener(new ActionListener() {
+		MenuPrincipal.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -152,12 +163,11 @@ public class FenetreScore extends JFrame {
 			}
 
 		});
-		
-		JLabel monFond=new JLabel(new ImageIcon(getClass().getResource("/wallpaper.jpg")));
-		monFond.setBounds(0,0,width,height);
+
+		JLabel monFond = new JLabel(new ImageIcon(getClass().getResource("/wallpaper.jpg")));
+		monFond.setBounds(0, 0, width, height);
 		this.getContentPane().add(MenuPrincipal, BorderLayout.CENTER);
-		
-		
+
 		this.getContentPane().add(scrollpane); // On l'ajoute
 		this.getContentPane().add(monFond);
 	}
